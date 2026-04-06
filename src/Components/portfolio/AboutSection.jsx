@@ -1,53 +1,207 @@
-import React, { useMemo } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { useLanguage } from './LanguageContext';
 import DecryptedText from './DecryptedText';
-import ScrollReveal from './ScrollReveal';
 
 const AboutSection = React.memo(() => {
     const { t, locale } = useLanguage();
-    const trustTitle = t.about.whyTrustMe || '¿Por qué confiar en mí?';
+    const isEnglish = locale === 'en';
 
-    const longParagraphText = useMemo(() => 
-        locale === 'en' 
-            ? "I design and develop data-driven user experiences that transform how businesses connect with their audiences. By combining UX/UI optimization, front-end development, and conversion-focused digital marketing strategies, I create scalable solutions that enhance engagement, improve performance, and drive measurable growth. My work is grounded in analytics, strategic thinking, and a deep understanding of user behavior, helping brands grow with purpose, precision, and long-term impact." 
-            : "Diseño y desarrollo experiencias de usuario basadas en datos que transforman cómo las empresas se conectan con sus audiencias. Al combinar optimización UX/UI, desarrollo frontend y estrategias de marketing digital enfocadas en conversión, creo soluciones escalables que mejoran el engagement, optimizan el rendimiento e impulsan el crecimiento medible. Mi trabajo se fundamenta en analítica, pensamiento estratégico y una comprensión profunda del comportamiento del usuario, ayudando a las marcas a crecer con propósito, precisión e impacto a largo plazo.",
-        [locale]
-    );
+    const content = isEnglish
+        ? {
+              sectionTitle: 'Data-Driven Customer Experience',
+              line1Before: 'Your ',
+              line1Bold: 'best',
+              line1After: 'marketing',
+              line2: 'is a great',
+              line3: 'experience',
+              lead: 'Experiences that turn your users into brand ambassadors.',
+              body:
+                  'I design and develop data-driven user experiences that transform how businesses connect with their audiences. I create scalable solutions that:',
+              bullets: [
+                  'Improve engagement.',
+                  'Optimize performance.',
+                  'Drive measurable growth.',
+              ],
+              guidesCta: 'Explore my guides for $0',
+              oldPrice: '$2.99',
+              contactCta: 'Contact me',
+              videoCaption:
+                  'My work is grounded in analytics, strategic thinking, and a deep understanding of user behavior, helping brands grow with purpose, precision, and long-term impact.',
+          }
+        : {
+              sectionTitle: 'Experiencia del Cliente Basada en Datos',
+              line1Before: 'Tu ',
+              line1Bold: 'mejor',
+              line1After: 'marketing',
+              line2: 'Es una buena',
+              line3: 'experiencia',
+              lead: 'Experiencias que convierten a tus usuarios en embajadores de marca.',
+              body:
+                  'Dise\u00f1o y desarrollo experiencias de usuario basadas en datos que transforman c\u00f3mo las empresas se conectan con sus audiencias. Creo soluciones escalables que:',
+              bullets: [
+                  'Mejoran el engagement.',
+                  'Optimizan el rendimiento.',
+                  'Impulsan el crecimiento medible.',
+              ],
+              guidesCta: 'Explora mis gu\u00edas por $0',
+              oldPrice: '$2,99',
+              contactCta: 'Cont\u00e1ctame',
+              videoCaption:
+                  'Mi trabajo se fundamenta en anal\u00edtica, pensamiento estrat\u00e9gico y una comprensi\u00f3n profunda del comportamiento del usuario, ayudando a las marcas a crecer con prop\u00f3sito, precisi\u00f3n e impacto a largo plazo.',
+          };
+
+    const scrollToContact = (event) => {
+        event.preventDefault();
+        document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
+
+    const trustCards = [
+        {
+            id: 'trust1',
+            title:
+                t.about?.trust1?.title ||
+                (isEnglish
+                    ? 'Academic Excellence and Leadership in Global Initiatives'
+                    : 'Excelencia acad\u00e9mica y liderazgo en iniciativas globales'),
+            description:
+                t.about?.trust1?.description ||
+                (isEnglish
+                    ? "Bachelor's in Internet Administration at UEAN, with a GPA of +8.66. Leading a university International Finance Project and Green Bonds integration in Argentina, with projection to several congresses."
+                    : 'Licenciatura en Administraci\u00f3n en Internet en UEAN, con promedio de +8,66. Liderando un proyecto universitario de Finanzas Internacionales e inserci\u00f3n de Green Bonds en Argentina, con proyecci\u00f3n a varios congresos.'),
+            icon: (
+                <svg className="about-trust-icon-svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                </svg>
+            ),
+        },
+        {
+            id: 'trust3',
+            title:
+                t.about?.trust3?.title ||
+                (isEnglish
+                    ? 'Cutting-Edge Innovation Applied to Your Business'
+                    : 'Innovaci\u00f3n de vanguardia aplicada a tu negocio'),
+            description:
+                t.about?.trust3?.description ||
+                (isEnglish
+                    ? 'I continuously train in new technologies, artificial intelligence, and digital tools, with a focus on practical application for process improvement and strategic analysis.'
+                    : 'Me capacito de manera permanente en nuevas tecnolog\u00edas, inteligencia artificial y herramientas digitales, con foco en su aplicaci\u00f3n pr\u00e1ctica para mejorar procesos y an\u00e1lisis estrat\u00e9gico.'),
+            icon: (
+                <svg className="about-trust-icon-svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+            ),
+        },
+        {
+            id: 'trust2',
+            title:
+                t.about?.trust2?.title ||
+                (isEnglish ? 'Web positioning that converts' : 'Posicionamiento web que convierte'),
+            description:
+                t.about?.trust2?.description ||
+                (isEnglish
+                    ? 'I combine technical SEO, content optimization, and strategic data analysis to drive visibility, attract quality traffic, and convert visits into real customers.'
+                    : 'Combino SEO t\u00e9cnico, optimizaci\u00f3n de contenido y an\u00e1lisis estrat\u00e9gico de datos para generar visibilidad, atraer tr\u00e1fico de calidad y convertir visitas en clientes reales.'),
+            icon: (
+                <svg className="about-trust-icon-svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+            ),
+        },
+    ];
+
+    const trustExtraCard = {
+        title:
+            t.about?.trust4?.title ||
+            (isEnglish
+                ? 'Professional Resilience and Measurable Results'
+                : 'Resiliencia profesional y resultados medibles'),
+        description:
+            t.about?.trust4?.description ||
+            (isEnglish
+                ? 'I adapt quickly to dynamic environments with clear goals and measurable objectives, focusing on data analysis, process optimization, and digital growth.'
+                : 'Me adapto f\u00e1cilmente a entornos din\u00e1micos con metas claras y objetivos precisos, enfoc\u00e1ndome en an\u00e1lisis de datos, optimizaci\u00f3n de procesos y crecimiento digital.'),
+    };
 
     return (
-        <section id="about" className="relative pt-12 pb-6">
+        <section id="about" className="relative pt-8 md:pt-10 pb-6 md:pb-10">
             <div className="container mx-auto px-6">
-                <div className="mb-12">
-                    <div className="text-center mb-8">
-                        <div className="text-xs md:text-sm uppercase text-emerald-400 font-semibold tracking-widest">{t.about.title}</div>
-                        <h1 className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-emerald-400 mt-4 tracking-tight leading-tight">{t.about.heading}</h1>
-                        <div className="w-24 h-1.5 bg-emerald-500 mx-auto my-4 rounded"></div>
+                <div className="about-customer-experience-panel">
+                    <div className="about-customer-experience-header">
+                        <h2 className="about-customer-experience-title">{content.sectionTitle}</h2>
+                        <div className="about-customer-experience-underline" />
                     </div>
 
-                    {/* Long description with scroll reveal */}
-                    <div className="w-full mx-auto mb-8 md:mb-10 px-4 md:px-12">
-                        <ScrollReveal 
-                            text={longParagraphText}
-                            enableBlur={true}
-                            baseOpacity={0.15}
-                            baseRotation={1}
-                            blurStrength={2}
-                            containerClassName=""
-                            textClassName="text-justify tracking-tight text-[18px] md:text-[32px] lg:text-[44px] font-medium md:font-bold leading-relaxed text-white"
-                            rotationEnd="bottom bottom"
-                            wordAnimationEnd="bottom bottom"
-                        />
+                    <div className="about-customer-experience-grid">
+                        <div className="about-customer-experience-copy">
+                            <h3 className="about-customer-experience-big-title">
+                                <span>
+                                    {content.line1Before}
+                                    <strong className="about-customer-experience-bold-word">
+                                        {content.line1Bold}
+                                        <span className="about-customer-experience-star" aria-hidden="true">
+                                            {'\u2726'}
+                                        </span>
+                                    </strong>{' '}
+                                    <span className="about-customer-experience-marketing-word">{content.line1After}</span>
+                                </span>
+                                <span>{content.line2}</span>
+                                <span>{content.line3}</span>
+                            </h3>
+
+                            <p className="about-customer-experience-lead">{content.lead}</p>
+                            <p className="about-customer-experience-body">{content.body}</p>
+
+                            <ul className="about-customer-experience-bullets" aria-label={isEnglish ? 'Benefits' : 'Beneficios'}>
+                                {content.bullets.map((bullet) => (
+                                    <li key={bullet}>{bullet}</li>
+                                ))}
+                            </ul>
+
+                            <div className="about-customer-experience-actions">
+                                <Link to="/recursos?filter=guide" className="about-guides-cta">
+                                    <span>{content.guidesCta}</span>
+                                    <s>{content.oldPrice}</s>
+                                </Link>
+                                <button type="button" onClick={scrollToContact} className="about-contact-cta">
+                                    <span className="about-contact-cta-icon" aria-hidden="true">
+                                        {'\u2709'}
+                                    </span>
+                                    <span>{content.contactCta}</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div className="about-customer-experience-media">
+                            <div className="about-customer-experience-video-shell">
+                                <video
+                                    src="/about-marketing-loop.mp4"
+                                    className="about-customer-experience-video"
+                                    autoPlay
+                                    muted
+                                    loop
+                                    playsInline
+                                    preload="metadata"
+                                />
+                            </div>
+                            <p className="about-customer-experience-video-caption">{content.videoCaption}</p>
+                        </div>
                     </div>
 
-                    {/* Divider line */}
-                    <div className="w-full h-px bg-gradient-to-r from-transparent via-emerald-500/50 to-transparent my-16"></div>
+                    <motion.div
+                        className="about-trust-divider"
+                        initial={{ opacity: 0, scaleX: 0.3 }}
+                        whileInView={{ opacity: 1, scaleX: 1 }}
+                        viewport={{ once: true, amount: 0.45 }}
+                        transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+                    />
 
-                    {/* Why Trust Me title with decrypted effect */}
-                    <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold italic uppercase text-white mb-4 md:mb-6 text-left leading-tight pt-2 md:pt-4 pl-2 pb-2 md:pl-3 md:pb-3" style={{ contain: 'layout style paint' }}>
-                        <DecryptedText 
-                            key={trustTitle}
-                            text={trustTitle}
-                            speed={50}
+                    <h4 className="about-trust-heading">
+                        <DecryptedText
+                            text={isEnglish ? 'Why trust me?' : '\u00bfPor qu\u00e9 confiar en m\u00ed?'}
+                            speed={42}
                             maxIterations={12}
                             sequential={true}
                             revealDirection="start"
@@ -55,80 +209,44 @@ const AboutSection = React.memo(() => {
                             className="text-white"
                             encryptedClassName="text-emerald-400/60"
                         />
-                    </h2>
+                    </h4>
 
-                    {/* Trust cards - Minimalista layout */}
-                    <div className="space-y-4 md:space-y-0 md:grid md:grid-cols-3 md:gap-6 mt-8">
-                        {/* Card 1 - Excelencia académica */}
-                        <div className="p-4 md:p-8 rounded-lg md:rounded-xl border border-emerald-500/30 bg-gradient-to-br from-emerald-500/10 to-emerald-500/5 backdrop-blur-sm hover:border-emerald-500/50 transition-colors duration-300">
-                            <div className="flex flex-col md:flex-row items-start md:items-center gap-3 md:gap-6">
-                                <div className="flex-shrink-0 w-10 h-10 md:w-14 md:h-14 rounded-lg bg-emerald-500/30 border border-emerald-400/40 flex items-center justify-center">
-                                    <svg className="w-5 h-5 md:w-7 md:h-7 text-emerald-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                                    </svg>
+                    <div className="about-trust-grid">
+                        {trustCards.map((card, index) => (
+                            <motion.article
+                                key={card.id}
+                                className="about-trust-card"
+                                initial={{ opacity: 0, y: 16 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, amount: 0.2 }}
+                                transition={{ duration: 0.42, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                            >
+                                <div className="about-trust-icon">{card.icon}</div>
+                                <div>
+                                    <h5 className="about-trust-card-title">{card.title}</h5>
+                                    <p className="about-trust-card-description">{card.description}</p>
                                 </div>
-                                <div className="flex-1">
-                                    <h3 className="text-sm md:text-lg lg:text-xl font-bold text-white mb-1 md:mb-2">{t.about.trust1?.title}</h3>
-                                    <p className="text-zinc-400 leading-relaxed text-xs md:text-sm lg:text-base">{t.about.trust1?.description}</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Card 2 - Innovación */}
-                        <div className="p-4 md:p-8 rounded-lg md:rounded-xl border border-emerald-500/30 bg-gradient-to-br from-emerald-500/10 to-emerald-500/5 backdrop-blur-sm hover:border-emerald-500/50 transition-colors duration-300">
-                            <div className="flex flex-col md:flex-row items-start md:items-center gap-3 md:gap-6">
-                                <div className="flex-shrink-0 w-10 h-10 md:w-14 md:h-14 rounded-lg bg-emerald-500/30 border border-emerald-400/40 flex items-center justify-center">
-                                    <svg className="w-5 h-5 md:w-7 md:h-7 text-emerald-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                                    </svg>
-                                </div>
-                                <div className="flex-1">
-                                    <h3 className="text-sm md:text-lg lg:text-xl font-bold text-white mb-1 md:mb-2">{t.about.trust3?.title}</h3>
-                                    <p className="text-zinc-400 leading-relaxed text-xs md:text-sm lg:text-base">{t.about.trust3?.description}</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Card 3 - Certificación */}
-                        <div className="p-4 md:p-8 rounded-lg md:rounded-xl border border-emerald-500/30 bg-gradient-to-br from-emerald-500/10 to-emerald-500/5 backdrop-blur-sm hover:border-emerald-500/50 transition-colors duration-300">
-                            <div className="flex flex-col md:flex-row items-start md:items-center gap-3 md:gap-6">
-                                <div className="flex-shrink-0 w-10 h-10 md:w-14 md:h-14 rounded-lg bg-emerald-500/30 border border-emerald-400/40 flex items-center justify-center">
-                                    <svg className="w-5 h-5 md:w-7 md:h-7 text-emerald-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                    </svg>
-                                </div>
-                                <div className="flex-1">
-                                    <h3 className="text-sm md:text-lg lg:text-xl font-bold text-white mb-1 md:mb-2">{t.about.trust2?.title}</h3>
-                                    <p className="text-zinc-400 leading-relaxed text-xs md:text-sm lg:text-base">{t.about.trust2?.description}</p>
-                                </div>
-                            </div>
-                        </div>
+                            </motion.article>
+                        ))}
                     </div>
 
-                    {/* Full-width academic card */}
-                    <div className="mt-6 md:mt-8 p-4 md:p-8 rounded-lg md:rounded-xl border border-emerald-500/30 bg-gradient-to-br from-emerald-500/10 to-emerald-500/5 backdrop-blur-sm hover:border-emerald-500/50 transition-colors duration-300">
-                        <div className="flex flex-col md:flex-row items-start md:items-center gap-3 md:gap-6">
-                            <div className="flex-shrink-0 w-10 h-10 md:w-14 md:h-14 rounded-lg bg-emerald-500/30 border border-emerald-400/40 flex items-center justify-center">
-                                <svg className="w-5 h-5 md:w-7 md:h-7 text-emerald-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                                </svg>
-                            </div>
-                            <div className="flex-1">
-                                <h3 className="text-sm md:text-lg lg:text-xl font-bold text-white mb-1 md:mb-2">{t.about.trust4?.title}</h3>
-                                <p className="text-zinc-400 leading-relaxed text-xs md:text-sm lg:text-base">{t.about.trust4?.description}</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* CTA at the end of the section */}
-                    <div className="mt-10 flex justify-center md:justify-end">
-                        <a href="#contact" onClick={(e) => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }} className="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold px-8 py-3 rounded-lg cursor-pointer transition-all duration-300">
-                            <span>VER MÁS</span>
-                            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    <motion.article
+                        className="about-trust-card about-trust-card-wide"
+                        initial={{ opacity: 0, y: 16 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.2 }}
+                        transition={{ duration: 0.42, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
+                    >
+                        <div className="about-trust-icon">
+                            <svg className="about-trust-icon-svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                             </svg>
-                        </a>
-                    </div>
+                        </div>
+                        <div>
+                            <h5 className="about-trust-card-title">{trustExtraCard.title}</h5>
+                            <p className="about-trust-card-description">{trustExtraCard.description}</p>
+                        </div>
+                    </motion.article>
                 </div>
             </div>
         </section>
