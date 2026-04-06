@@ -1,12 +1,67 @@
-import React from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { useLanguage } from './LanguageContext';
 import DecryptedText from './DecryptedText';
 
 const AboutSection = React.memo(() => {
     const { t, locale } = useLanguage();
     const isEnglish = locale === 'en';
+    const sectionRef = useRef(null);
+
+    // Parallax & Scroll Animations
+    const { scrollYProgress } = useScroll({
+        target: sectionRef,
+        offset: ["start end", "end start"]
+    });
+
+    const { scrollYProgress: scrollYStart } = useScroll({
+        target: sectionRef,
+        offset: ["start start", "end start"]
+    });
+
+    // Subtly move text slower to create depth
+    const textY = useTransform(scrollYProgress, [0, 1], ["-10%", "15%"]);
+    // Image scales slightly when scrolling past
+    const imageScale = useTransform(scrollYStart, [0, 1], [1, 1.05]);
+
+    // Mouse movement 3D tilt (Optional extra)
+    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+    const handleMouseMove = (e) => {
+        if (!sectionRef.current) return;
+        const rect = sectionRef.current.getBoundingClientRect();
+        // Calculate normalized position -0.5 to 0.5
+        const x = (e.clientX - rect.left) / rect.width - 0.5;
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
+        setMousePosition({ x, y });
+    };
+
+    // Animation Variants
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.15,
+                delayChildren: 0.1
+            }
+        }
+    };
+
+    const itemVariants = {
+        hidden: { opacity: 0, y: 30 },
+        visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 70, damping: 20 } }
+    };
+
+    const imageContainerVariants = {
+        hidden: { opacity: 0, scale: 0.95, y: 40 },
+        visible: { 
+            opacity: 1, 
+            scale: 1, 
+            y: 0, 
+            transition: { type: "spring", stiffness: 60, damping: 20, delay: 0.3 } 
+        }
+    };
 
     const content = isEnglish
         ? {
@@ -126,17 +181,49 @@ const AboutSection = React.memo(() => {
     };
 
     return (
-        <section id="about" className="relative pt-8 md:pt-10 pb-6 md:pb-10">
-            <div className="container mx-auto px-6">
-                <div className="about-customer-experience-panel">
-                    <div className="about-customer-experience-header">
+        <section 
+            id="about" 
+            ref={sectionRef}
+            onMouseMove={handleMouseMove}
+            onMouseLeave={() => setMousePosition({ x: 0, y: 0 })}
+            className="relative"
+        >
+            {/* Top Visual Separator */}
+            <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+            <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-white/[0.02] to-transparent pointer-events-none" />
+
+            {/* Elegant moving glow */}
+            <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                <motion.div 
+                    className="absolute top-[10%] right-[5%] w-[40%] h-[40%] bg-emerald-500/10 blur-[100px] rounded-full"
+                    animate={{ 
+                        x: mousePosition.x * -40, 
+                        y: mousePosition.y * -40,
+                    }}
+                    transition={{ type: "spring", stiffness: 40, damping: 30 }}
+                />
+            </div>
+
+            <div className="min-h-[100dvh] md:min-h-[95dvh] flex flex-col justify-center w-full py-[100px]">
+              <div className="container mx-auto px-6 relative z-10">
+                <motion.div 
+                    className="about-customer-experience-panel"
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.15 }}
+                    variants={containerVariants}
+                >
+                    <motion.div variants={itemVariants} className="about-customer-experience-header">
                         <h2 className="about-customer-experience-title">{content.sectionTitle}</h2>
                         <div className="about-customer-experience-underline" />
-                    </div>
+                    </motion.div>
 
                     <div className="about-customer-experience-grid">
-                        <div className="about-customer-experience-copy">
-                            <h3 className="about-customer-experience-big-title">
+                        <motion.div 
+                            className="about-customer-experience-copy"
+                            style={{ y: textY }}
+                        >
+                            <motion.h3 variants={itemVariants} className="about-customer-experience-big-title">
                                 <span>
                                     {content.line1Before}
                                     <strong className="about-customer-experience-bold-word">
@@ -149,18 +236,18 @@ const AboutSection = React.memo(() => {
                                 </span>
                                 <span>{content.line2}</span>
                                 <span>{content.line3}</span>
-                            </h3>
+                            </motion.h3>
 
-                            <p className="about-customer-experience-lead">{content.lead}</p>
-                            <p className="about-customer-experience-body">{content.body}</p>
+                            <motion.p variants={itemVariants} className="about-customer-experience-lead">{content.lead}</motion.p>
+                            <motion.p variants={itemVariants} className="about-customer-experience-body">{content.body}</motion.p>
 
-                            <ul className="about-customer-experience-bullets" aria-label={isEnglish ? 'Benefits' : 'Beneficios'}>
+                            <motion.ul variants={itemVariants} className="about-customer-experience-bullets" aria-label={isEnglish ? 'Benefits' : 'Beneficios'}>
                                 {content.bullets.map((bullet) => (
                                     <li key={bullet}>{bullet}</li>
                                 ))}
-                            </ul>
+                            </motion.ul>
 
-                            <div className="about-customer-experience-actions">
+                            <motion.div variants={itemVariants} className="about-customer-experience-actions">
                                 <Link to="/recursos?filter=guide" className="about-guides-cta">
                                     <span>{content.guidesCta}</span>
                                     <s>{content.oldPrice}</s>
@@ -171,27 +258,55 @@ const AboutSection = React.memo(() => {
                                     </span>
                                     <span>{content.contactCta}</span>
                                 </button>
-                            </div>
-                        </div>
+                            </motion.div>
+                        </motion.div>
 
-                        <div className="about-customer-experience-media">
-                            <div className="about-customer-experience-video-shell">
-                                <video
-                                    src="/about-marketing-loop.mp4"
-                                    className="about-customer-experience-video"
-                                    autoPlay
-                                    muted
-                                    loop
-                                    playsInline
-                                    preload="metadata"
-                                />
-                            </div>
-                            <p className="about-customer-experience-video-caption">{content.videoCaption}</p>
-                        </div>
+                        <motion.div 
+                            className="about-customer-experience-media"
+                            variants={imageContainerVariants}
+                            style={{ 
+                                scale: imageScale,
+                                perspective: 1000
+                            }}
+                        >
+                            <motion.div
+                                style={{
+                                    rotateX: mousePosition.y * -8,
+                                    rotateY: mousePosition.x * 8
+                                }}
+                            >
+                                <motion.div 
+                                    className="about-customer-experience-video-shell"
+                                    animate={{ y: ["-6px", "6px"] }}
+                                    transition={{ 
+                                        duration: 4, 
+                                        repeat: Infinity, 
+                                        repeatType: "reverse", 
+                                        ease: "easeInOut" 
+                                    }}
+                                >
+                                    <video
+                                        src="/about-marketing-loop.mp4"
+                                        className="about-customer-experience-video"
+                                        autoPlay
+                                        muted
+                                        loop
+                                        playsInline
+                                        preload="metadata"
+                                    />
+                                </motion.div>
+                            </motion.div>
+                            <motion.p variants={itemVariants} className="about-customer-experience-video-caption">{content.videoCaption}</motion.p>
+                        </motion.div>
                     </div>
+                </motion.div>
+              </div>
+            </div>
 
-                    <motion.div
-                        className="about-trust-divider"
+            { /* "Why trust me" section */ }
+            <div className="container mx-auto px-6 pb-12 md:pb-20 pt-4">
+                <motion.div
+                    className="about-trust-divider"
                         initial={{ opacity: 0, scaleX: 0.3 }}
                         whileInView={{ opacity: 1, scaleX: 1 }}
                         viewport={{ once: true, amount: 0.45 }}
@@ -248,8 +363,7 @@ const AboutSection = React.memo(() => {
                         </div>
                     </motion.article>
                 </div>
-            </div>
-        </section>
+            </section>
     );
 });
 
