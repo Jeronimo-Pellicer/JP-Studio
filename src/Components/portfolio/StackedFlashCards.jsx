@@ -133,22 +133,18 @@ const FlashCard = React.memo(({ card, index, scrollYProgress, totalCards, isDesk
             {card.description}
           </p>
 
-          <motion.div 
-            whileHover={{ scale: 1.05, x: 5 }} 
-            whileTap={{ scale: 0.95 }}
-            className="pt-4"
-          >
+          <div className="pt-4 mt-auto">
             <Link
               to={card.link}
               onClick={() => window.scrollTo(0, 0)}
-              className="premium-glow-button relative group inline-flex items-center justify-center text-[11px] font-bold text-white uppercase tracking-widest transition-all px-8 py-4 rounded-full shadow-lg hover:shadow-[0_0_30px_rgba(16,185,129,0.25)]"
+              className="group inline-flex items-center justify-center text-[11px] font-bold text-zinc-950 uppercase tracking-widest transition-all px-8 py-4 rounded-full bg-emerald-500 hover:bg-emerald-400 shadow-[0_0_20px_rgba(16,185,129,0.2)] hover:shadow-[0_0_30px_rgba(16,185,129,0.4)]"
             >
-              <span className="relative z-10">{isEnglish ? 'LEARN MORE' : 'APRENDE MAS'}</span>
-              <svg className="w-4 h-4 ml-3 relative z-10 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <span>{isEnglish ? 'LEARN MORE' : 'APRENDE MAS'}</span>
+              <svg className="w-4 h-4 ml-3 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
               </svg>
             </Link>
-          </motion.div>
+          </div>
         </div>
       </div>
     </motion.div>
