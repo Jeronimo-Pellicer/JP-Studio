@@ -10,12 +10,12 @@ const AboutSection = React.memo(() => {
     const isEnglish = locale === 'en';
     const [loadVideo, setLoadVideo] = useState(false);
     const [isMobile, setIsMobile] = useState(() => 
-        typeof window !== 'undefined' ? window.matchMedia("(max-width: 1024px)").matches : false
+        typeof window !== 'undefined' ? window.matchMedia("(max-width: 768px)").matches : false
     );
     const sectionRef = useRef(null);
 
     useEffect(() => {
-        const checkMobile = () => setIsMobile(window.matchMedia("(max-width: 1024px)").matches);
+        const checkMobile = () => setIsMobile(window.matchMedia("(max-width: 768px)").matches);
         checkMobile();
         window.addEventListener('resize', checkMobile);
         return () => window.removeEventListener('resize', checkMobile);

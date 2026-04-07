@@ -187,9 +187,9 @@ const StackedFlashCards = ({ children }) => {
           {/* Floating Nebula Orbs & Noise (Desktop only to save GPU & Network) */}
           {isDesktop && (
             <>
-              {/* Static Noise Overlay - Desktop Only */}
+              {/* Static Noise Overlay */}
               <div
-                className="absolute inset-0 z-10 opacity-[0.1] mix-blend-overlay pointer-events-none hidden lg:block"
+                className="absolute inset-0 z-10 opacity-[0.1] mix-blend-overlay pointer-events-none"
                 style={{ backgroundImage: 'url("/noise.webp")' }}
               />
               <motion.div
