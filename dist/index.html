@@ -4,10 +4,12 @@
     <!-- Google Tag Manager -->
     <script>
       window.addEventListener('load', function() {
-        var s = document.createElement('script');
-        s.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-MDBJ7G6N';
-        s.async = true;
-        document.head.appendChild(s);
+        setTimeout(function() {
+          var s = document.createElement('script');
+          s.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-MDBJ7G6N';
+          s.async = true;
+          document.head.appendChild(s);
+        }, 1500); // 1.5s delay after load to favor critical path
       });
     </script>
     <!-- End Google Tag Manager -->
@@ -56,8 +58,8 @@
     }
     </script>
     
-    <!-- DNS Prefetch for external domains -->
-    <link rel="dns-prefetch" href="https://images.unsplash.com">
+    <!-- Local Fonts -->
+    <link rel="stylesheet" href="/fonts/fonts.css">
     
     <!-- Local Fonts Preload -->
     <link rel="preload" href="/fonts/caveat-4.woff2" as="font" type="font/woff2" crossorigin>
@@ -67,12 +69,12 @@
     <noscript><link href="/fonts/caveat.css" rel="stylesheet"></noscript>
     
     <link rel="icon" type="image/png" href="/favicon.png" />
-    <script type="module" crossorigin src="/assets/index-BegIdMcl.js"></script>
+    <script type="module" crossorigin src="/assets/index-Cm1sZW5Y.js"></script>
     <link rel="modulepreload" crossorigin href="/assets/react-vendor-CkebN-nG.js">
-    <link rel="modulepreload" crossorigin href="/assets/framer-BdowwcBu.js">
+    <link rel="modulepreload" crossorigin href="/assets/framer-DrWVY8Tq.js">
     <link rel="modulepreload" crossorigin href="/assets/react-router-D8_tp-lN.js">
-    <link rel="modulepreload" crossorigin href="/assets/ui-components-CdE9fI8b.js">
-    <link rel="stylesheet" crossorigin href="/assets/index-CkC_74-T.css">
+    <link rel="modulepreload" crossorigin href="/assets/ui-components-KMEJfJrh.js">
+    <link rel="stylesheet" crossorigin href="/assets/index-C2mK0jKM.css">
     <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
   </head>
   <body>

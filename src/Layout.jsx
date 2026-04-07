@@ -107,7 +107,7 @@ function NavButton({ onClick, label }) {
                     .flowing-border {
                         stroke-dasharray: 280;
                         animation: borderFlow 2.5s linear infinite;
-                        will-change: transform;
+                        will-change: stroke-dashoffset;
                     }
                 `}</style>
                 <rect
@@ -198,7 +198,7 @@ function NavDropdown({ label, items, nestedItems, onNavigate }) {
                         .flowing-border-dropdown {
                             stroke-dasharray: 280;
                             animation: borderFlow 2.5s linear infinite;
-                            will-change: transform;
+                            will-change: stroke-dashoffset;
                         }
                     `}</style>
                     <rect
@@ -495,6 +495,8 @@ function LayoutContent({ children, currentPageName }) {
                             whileTap={{ scale: 0.9 }}
                             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                             className="md:hidden p-2 text-zinc-400 hover:text-white transition-colors"
+                            aria-label={isMobileMenuOpen ? (language === 'es' ? 'Cerrar menú' : 'Close menu') : (language === 'es' ? 'Abrir menú' : 'Open menu')}
+                            id="mobile-menu-toggle"
                         >
                             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
                         </motion.button>

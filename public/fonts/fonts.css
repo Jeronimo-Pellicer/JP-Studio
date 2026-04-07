@@ -1,0 +1,30 @@
+/* Local Fonts for JP Studio */
+
+@font-face {
+  font-family: 'Anonymous Pro';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/anonymous-pro-v22-italic-400.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Anonymous Pro';
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/anonymous-pro-v22-italic-700.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Anonymous Pro';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/anonymous-pro-v22-normal-400.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Anonymous Pro';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/anonymous-pro-v22-normal-700.ttf') format('truetype');
+}

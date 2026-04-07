@@ -66,9 +66,9 @@ function HandDrawnArrowUp() {
 
 function TrustBadge({ language }) {
     const avatars = [
-        { name: 'Martina S.', src: '/avatars/avatar-1.png' },
-        { name: 'Lucas R.', src: '/avatars/avatar-2.png' },
-        { name: 'Sof\u00eda P.', src: '/avatars/avatar-3.png' },
+        { name: 'Martina S.', src: '/avatars/avatar-1.webp' },
+        { name: 'Lucas R.', src: '/avatars/avatar-2.webp' },
+        { name: 'Sof\u00eda P.', src: '/avatars/avatar-3.webp' },
     ];
 
     return (
@@ -89,7 +89,14 @@ function TrustBadge({ language }) {
                             aria-label={avatar.name}
                         >
                             <span className="avatar-tooltip">{avatar.name}</span>
-                            <img src={avatar.src} alt={avatar.name} loading="lazy" width="36" height="36" />
+                            <img 
+                                src={avatar.src} 
+                                alt={avatar.name} 
+                                decoding="async"
+                                fetchPriority={index === 0 ? "high" : "auto"}
+                                width="36" 
+                                height="36" 
+                            />
                         </button>
                     ))}
                 </div>
@@ -157,7 +164,7 @@ export default function HeroSection() {
                 >
                     <Link to="/herramientas" className="block">
                         <img
-                            src="/laptop.svg"
+                            src="/laptop.webp"
                             alt={language === 'es' ? 'Laptop con proyecto' : 'Laptop with project'}
                             className="hero-image w-[320px] h-auto"
                             loading="lazy"
@@ -180,7 +187,7 @@ export default function HeroSection() {
                 >
                     <Link to="/herramientas/quiz-estrategia" className="hero-media-shell hero-media-shell-quiz block">
                         <img
-                            src="/new-quiz.svg"
+                            src="/new-quiz.webp"
                             alt={language === 'es' ? 'Quiz de estrategia digital' : 'Digital strategy quiz'}
                             className="hero-image hero-image-cropped hero-image-quiz"
                             loading="lazy"
@@ -220,7 +227,7 @@ export default function HeroSection() {
                 >
                     <Link to="/glosario-marketing" className="hero-media-shell hero-media-shell-glosario block">
                         <img
-                            src="/new-glosario.svg"
+                            src="/new-glosario.webp"
                             alt={language === 'es' ? 'Celular con libros de marketing' : 'Phone with marketing books'}
                             className="hero-image hero-image-cropped hero-image-glosario"
                             loading="lazy"
@@ -258,7 +265,7 @@ export default function HeroSection() {
                 >
                     <Link to="/recursos" className="hero-media-shell hero-media-shell-recursos block">
                         <img
-                            src="/new-recursos.svg"
+                            src="/new-recursos.webp"
                             alt={language === 'es' ? 'Recursos de marketing digital' : 'Digital marketing resources'}
                             className="hero-image hero-image-cropped hero-image-recursos"
                             loading="lazy"

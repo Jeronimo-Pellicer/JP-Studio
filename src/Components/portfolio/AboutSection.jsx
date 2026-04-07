@@ -8,7 +8,18 @@ import StackedFlashCards from './StackedFlashCards';
 const AboutSection = React.memo(() => {
     const { t, locale } = useLanguage();
     const isEnglish = locale === 'en';
+    const [loadVideo, setLoadVideo] = useState(false);
+    const [isMobile, setIsMobile] = useState(() => 
+        typeof window !== 'undefined' ? window.matchMedia("(max-width: 768px)").matches : false
+    );
     const sectionRef = useRef(null);
+
+    useEffect(() => {
+        const checkMobile = () => setIsMobile(window.matchMedia("(max-width: 768px)").matches);
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
 
     // Parallax & Scroll Animations
     const { scrollYProgress } = useScroll({
@@ -279,6 +290,9 @@ const AboutSection = React.memo(() => {
                                 <motion.div 
                                     className="about-customer-experience-video-shell"
                                     animate={{ y: ["-6px", "6px"] }}
+                                    onViewportEnter={() => {
+                                        if (!isMobile) setLoadVideo(true);
+                                    }}
                                     transition={{ 
                                         duration: 4, 
                                         repeat: Infinity, 
@@ -286,18 +300,29 @@ const AboutSection = React.memo(() => {
                                         ease: "easeInOut" 
                                     }}
                                 >
-                                    <video
-                                        src="/about-marketing-loop.mp4"
-                                        className="about-customer-experience-video"
-                                        autoPlay
-                                        muted
-                                        loop
-                                        playsInline
-                                        preload="metadata"
-                                    />
+                                    {loadVideo && !isMobile && (
+                                        <video
+                                            src="/about-marketing-loop.mp4"
+                                            className="about-customer-experience-video"
+                                            autoPlay
+                                            muted
+                                            loop
+                                            playsInline
+                                            preload="metadata"
+                                        />
+                                    )}
+                                    {(!loadVideo || isMobile) && (
+                                        <div className="about-customer-experience-video-placeholder bg-zinc-900/50 backdrop-blur-sm w-full h-full rounded-xl flex items-center justify-center p-8 text-center border border-white/5">
+                                            <p className="text-zinc-500 text-xs italic">
+                                                {isEnglish 
+                                                    ? 'Interactive visual experiences optimized for desktop.' 
+                                                    : 'Experiencias visuales interactivas optimizadas para escritorio.'}
+                                            </p>
+                                        </div>
+                                    )}
                                 </motion.div>
                             </motion.div>
-                            <motion.p variants={itemVariants} className="about-customer-experience-video-caption">{content.videoCaption}</motion.p>
+                            {!isMobile && <motion.p variants={itemVariants} className="about-customer-experience-video-caption">{content.videoCaption}</motion.p>}
                         </motion.div>
                     </div>
                 </motion.div>

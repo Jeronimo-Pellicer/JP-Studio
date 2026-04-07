@@ -864,6 +864,7 @@ body {
   opacity: 0;
   transition: opacity 0.3s ease;
   pointer-events: none;
+  will-change: background-position;
 }
 .premium-glow-button:hover::before {
   opacity: 1;
