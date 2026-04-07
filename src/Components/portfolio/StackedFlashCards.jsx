@@ -96,12 +96,8 @@ const FlashCard = React.memo(({ card, index, scrollYProgress, totalCards, isDesk
       }}
       className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center p-4 sm:p-6 pt-[80px] md:pt-[120px]"
     >
-      <motion.div
-        initial={{ opacity: 0, y: 50, scale: 0.95 }}
-        whileInView={{ opacity: 1, y: 0, scale: 1 }}
-        viewport={{ once: true, amount: 0.15 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-        className="w-full max-w-[560px] md:max-w-[850px] bg-zinc-950/95 md:backdrop-blur-xl border border-emerald-500/10 rounded-[40px] p-8 md:p-16 shadow-xl md:shadow-[0_40px_100px_-20px_rgba(0,0,0,0.5),inset_0_1px_1px_rgba(255,255,255,0.05)] flex flex-col md:flex-row items-center md:items-start text-center md:text-left gap-8 md:gap-16 overflow-hidden relative group/card"
+      <div
+        className="w-full max-w-[560px] md:max-w-[850px] bg-zinc-950/95 md:backdrop-blur-xl border border-emerald-500/10 rounded-[30px] md:rounded-[40px] p-8 md:p-16 shadow-lg md:shadow-[0_40px_100px_-20px_rgba(0,0,0,0.5),inset_0_1px_1px_rgba(255,255,255,0.05)] flex flex-col md:flex-row items-center md:items-start text-center md:text-left gap-8 md:gap-16 overflow-hidden relative group/card transform-gpu"
       >
         {/* Background Index Number for depth */}
         <div className="absolute -bottom-10 -right-10 text-[180px] font-black text-emerald-500/[0.03] select-none pointer-events-none italic leading-none transition-transform duration-700 group-hover/card:-translate-x-4">
@@ -154,7 +150,7 @@ const FlashCard = React.memo(({ card, index, scrollYProgress, totalCards, isDesk
             </Link>
           </motion.div>
         </div>
-      </motion.div>
+      </div>
     </motion.div>
   );
 });
@@ -189,24 +185,28 @@ const StackedFlashCards = ({ children }) => {
 
         {/* Background glow specific to stack section */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden z-0 bg-[#040906]">
-          {/* Static Noise Overlay - much faster than SVG feTurbulence during scroll */}
+          {/* Static Noise Overlay */}
           <div
-            className="absolute inset-0 z-10 opacity-[0.2] mix-blend-overlay pointer-events-none"
+            className="absolute inset-0 z-10 opacity-[0.1] mix-blend-overlay pointer-events-none hidden md:block"
             style={{ backgroundImage: 'url("/noise.webp")' }}
           />
-          {/* Floating Nebula Orbs */}
-            <motion.div
-              className="absolute top-[10%] left-[10%] w-[600px] h-[600px] bg-emerald-600/10 blur-[130px] rounded-full"
-              animate={{ rotate: 360, x: [0, 50, 0], y: [0, -50, 0] }}
-              transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-              style={{ transformOrigin: "center center", willChange: "transform" }}
-            />
-          <motion.div
-            className="absolute bottom-[20%] right-[10%] w-[500px] h-[500px] bg-teal-500/10 blur-[120px] rounded-full"
-            animate={{ rotate: -360, x: [0, -40, 0], y: [0, 60, 0] }}
-            transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-            style={{ transformOrigin: "center center", willChange: "transform" }}
-          />
+          {/* Floating Nebula Orbs (Desktop only to save GPU) */}
+          {isDesktop && (
+            <>
+              <motion.div
+                className="absolute top-[10%] left-[10%] w-[600px] h-[600px] bg-emerald-600/10 blur-[130px] rounded-full"
+                animate={{ rotate: 360, x: [0, 50, 0], y: [0, -50, 0] }}
+                transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+                style={{ transformOrigin: "center center", willChange: "transform" }}
+              />
+              <motion.div
+                className="absolute bottom-[20%] right-[10%] w-[500px] h-[500px] bg-teal-500/10 blur-[120px] rounded-full"
+                animate={{ rotate: -360, x: [0, -40, 0], y: [0, 60, 0] }}
+                transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+                style={{ transformOrigin: "center center", willChange: "transform" }}
+              />
+            </>
+          )}
         </div>
 
         {cardsData.map((card, index) => (
