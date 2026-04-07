@@ -9,7 +9,7 @@
           s.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-MDBJ7G6N';
           s.async = true;
           document.head.appendChild(s);
-        }, 3500); // 3.5s delay to keep critical path entirely clear
+        }, 5500); // 5.5s delay to keep critical path entirely clear from TBT
       });
     </script>
     <!-- End Google Tag Manager -->
@@ -59,7 +59,8 @@
     </script>
     
     <!-- Local Fonts -->
-    <link rel="stylesheet" href="/fonts/fonts.css">
+    <link rel="preload" href="/fonts/fonts.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/fonts/fonts.css"></noscript>
     
     <!-- Local Fonts Preload -->
     <link rel="preload" href="/fonts/caveat-4.woff2" as="font" type="font/woff2" crossorigin>

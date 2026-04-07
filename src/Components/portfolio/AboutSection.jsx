@@ -23,12 +23,12 @@ const AboutSection = React.memo(() => {
 
     // Parallax & Scroll Animations
     const { scrollYProgress } = useScroll({
-        target: sectionRef,
+        target: isMobile ? null : sectionRef,
         offset: ["start end", "end start"]
     });
 
     const { scrollYProgress: scrollYStart } = useScroll({
-        target: sectionRef,
+        target: isMobile ? null : sectionRef,
         offset: ["start start", "end start"]
     });
 

@@ -294,18 +294,12 @@ export default function HeroSection() {
 
             <section className="relative -mt-5 pb-8 md:pb-12">
                 <div className="container mx-auto px-4 md:px-6">
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, ease: [0.6, 0.05, 0.01, 0.9] }}
-                        className="max-w-5xl mx-auto text-center flex flex-col items-center"
+                    <div
+                        className="max-w-5xl mx-auto text-center flex flex-col items-center animate-fade-in-up"
                     >
                         <TrustBadge language={language} />
 
-                        <motion.h1
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.7, delay: 0.4 }}
+                        <h1
                             className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-emerald-400 to-teal-400 mb-4 tracking-tight leading-[0.95]"
                             style={{ fontFamily: 'system-ui, -apple-system, sans-serif', letterSpacing: '-0.05em' }}
                         >
@@ -320,19 +314,16 @@ export default function HeroSection() {
                                     <span className="block">More conversion.</span>
                                 </>
                             )}
-                        </motion.h1>
+                        </h1>
 
-                        <motion.p
-                            initial={{ opacity: 0, y: 15 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6, delay: 0.6 }}
+                        <p
                             className="text-sm md:text-base lg:text-lg text-zinc-300 max-w-2xl mx-auto leading-relaxed mb-6"
                             style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}
                         >
                             {language === 'es'
                                 ? 'Acelera tu crecimiento profesional con recursos y herramientas digitales premium. Soluciones pr\u00e1cticas y listas para usar que te ayudar\u00e1n a resolver desaf\u00edos t\u00e9cnicos y creativos en minutos, no en horas.'
                                 : 'Accelerate your professional growth with premium digital resources and tools. Practical, ready-to-use solutions to help you solve technical and creative challenges in minutes, not hours.'}
-                        </motion.p>
+                        </p>
 
                         <motion.div
                             initial={{ width: 0 }}
@@ -391,7 +382,7 @@ export default function HeroSection() {
                                 </button>
                             </div>
                         </motion.div>
-                    </motion.div>
+                    </div>
                 </div>
             </section>
 
