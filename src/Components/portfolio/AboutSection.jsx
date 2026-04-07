@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useLanguage } from './LanguageContext';
 import DecryptedText from './DecryptedText';
+import StackedFlashCards from './StackedFlashCards';
 
 const AboutSection = React.memo(() => {
     const { t, locale } = useLanguage();
@@ -20,8 +21,8 @@ const AboutSection = React.memo(() => {
         offset: ["start start", "end start"]
     });
 
-    // Subtly move text slower to create depth
-    const textY = useTransform(scrollYProgress, [0, 1], ["-10%", "15%"]);
+    // Subtly move text downwards to create depth without colliding with the header above it
+    const textY = useTransform(scrollYProgress, [0, 1], ["0%", "10%"]);
     // Image scales slightly when scrolling past
     const imageScale = useTransform(scrollYStart, [0, 1], [1, 1.05]);
 
@@ -304,17 +305,19 @@ const AboutSection = React.memo(() => {
             </div>
 
             { /* "Why trust me" section */ }
-            <div className="container mx-auto px-6 pb-12 md:pb-20 pt-4">
-                <motion.div
-                    className="about-trust-divider"
+            <div className="w-full">
+                {/* Stacked Flash Cards */}
+                <StackedFlashCards>
+                    <motion.div
+                        className="about-trust-divider max-w-[1100px] mx-auto"
                         initial={{ opacity: 0, scaleX: 0.3 }}
                         whileInView={{ opacity: 1, scaleX: 1 }}
                         viewport={{ once: true, amount: 0.45 }}
                         transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
                     />
-
                     <h4 className="about-trust-heading">
                         <DecryptedText
+                            key={locale}
                             text={isEnglish ? 'Why trust me?' : '\u00bfPor qu\u00e9 confiar en m\u00ed?'}
                             speed={42}
                             maxIterations={12}
@@ -325,44 +328,8 @@ const AboutSection = React.memo(() => {
                             encryptedClassName="text-emerald-400/60"
                         />
                     </h4>
-
-                    <div className="about-trust-grid">
-                        {trustCards.map((card, index) => (
-                            <motion.article
-                                key={card.id}
-                                className="about-trust-card"
-                                initial={{ opacity: 0, y: 16 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true, amount: 0.2 }}
-                                transition={{ duration: 0.42, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
-                            >
-                                <div className="about-trust-icon">{card.icon}</div>
-                                <div>
-                                    <h5 className="about-trust-card-title">{card.title}</h5>
-                                    <p className="about-trust-card-description">{card.description}</p>
-                                </div>
-                            </motion.article>
-                        ))}
-                    </div>
-
-                    <motion.article
-                        className="about-trust-card about-trust-card-wide"
-                        initial={{ opacity: 0, y: 16 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, amount: 0.2 }}
-                        transition={{ duration: 0.42, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
-                    >
-                        <div className="about-trust-icon">
-                            <svg className="about-trust-icon-svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                            </svg>
-                        </div>
-                        <div>
-                            <h5 className="about-trust-card-title">{trustExtraCard.title}</h5>
-                            <p className="about-trust-card-description">{trustExtraCard.description}</p>
-                        </div>
-                    </motion.article>
-                </div>
+                </StackedFlashCards>
+            </div>
             </section>
     );
 });

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom'; // Agregamos Outlet, useLocation y useNavigate
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { Menu, X, ChevronDown, ChevronRight } from 'lucide-react';
 import { LanguageProvider, useLanguage } from './Components/portfolio/LanguageContext';
 import LanguageSwitcher from './Components/portfolio/LanguageSwitcher';
@@ -325,6 +325,26 @@ function LayoutContent({ children, currentPageName }) {
         document.body.removeChild(link);
     };
 
+    const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 768);
+
+    useEffect(() => {
+        const handleResize = () => setIsDesktop(window.innerWidth >= 768);
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    const { scrollY } = useScroll();
+    
+    // Dynamic values for the header based on scroll (proportional shrink)
+    // 0 to 300 pixels of scroll provides a much more gradual "little by little" feel
+    const mdMarginX = useTransform(scrollY, [0, 300], ["1.0rem", "14%"]);
+    const mobileMarginX = useTransform(scrollY, [0, 300], ["1.0rem", "1.75rem"]);
+    
+    // Blur, background and border fluid transitions
+    const blurAmount = useTransform(scrollY, [0, 300], ["blur(12px)", "blur(24px)"]);
+    const bgOpacity = useTransform(scrollY, [0, 300], [0.15, 0.45]);
+    const borderAlpha = useTransform(scrollY, [0, 300], [0.2, 0.55]);
+
     useEffect(() => {
         const handleScroll = () => {
             setIsScrolled(window.scrollY > 50);
@@ -348,11 +368,14 @@ function LayoutContent({ children, currentPageName }) {
                 initial={{ y: -100 }}
                 animate={{ y: 0 }}
                 transition={{ duration: 0.8, ease: [0.6, 0.05, 0.01, 0.9] }}
-                className={`fixed top-4 left-4 right-4 z-50 transition-all duration-500 ${
-                    isScrolled 
-                        ? 'bg-zinc-900/40 md:backdrop-blur-2xl border border-zinc-800/50' 
-                        : 'bg-zinc-900/20 md:backdrop-blur-xl border border-zinc-800/30'
-                } rounded-2xl`}
+                style={{
+                    left: isDesktop ? mdMarginX : mobileMarginX,
+                    right: isDesktop ? mdMarginX : mobileMarginX,
+                    backdropFilter: blurAmount,
+                    backgroundColor: useTransform(bgOpacity, v => `rgba(24, 24, 27, ${v})`),
+                    borderColor: useTransform(borderAlpha, v => `rgba(63, 63, 70, ${v})`),
+                }}
+                className="fixed top-4 z-50 border rounded-2xl transition-shadow duration-500 shadow-lg"
             >
                 <style>{`
                     @keyframes gradientMove {
@@ -361,7 +384,7 @@ function LayoutContent({ children, currentPageName }) {
                         100% { background-position: 0% 50%; }
                     }
                 `}</style>
-                <nav className="container mx-auto px-6 relative z-10">
+                <nav className="w-full max-w-7xl mx-auto px-6 relative z-10">
                     <div className="flex items-center justify-between h-16">
                         {/* Logo */}
                         <motion.button

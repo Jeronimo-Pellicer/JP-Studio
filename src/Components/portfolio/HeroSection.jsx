@@ -372,22 +372,6 @@ export default function HeroSection() {
                 </div>
             </section>
 
-            <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1.5, duration: 0.6 }}
-                className="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 z-20"
-            >
-                <motion.button
-                    onClick={() => scrollToSection('about')}
-                    animate={{ y: [0, 8, 0] }}
-                    transition={{ repeat: Infinity, duration: 2 }}
-                    className="p-1 md:p-2 text-zinc-500 hover:text-emerald-400 transition-colors bg-zinc-900/40 backdrop-blur-xl border border-zinc-800/50 rounded-full cursor-pointer"
-                    aria-label="Scroll down"
-                >
-                    <ArrowDown className="w-2.5 h-2.5 md:w-4 md:h-4" />
-                </motion.button>
-            </motion.div>
         </section>
     );
 }
