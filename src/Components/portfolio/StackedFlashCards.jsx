@@ -192,7 +192,7 @@ const StackedFlashCards = ({ children }) => {
           {/* Static Noise Overlay - much faster than SVG feTurbulence during scroll */}
           <div
             className="absolute inset-0 z-10 opacity-[0.2] mix-blend-overlay pointer-events-none"
-            style={{ backgroundImage: 'url("/noise.png")' }}
+            style={{ backgroundImage: 'url("/noise.webp")' }}
           />
           {/* Floating Nebula Orbs */}
             <motion.div

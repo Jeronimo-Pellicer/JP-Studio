@@ -23,9 +23,9 @@ export default function MarqueeSection() {
     return (
         <section className="py-3 md:py-6 bg-gradient-to-br from-zinc-950 via-zinc-900 to-black border-y border-zinc-800/50 overflow-hidden min-h-[60px] md:min-h-[100px]" style={{ contain: 'layout paint' }}>
             <div className="mb-2 md:mb-3 text-center px-4">
-                <h3 className="text-xs md:text-sm font-semibold text-zinc-500 uppercase tracking-wide hover:text-emerald-400 transition-colors duration-300 cursor-default">
+                <h2 className="text-xs md:text-sm font-semibold text-zinc-500 uppercase tracking-wide hover:text-emerald-400 transition-colors duration-300 cursor-default">
                     {t.marquee.toolsTechnologies}
-                </h3>
+                </h2>
             </div>
             <div className="relative overflow-hidden">
                 <style>{`

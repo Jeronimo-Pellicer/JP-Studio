@@ -31,13 +31,13 @@ export default function TechStackMarquee() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
             >
-                <motion.h3 
+                <motion.h2 
                     className="text-[4px] md:text-[5px] font-semibold text-zinc-500 uppercase tracking-wide"
                     whileHover={{ scale: 1.05, color: '#10b981' }}
                     transition={{ duration: 0.3 }}
                 >
                     {t.marquee.toolsTechnologies}
-                </motion.h3>
+                </motion.h2>
             </motion.div>
             <div className="relative overflow-hidden">
                 <motion.div
