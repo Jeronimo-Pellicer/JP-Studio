@@ -881,3 +881,6 @@ body {
   will-change: transform, opacity;
   animation: fadeInUpCSS 0.8s cubic-bezier(0.6, 0.05, 0.01, 0.9) forwards;
 }
+@media (max-width: 768px) { .animate-fade-in-up { animation: none !important; opacity: 1 !important; transform: none !important; } }
+
+#root:has(> #prerender-hero) { background-color: #09090b; } /* Prevents white flash before react boots */

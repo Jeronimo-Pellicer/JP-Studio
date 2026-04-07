@@ -185,14 +185,14 @@ const StackedFlashCards = ({ children }) => {
 
         {/* Background glow specific to stack section */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden z-0 bg-[#040906]">
-          {/* Static Noise Overlay */}
-          <div
-            className="absolute inset-0 z-10 opacity-[0.1] mix-blend-overlay pointer-events-none hidden md:block"
-            style={{ backgroundImage: 'url("/noise.webp")' }}
-          />
-          {/* Floating Nebula Orbs (Desktop only to save GPU) */}
+          {/* Floating Nebula Orbs & Noise (Desktop only to save GPU & Network) */}
           {isDesktop && (
             <>
+              {/* Static Noise Overlay */}
+              <div
+                className="absolute inset-0 z-10 opacity-[0.1] mix-blend-overlay pointer-events-none"
+                style={{ backgroundImage: 'url("/noise.webp")' }}
+              />
               <motion.div
                 className="absolute top-[10%] left-[10%] w-[600px] h-[600px] bg-emerald-600/10 blur-[130px] rounded-full"
                 animate={{ rotate: 360, x: [0, 50, 0], y: [0, -50, 0] }}
