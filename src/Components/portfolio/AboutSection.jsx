@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
 import { useLanguage } from './LanguageContext';
 import DecryptedText from './DecryptedText';
 import StackedFlashCards from './StackedFlashCards';
@@ -37,15 +37,24 @@ const AboutSection = React.memo(() => {
     // Image scales slightly when scrolling past
     const imageScale = useTransform(scrollYStart, [0, 1], [1, 1.05]);
 
-    // Mouse movement 3D tilt (Optional extra)
-    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+    // Mouse movement 3D tilt - Refactored to use MotionValues for performance (bypasses React renders)
+    const mouseX = useMotionValue(0);
+    const mouseY = useMotionValue(0);
+    const springX = useSpring(mouseX, { stiffness: 40, damping: 30 });
+    const springY = useSpring(mouseY, { stiffness: 40, damping: 30 });
+
     const handleMouseMove = (e) => {
-        if (!sectionRef.current) return;
+        if (!sectionRef.current || isMobile) return;
         const rect = sectionRef.current.getBoundingClientRect();
-        // Calculate normalized position -0.5 to 0.5
         const x = (e.clientX - rect.left) / rect.width - 0.5;
         const y = (e.clientY - rect.top) / rect.height - 0.5;
-        setMousePosition({ x, y });
+        mouseX.set(x);
+        mouseY.set(y);
+    };
+
+    const handleMouseLeave = () => {
+        mouseX.set(0);
+        mouseY.set(0);
     };
 
     // Animation Variants
@@ -197,7 +206,7 @@ const AboutSection = React.memo(() => {
             id="about" 
             ref={sectionRef}
             onMouseMove={handleMouseMove}
-            onMouseLeave={() => setMousePosition({ x: 0, y: 0 })}
+            onMouseLeave={handleMouseLeave}
             className="relative"
         >
             {/* Top Visual Separator */}
@@ -208,11 +217,11 @@ const AboutSection = React.memo(() => {
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
                 <motion.div 
                     className="absolute top-[10%] right-[5%] w-[40%] h-[40%] bg-emerald-500/10 blur-[100px] rounded-full"
-                    animate={{ 
-                        x: mousePosition.x * -40, 
-                        y: mousePosition.y * -40,
+                    style={{ 
+                        x: useTransform(springX, (v) => v * -40), 
+                        y: useTransform(springY, (v) => v * -40),
+                        willChange: "transform"
                     }}
-                    transition={{ type: "spring", stiffness: 40, damping: 30 }}
                 />
             </div>
 
@@ -283,8 +292,10 @@ const AboutSection = React.memo(() => {
                         >
                             <motion.div
                                 style={{
-                                    rotateX: mousePosition.y * -8,
-                                    rotateY: mousePosition.x * 8
+                                    rotateX: useTransform(springY, (v) => v * -8),
+                                    rotateY: useTransform(springX, (v) => v * 8),
+                                    perspective: 1000,
+                                    willChange: "transform"
                                 }}
                             >
                                 <motion.div 

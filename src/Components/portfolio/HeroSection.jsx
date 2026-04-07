@@ -111,6 +111,14 @@ function TrustBadge({ language }) {
 
 export default function HeroSection() {
     const { language } = useLanguage();
+    const [isMobile, setIsMobile] = React.useState(false);
+
+    React.useEffect(() => {
+        const checkMobile = () => setIsMobile(window.innerWidth < 768);
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
 
     const scrollToSection = (id) => {
         document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
@@ -119,35 +127,39 @@ export default function HeroSection() {
     return (
         <section id="home" className="min-h-[80vh] md:min-h-screen flex items-center justify-center relative overflow-x-hidden bg-gradient-to-br from-zinc-950 via-zinc-900 to-black pt-6">
             <div className="fixed inset-0 overflow-hidden pointer-events-none opacity-0 md:opacity-100 transition-opacity duration-300">
-                <motion.div
-                    animate={{
-                        x: [0, 100, 0],
-                        y: [0, 50, 0],
-                        rotate: [0, 90, 0],
-                    }}
-                    transition={{
-                        duration: 20,
-                        repeat: Infinity,
-                        ease: 'linear',
-                    }}
-                    className="absolute top-0 left-0 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl"
-                    style={{ willChange: 'transform', backfaceVisibility: 'hidden' }}
-                />
-                <motion.div
-                    animate={{
-                        x: [0, -100, 0],
-                        y: [0, -50, 0],
-                        rotate: [0, -90, 0],
-                    }}
-                    transition={{
-                        duration: 25,
-                        repeat: Infinity,
-                        ease: 'linear',
-                        delay: 1,
-                    }}
-                    className="absolute bottom-0 right-0 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl"
-                    style={{ willChange: 'transform', backfaceVisibility: 'hidden' }}
-                />
+                {!isMobile && (
+                    <motion.div
+                        animate={{
+                            x: [0, 100, 0],
+                            y: [0, 50, 0],
+                            rotate: [0, 90, 0],
+                        }}
+                        transition={{
+                            duration: 20,
+                            repeat: Infinity,
+                            ease: 'linear',
+                        }}
+                        className="absolute top-0 left-0 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl"
+                        style={{ willChange: 'transform', backfaceVisibility: 'hidden' }}
+                    />
+                )}
+                {!isMobile && (
+                    <motion.div
+                        animate={{
+                            x: [0, -100, 0],
+                            y: [0, -50, 0],
+                            rotate: [0, -90, 0],
+                        }}
+                        transition={{
+                            duration: 25,
+                            repeat: Infinity,
+                            ease: 'linear',
+                            delay: 1,
+                        }}
+                        className="absolute bottom-0 right-0 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl"
+                        style={{ willChange: 'transform', backfaceVisibility: 'hidden' }}
+                    />
+                )}
             </div>
 
             <div className="hidden lg:block">
@@ -160,6 +172,7 @@ export default function HeroSection() {
                         top: '60px',
                         left: '-80px',
                         zIndex: 5,
+                        willChange: 'transform'
                     }}
                 >
                     <Link to="/herramientas" className="block">
@@ -183,6 +196,7 @@ export default function HeroSection() {
                         top: '70px',
                         right: '-28px',
                         zIndex: 5,
+                        willChange: 'transform'
                     }}
                 >
                     <Link to="/herramientas/quiz-estrategia" className="hero-media-shell hero-media-shell-quiz block">
@@ -223,6 +237,7 @@ export default function HeroSection() {
                         bottom: '92px',
                         left: '22px',
                         zIndex: 5,
+                        willChange: 'transform'
                     }}
                 >
                     <Link to="/glosario-marketing" className="hero-media-shell hero-media-shell-glosario block">
@@ -261,6 +276,7 @@ export default function HeroSection() {
                         bottom: '26px',
                         right: '-46px',
                         zIndex: 5,
+                        willChange: 'transform'
                     }}
                 >
                     <Link to="/recursos" className="hero-media-shell hero-media-shell-recursos block">

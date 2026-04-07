@@ -101,7 +101,7 @@ const FlashCard = React.memo(({ card, index, scrollYProgress, totalCards, isDesk
         whileInView={{ opacity: 1, y: 0, scale: 1 }}
         viewport={{ once: true, amount: 0.15 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="w-full max-w-[560px] md:max-w-[850px] bg-zinc-950/95 md:backdrop-blur-xl border border-emerald-500/10 rounded-[40px] p-8 md:p-16 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.5),inset_0_1px_1px_rgba(255,255,255,0.05)] flex flex-col md:flex-row items-center md:items-start text-center md:text-left gap-8 md:gap-16 overflow-hidden relative group/card"
+        className="w-full max-w-[560px] md:max-w-[850px] bg-zinc-950/95 md:backdrop-blur-xl border border-emerald-500/10 rounded-[40px] p-8 md:p-16 shadow-xl md:shadow-[0_40px_100px_-20px_rgba(0,0,0,0.5),inset_0_1px_1px_rgba(255,255,255,0.05)] flex flex-col md:flex-row items-center md:items-start text-center md:text-left gap-8 md:gap-16 overflow-hidden relative group/card"
       >
         {/* Background Index Number for depth */}
         <div className="absolute -bottom-10 -right-10 text-[180px] font-black text-emerald-500/[0.03] select-none pointer-events-none italic leading-none transition-transform duration-700 group-hover/card:-translate-x-4">
