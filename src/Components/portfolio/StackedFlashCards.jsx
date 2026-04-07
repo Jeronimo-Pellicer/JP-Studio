@@ -166,11 +166,14 @@ const StackedFlashCards = ({ children }) => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Creates a scroll progress relative to the container element
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
+  // Creates a scroll progress relative to the container element - Refactored to avoid measurements on mobile
+  const { scrollYProgress: rawScrollY } = useScroll({
+    target: isMobile ? null : containerRef,
     offset: ["start start", "end end"]
   });
+
+  const staticProgress = useMotionValue(0);
+  const scrollYProgress = isMobile ? staticProgress : rawScrollY;
 
   return (
     // The height of this container determines how long the scroll animation lasts
@@ -184,9 +187,9 @@ const StackedFlashCards = ({ children }) => {
           {/* Floating Nebula Orbs & Noise (Desktop only to save GPU & Network) */}
           {isDesktop && (
             <>
-              {/* Static Noise Overlay */}
+              {/* Static Noise Overlay - Desktop Only */}
               <div
-                className="absolute inset-0 z-10 opacity-[0.1] mix-blend-overlay pointer-events-none"
+                className="absolute inset-0 z-10 opacity-[0.1] mix-blend-overlay pointer-events-none hidden lg:block"
                 style={{ backgroundImage: 'url("/noise.webp")' }}
               />
               <motion.div

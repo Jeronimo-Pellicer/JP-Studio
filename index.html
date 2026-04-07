@@ -75,6 +75,96 @@
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@500;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&family=Schoolbell&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@500;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&family=Schoolbell&display=swap"></noscript>
     
+    <style id="critical-css">
+      :root {
+        --background: #09090b;
+        --foreground: #fafafa;
+      }
+      body {
+        margin: 0;
+        background-color: #09090b;
+        color: #fafafa;
+        font-family: system-ui, -apple-system, sans-serif;
+        overflow-x: hidden;
+      }
+      @keyframes fadeInUpCSS {
+        0% { opacity: 0; transform: translateY(20px); }
+        100% { opacity: 1; transform: translateY(0); }
+      }
+      .animate-fade-in-up {
+        animation: fadeInUpCSS 0.8s ease-out forwards;
+      }
+      .hero-title {
+        font-size: clamp(3rem, 10vw, 5rem);
+        font-weight: 900;
+        line-height: 0.95;
+        letter-spacing: -0.05em;
+        background: linear-gradient(to right, #fff, #34d399, #2dd4bf);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 1rem;
+      }
+      .hero-subtitle {
+        font-size: clamp(0.875rem, 1.5vw, 1.125rem);
+        color: #d4d4d8;
+        line-height: 1.6;
+        max-width: 42rem;
+        margin: 0 auto 1.5rem;
+      }
+      .trust-badge {
+        display: flex;
+        align-items: center;
+        padding: 9px 16px;
+        border-radius: 9999px;
+        background: rgba(24, 24, 27, 0.7);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(39, 39, 42, 0.6);
+        max-width: 320px;
+        margin: 0 auto 24px;
+      }
+      .avatar-stack {
+        display: flex;
+        align-items: center;
+        width: 80px;
+      }
+      .avatar-item {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 2px solid #18181b;
+        margin-left: -8px;
+        background: #27272a;
+      }
+      .avatar-item:first-child { margin-left: 0; }
+      .trust-badge-text {
+        color: #ffffff;
+        font-size: 11px;
+        font-weight: 600;
+        padding-left: 10px;
+        white-space: nowrap;
+      }
+      #prerender-hero {
+        min-height: 80vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 40px 20px;
+      }
+      .skel-btn {
+        padding: 12px 24px;
+        border-radius: 12px;
+        font-weight: bold;
+        font-size: 14px;
+        text-decoration: none;
+        margin: 5px;
+      }
+      .skel-btn-primary { background: #10b981; color: #000; }
+      .skel-btn-secondary { background: #18181b; border: 1px solid #27272a; color: #fff; }
+    </style>
+    
     <link rel="icon" type="image/png" href="/favicon.png" />
   </head>
   <body>
@@ -82,7 +172,25 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MDBJ7G6N"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-    <div id="root"></div>
+    <div id="root">
+        <!-- Static Skeleton for 100/100 LCP -->
+        <div id="prerender-hero" class="animate-fade-in-up">
+            <div class="trust-badge">
+                <div class="avatar-stack">
+                    <div class="avatar-item"></div>
+                    <div class="avatar-item"></div>
+                    <div class="avatar-item"></div>
+                </div>
+                <span class="trust-badge-text">Aprobada por +50 marketers</span>
+            </div>
+            <h1 class="hero-title">Menos fricción.<br>Más conversión.</h1>
+            <p class="hero-subtitle">Acelera tu crecimiento profesional con recursos y herramientas digitales premium.</p>
+            <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+                <div class="skel-btn skel-btn-primary">Ver mi trabajo</div>
+                <div class="skel-btn skel-btn-secondary">Explorar productos</div>
+            </div>
+        </div>
+    </div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

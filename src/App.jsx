@@ -4,7 +4,6 @@ import Layout from './Layout';
 import SEO from './Components/shared/SEO';
 import ResourceHints from './Components/shared/ResourceHints';
 import HeroSection from './Components/portfolio/HeroSection';
-import MarqueeSection from './Components/portfolio/MarqueeSection';
 
 // Defer non-critical toast notifications
 const Toaster = lazy(() => import('sonner').then(module => ({ default: module.Toaster })));
@@ -21,6 +20,7 @@ const PriorityMatrix = lazy(() => import(/* webpackChunkName: "priority-matrix" 
 const StrategyQuiz = lazy(() => import(/* webpackChunkName: "strategy-quiz" */ './Pages/StrategyQuiz'));
 
 // Below-the-fold components - defer loading
+const MarqueeSection = lazy(() => import(/* webpackChunkName: "marquee" */ './Components/portfolio/MarqueeSection'));
 const AboutSection = lazy(() => import(/* webpackChunkName: "about" */ './Components/portfolio/AboutSection'));
 const FAQSection = lazy(() => import(/* webpackChunkName: "faq" */ './Components/portfolio/FAQSection'));
 const ContactSection = lazy(() => import(/* webpackChunkName: "contact" */ './Components/portfolio/ContactSection'));
@@ -53,8 +53,8 @@ function HomeContent() {
         url=""
       />
       <HeroSection />
-      <MarqueeSection />
       <Suspense fallback={null}>
+        <MarqueeSection />
         <AboutSection />
         <FAQSection />
         <ContactSection />

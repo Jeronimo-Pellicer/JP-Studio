@@ -10,27 +10,32 @@ const AboutSection = React.memo(() => {
     const isEnglish = locale === 'en';
     const [loadVideo, setLoadVideo] = useState(false);
     const [isMobile, setIsMobile] = useState(() => 
-        typeof window !== 'undefined' ? window.matchMedia("(max-width: 768px)").matches : false
+        typeof window !== 'undefined' ? window.matchMedia("(max-width: 1024px)").matches : false
     );
     const sectionRef = useRef(null);
 
     useEffect(() => {
-        const checkMobile = () => setIsMobile(window.matchMedia("(max-width: 768px)").matches);
+        const checkMobile = () => setIsMobile(window.matchMedia("(max-width: 1024px)").matches);
         checkMobile();
         window.addEventListener('resize', checkMobile);
         return () => window.removeEventListener('resize', checkMobile);
     }, []);
 
-    // Parallax & Scroll Animations
-    const { scrollYProgress } = useScroll({
+    // Parallax & Scroll Animations - Refactored to avoid measurements on mobile
+    const { scrollYProgress: rawScrollY } = useScroll({
         target: isMobile ? null : sectionRef,
         offset: ["start end", "end start"]
     });
 
-    const { scrollYProgress: scrollYStart } = useScroll({
+    const { scrollYProgress: rawScrollYStart } = useScroll({
         target: isMobile ? null : sectionRef,
         offset: ["start start", "end start"]
     });
+
+    // Provide static 0 on mobile to bypass all measurement logic
+    const staticProgress = useMotionValue(0);
+    const scrollYProgress = isMobile ? staticProgress : rawScrollY;
+    const scrollYStart = isMobile ? staticProgress : rawScrollYStart;
 
     // Subtly move text downwards to create depth without colliding with the header above it
     const textY = useTransform(scrollYProgress, [0, 1], ["0%", "10%"]);
@@ -213,38 +218,36 @@ const AboutSection = React.memo(() => {
             <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent" />
             <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-white/[0.02] to-transparent pointer-events-none" />
 
-            {/* Elegant moving glow */}
-            <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                <motion.div 
-                    className="absolute top-[10%] right-[5%] w-[40%] h-[40%] bg-emerald-500/10 blur-[100px] rounded-full"
-                    style={{ 
-                        x: useTransform(springX, (v) => v * -40), 
-                        y: useTransform(springY, (v) => v * -40),
-                        willChange: "transform"
-                    }}
-                />
-            </div>
+            {/* Elegant moving glow - Desktop only */}
+            {!isMobile && (
+                <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                    <motion.div 
+                        className="absolute top-[10%] right-[5%] w-[40%] h-[40%] bg-emerald-500/10 blur-[100px] rounded-full"
+                        style={{ 
+                            x: useTransform(springX, (v) => v * -40), 
+                            y: useTransform(springY, (v) => v * -40),
+                            willChange: "transform"
+                        }}
+                    />
+                </div>
+            )}
 
             <div className="min-h-[100dvh] md:min-h-[95dvh] flex flex-col justify-center w-full py-[100px]">
               <div className="container mx-auto px-6 relative z-10">
-                <motion.div 
-                    className="about-customer-experience-panel"
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, amount: 0.15 }}
-                    variants={containerVariants}
+                <div 
+                    className={`about-customer-experience-panel ${isMobile ? 'opacity-100' : 'opacity-0'}`}
                 >
-                    <motion.div variants={itemVariants} className="about-customer-experience-header">
+                    <div className="about-customer-experience-header">
                         <h2 className="about-customer-experience-title">{content.sectionTitle}</h2>
                         <div className="about-customer-experience-underline" />
-                    </motion.div>
+                    </div>
 
                     <div className="about-customer-experience-grid">
                         <motion.div 
                             className="about-customer-experience-copy"
                             style={{ y: textY }}
                         >
-                            <motion.h3 variants={itemVariants} className="about-customer-experience-big-title">
+                            <h3 className="about-customer-experience-big-title">
                                 <span>
                                     {content.line1Before}
                                     <strong className="about-customer-experience-bold-word">
@@ -257,18 +260,18 @@ const AboutSection = React.memo(() => {
                                 </span>
                                 <span>{content.line2}</span>
                                 <span>{content.line3}</span>
-                            </motion.h3>
+                            </h3>
 
-                            <motion.p variants={itemVariants} className="about-customer-experience-lead">{content.lead}</motion.p>
-                            <motion.p variants={itemVariants} className="about-customer-experience-body">{content.body}</motion.p>
+                            <p className="about-customer-experience-lead">{content.lead}</p>
+                            <p className="about-customer-experience-body">{content.body}</p>
 
-                            <motion.ul variants={itemVariants} className="about-customer-experience-bullets" aria-label={isEnglish ? 'Benefits' : 'Beneficios'}>
+                            <ul className="about-customer-experience-bullets" aria-label={isEnglish ? 'Benefits' : 'Beneficios'}>
                                 {content.bullets.map((bullet) => (
                                     <li key={bullet}>{bullet}</li>
                                 ))}
-                            </motion.ul>
+                            </ul>
 
-                            <motion.div variants={itemVariants} className="about-customer-experience-actions">
+                            <div className="about-customer-experience-actions">
                                 <Link to="/recursos?filter=guide" className="about-guides-cta">
                                     <span>{content.guidesCta}</span>
                                     <s>{content.oldPrice}</s>
@@ -279,37 +282,26 @@ const AboutSection = React.memo(() => {
                                     </span>
                                     <span>{content.contactCta}</span>
                                 </button>
-                            </motion.div>
+                            </div>
                         </motion.div>
 
-                        <motion.div 
+                        <div 
                             className="about-customer-experience-media"
-                            variants={imageContainerVariants}
-                            style={{ 
+                            style={isMobile ? {} : { 
                                 scale: imageScale,
                                 perspective: 1000
                             }}
                         >
-                            <motion.div
-                                style={{
+                            <div
+                                style={isMobile ? {} : {
                                     rotateX: useTransform(springY, (v) => v * -8),
                                     rotateY: useTransform(springX, (v) => v * 8),
                                     perspective: 1000,
                                     willChange: "transform"
                                 }}
                             >
-                                <motion.div 
+                                <div 
                                     className="about-customer-experience-video-shell"
-                                    animate={{ y: ["-6px", "6px"] }}
-                                    onViewportEnter={() => {
-                                        if (!isMobile) setLoadVideo(true);
-                                    }}
-                                    transition={{ 
-                                        duration: 4, 
-                                        repeat: Infinity, 
-                                        repeatType: "reverse", 
-                                        ease: "easeInOut" 
-                                    }}
                                 >
                                     {loadVideo && !isMobile && (
                                         <video
@@ -331,12 +323,12 @@ const AboutSection = React.memo(() => {
                                             </p>
                                         </div>
                                     )}
-                                </motion.div>
-                            </motion.div>
-                            {!isMobile && <motion.p variants={itemVariants} className="about-customer-experience-video-caption">{content.videoCaption}</motion.p>}
-                        </motion.div>
+                                </div>
+                            </div>
+                            {!isMobile && <p className="about-customer-experience-video-caption">{content.videoCaption}</p>}
+                        </div>
                     </div>
-                </motion.div>
+                </div>
               </div>
             </div>
 

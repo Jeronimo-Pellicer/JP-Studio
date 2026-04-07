@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
 import { ArrowDown, ArrowRight, Package } from 'lucide-react';
 import { useLanguage } from './LanguageContext';
 
@@ -72,11 +71,9 @@ function TrustBadge({ language }) {
     ];
 
     return (
-        <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.3 }}
-            className="trust-badge mb-8"
+        <div
+            className="trust-badge mb-8 animate-fade-in"
+            style={{ animationDelay: '0.3s' }}
         >
             <div className="trust-badge-avatars">
                 <div className="avatar-stack">
@@ -105,13 +102,15 @@ function TrustBadge({ language }) {
                 {language === 'es' ? 'Aprobada por +50 marketers' : 'Trusted by 50+ marketers'}
             </span>
             <span className="trust-badge-balance" aria-hidden="true" />
-        </motion.div>
+        </div>
     );
 }
 
 export default function HeroSection() {
     const { language } = useLanguage();
-    const [isMobile, setIsMobile] = React.useState(false);
+    const [isMobile, setIsMobile] = React.useState(
+        () => typeof window !== 'undefined' && window.innerWidth < 768
+    );
 
     React.useEffect(() => {
         const checkMobile = () => setIsMobile(window.innerWidth < 768);
@@ -128,51 +127,25 @@ export default function HeroSection() {
         <section id="home" className="min-h-[80vh] md:min-h-screen flex items-center justify-center relative overflow-x-hidden bg-gradient-to-br from-zinc-950 via-zinc-900 to-black pt-6">
             <div className="fixed inset-0 overflow-hidden pointer-events-none opacity-0 md:opacity-100 transition-opacity duration-300">
                 {!isMobile && (
-                    <motion.div
-                        animate={{
-                            x: [0, 100, 0],
-                            y: [0, 50, 0],
-                            rotate: [0, 90, 0],
-                        }}
-                        transition={{
-                            duration: 20,
-                            repeat: Infinity,
-                            ease: 'linear',
-                        }}
-                        className="absolute top-0 left-0 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl"
-                        style={{ willChange: 'transform', backfaceVisibility: 'hidden' }}
+                    <div
+                        className="absolute top-0 left-0 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl animate-pulse"
                     />
                 )}
                 {!isMobile && (
-                    <motion.div
-                        animate={{
-                            x: [0, -100, 0],
-                            y: [0, -50, 0],
-                            rotate: [0, -90, 0],
-                        }}
-                        transition={{
-                            duration: 25,
-                            repeat: Infinity,
-                            ease: 'linear',
-                            delay: 1,
-                        }}
-                        className="absolute bottom-0 right-0 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl"
-                        style={{ willChange: 'transform', backfaceVisibility: 'hidden' }}
+                    <div
+                        className="absolute bottom-0 right-0 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl animate-pulse"
                     />
                 )}
             </div>
 
             <div className="hidden lg:block">
-                <motion.div
-                    initial={{ opacity: 0, x: -60 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.9, delay: 0.5 }}
-                    className="absolute hero-float-1"
+                <div
+                    className="absolute hero-float-1 animate-fade-in"
                     style={{
+                        animationDelay: '0.5s',
                         top: '60px',
                         left: '-80px',
-                        zIndex: 5,
-                        willChange: 'transform'
+                        zIndex: 5
                     }}
                 >
                     <Link to="/herramientas" className="block">
@@ -185,18 +158,15 @@ export default function HeroSection() {
                             height="220"
                         />
                     </Link>
-                </motion.div>
+                </div>
 
-                <motion.div
-                    initial={{ opacity: 0, x: 60 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.9, delay: 0.7 }}
-                    className="absolute hero-float-2"
+                <div
+                    className="absolute hero-float-2 animate-fade-in"
                     style={{
+                        animationDelay: '0.7s',
                         top: '70px',
                         right: '-28px',
-                        zIndex: 5,
-                        willChange: 'transform'
+                        zIndex: 5
                     }}
                 >
                     <Link to="/herramientas/quiz-estrategia" className="hero-media-shell hero-media-shell-quiz block">
@@ -209,7 +179,7 @@ export default function HeroSection() {
                             height="200"
                         />
                     </Link>
-                </motion.div>
+                </div>
 
                 <div
                     className="absolute z-[6] pointer-events-none"
@@ -228,16 +198,13 @@ export default function HeroSection() {
                     </div>
                 </div>
 
-                <motion.div
-                    initial={{ opacity: 0, y: 40 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.9, delay: 0.9 }}
-                    className="absolute hero-float-3"
+                <div
+                    className="absolute hero-float-3 animate-fade-in"
                     style={{
+                        animationDelay: '0.9s',
                         bottom: '92px',
                         left: '22px',
-                        zIndex: 5,
-                        willChange: 'transform'
+                        zIndex: 5
                     }}
                 >
                     <Link to="/glosario-marketing" className="hero-media-shell hero-media-shell-glosario block">
@@ -250,7 +217,7 @@ export default function HeroSection() {
                             height="320"
                         />
                     </Link>
-                </motion.div>
+                </div>
 
                 <div
                     className="absolute z-[6] pointer-events-none"
@@ -267,16 +234,13 @@ export default function HeroSection() {
                     </div>
                 </div>
 
-                <motion.div
-                    initial={{ opacity: 0, x: 60 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.9, delay: 1.1 }}
-                    className="absolute hero-float-4"
+                <div
+                    className="absolute hero-float-4 animate-fade-in"
                     style={{
+                        animationDelay: '1.1s',
                         bottom: '26px',
                         right: '-46px',
-                        zIndex: 5,
-                        willChange: 'transform'
+                        zIndex: 5
                     }}
                 >
                     <Link to="/recursos" className="hero-media-shell hero-media-shell-recursos block">
@@ -289,7 +253,7 @@ export default function HeroSection() {
                             height="200"
                         />
                     </Link>
-                </motion.div>
+                </div>
             </div>
 
             <section className="relative -mt-5 pb-8 md:pb-12">
@@ -300,7 +264,7 @@ export default function HeroSection() {
                         <TrustBadge language={language} />
 
                         <h1
-                            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-emerald-400 to-teal-400 mb-4 tracking-tight leading-[0.95]"
+                            className="hero-title text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black mb-4 tracking-tight leading-[0.95]"
                             style={{ fontFamily: 'system-ui, -apple-system, sans-serif', letterSpacing: '-0.05em' }}
                         >
                             {language === 'es' ? (
@@ -317,7 +281,7 @@ export default function HeroSection() {
                         </h1>
 
                         <p
-                            className="text-sm md:text-base lg:text-lg text-zinc-300 max-w-2xl mx-auto leading-relaxed mb-6"
+                            className="hero-subtitle text-sm md:text-base lg:text-lg text-zinc-300 max-w-2xl mx-auto leading-relaxed mb-6"
                             style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}
                         >
                             {language === 'es'
@@ -325,18 +289,13 @@ export default function HeroSection() {
                                 : 'Accelerate your professional growth with premium digital resources and tools. Practical, ready-to-use solutions to help you solve technical and creative challenges in minutes, not hours.'}
                         </p>
 
-                        <motion.div
-                            initial={{ width: 0 }}
-                            animate={{ width: '100px' }}
-                            transition={{ delay: 0.7, duration: 0.8 }}
-                            className="h-1 bg-gradient-to-r from-emerald-500 to-teal-500 mx-auto mb-8 rounded-full"
+                        <div
+                            className="h-1 bg-gradient-to-r from-emerald-500 to-teal-500 mx-auto mb-8 rounded-full animate-sweep"
                         />
 
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.9, duration: 0.8 }}
-                            className="flex flex-col items-center justify-center w-full mt-2"
+                        <div
+                            className="flex flex-col items-center justify-center w-full mt-2 animate-fade-in"
+                            style={{ animationDelay: '0.9s' }}
                         >
                             <p className="text-zinc-500 text-[10px] md:text-xs tracking-[0.2em] uppercase font-semibold mb-5">
                                 {language === 'es' ? '\u00bfPor d\u00f3nde empezar?' : 'Where to start?'}
@@ -344,25 +303,21 @@ export default function HeroSection() {
 
                             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full sm:w-auto mb-5 px-4 sm:px-0">
                                 <Link to="/projects" className="w-full sm:w-auto">
-                                    <motion.button
-                                        whileHover={{ scale: 1.02 }}
-                                        whileTap={{ scale: 0.98 }}
-                                        className="w-full sm:w-auto px-6 py-3.5 bg-emerald-500 hover:bg-emerald-400 text-zinc-950 font-bold rounded-xl transition-all duration-300 shadow-[0_0_20px_rgba(16,185,129,0.2)] hover:shadow-[0_0_30px_rgba(16,185,129,0.4)] flex items-center justify-center gap-2 group"
+                                    <button
+                                        className="w-full sm:w-auto px-6 py-3.5 bg-emerald-500 hover:bg-emerald-400 text-zinc-950 font-bold rounded-xl transition-all duration-300 shadow-[0_0_20px_rgba(16,185,129,0.2)] hover:shadow-[0_0_30px_rgba(16,185,129,0.4)] flex items-center justify-center gap-2 group hover:scale-[1.02]"
                                     >
                                         {language === 'es' ? 'Ver mi trabajo' : 'View my work'}
                                         <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-                                    </motion.button>
+                                    </button>
                                 </Link>
 
                                 <Link to="/herramientas" className="w-full sm:w-auto">
-                                    <motion.button
-                                        whileHover={{ scale: 1.02 }}
-                                        whileTap={{ scale: 0.98 }}
-                                        className="w-full sm:w-auto px-6 py-3.5 bg-zinc-900/80 backdrop-blur-md border border-zinc-800 hover:border-zinc-700 hover:bg-zinc-800/80 text-white font-medium rounded-xl transition-all duration-300 flex items-center justify-center gap-2"
+                                    <button
+                                        className="w-full sm:w-auto px-6 py-3.5 bg-zinc-900/80 backdrop-blur-md border border-zinc-800 hover:border-zinc-700 hover:bg-zinc-800/80 text-white font-medium rounded-xl transition-all duration-300 flex items-center justify-center gap-2 hover:scale-[1.02]"
                                     >
                                         <Package className="h-4 w-4" />
                                         {language === 'es' ? 'Explorar productos' : 'Explore products'}
-                                    </motion.button>
+                                    </button>
                                 </Link>
                             </div>
 
@@ -381,7 +336,7 @@ export default function HeroSection() {
                                     {language === 'es' ? 'Contactar' : 'Contact'}
                                 </button>
                             </div>
-                        </motion.div>
+                        </div>
                     </div>
                 </div>
             </section>
