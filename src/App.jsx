@@ -22,7 +22,6 @@ const StrategyQuiz = lazy(() => import(/* webpackChunkName: "strategy-quiz" */ '
 
 // Below-the-fold components - defer loading
 const AboutSection = lazy(() => import(/* webpackChunkName: "about" */ './Components/portfolio/AboutSection'));
-const ProjectsSection = lazy(() => import(/* webpackChunkName: "projects-section" */ './Components/portfolio/ProjectsSection'));
 const FAQSection = lazy(() => import(/* webpackChunkName: "faq" */ './Components/portfolio/FAQSection'));
 const ContactSection = lazy(() => import(/* webpackChunkName: "contact" */ './Components/portfolio/ContactSection'));
 
@@ -57,7 +56,6 @@ function HomeContent() {
       <MarqueeSection />
       <Suspense fallback={null}>
         <AboutSection />
-        <ProjectsSection />
         <FAQSection />
         <ContactSection />
       </Suspense>
