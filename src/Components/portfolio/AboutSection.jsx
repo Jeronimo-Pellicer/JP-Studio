@@ -17,25 +17,28 @@ const AboutSection = React.memo(() => {
     useEffect(() => {
         const checkMobile = () => setIsMobile(window.matchMedia("(max-width: 768px)").matches);
         checkMobile();
+        // Load video after a short delay on desktop to prioritize critical path
+        if (!window.matchMedia("(max-width: 768px)").matches) {
+            const timer = setTimeout(() => setLoadVideo(true), 1500);
+            return () => {
+                clearTimeout(timer);
+                window.removeEventListener('resize', checkMobile);
+            };
+        }
         window.addEventListener('resize', checkMobile);
         return () => window.removeEventListener('resize', checkMobile);
     }, []);
 
-    // Parallax & Scroll Animations - Refactored to avoid measurements on mobile
-    const { scrollYProgress: rawScrollY } = useScroll({
-        target: isMobile ? null : sectionRef,
+    // Parallax & Scroll Animations - Restoring robust tracking for stability
+    const { scrollYProgress } = useScroll({
+        target: sectionRef,
         offset: ["start end", "end start"]
     });
 
-    const { scrollYProgress: rawScrollYStart } = useScroll({
-        target: isMobile ? null : sectionRef,
+    const { scrollYProgress: scrollYStart } = useScroll({
+        target: sectionRef,
         offset: ["start start", "end start"]
     });
-
-    // Provide static 0 on mobile to bypass all measurement logic
-    const staticProgress = useMotionValue(0);
-    const scrollYProgress = isMobile ? staticProgress : rawScrollY;
-    const scrollYStart = isMobile ? staticProgress : rawScrollYStart;
 
     // Subtly move text downwards to create depth without colliding with the header above it
     const textY = useTransform(scrollYProgress, [0, 1], ["0%", "10%"]);
@@ -47,6 +50,12 @@ const AboutSection = React.memo(() => {
     const mouseY = useMotionValue(0);
     const springX = useSpring(mouseX, { stiffness: 40, damping: 30 });
     const springY = useSpring(mouseY, { stiffness: 40, damping: 30 });
+
+    // Top-Level Hooks for animations (Must be defined after parents)
+    const rotateXValue = useTransform(springY, (v) => v * -8);
+    const rotateYValue = useTransform(springX, (v) => v * 8);
+    const glowX = useTransform(springX, (v) => v * -40);
+    const glowY = useTransform(springY, (v) => v * -40);
 
     const handleMouseMove = (e) => {
         if (!sectionRef.current || isMobile) return;
@@ -224,8 +233,8 @@ const AboutSection = React.memo(() => {
                     <motion.div 
                         className="absolute top-[10%] right-[5%] w-[40%] h-[40%] bg-emerald-500/10 blur-[100px] rounded-full"
                         style={{ 
-                            x: useTransform(springX, (v) => v * -40), 
-                            y: useTransform(springY, (v) => v * -40),
+                            x: glowX, 
+                            y: glowY,
                             willChange: "transform"
                         }}
                     />
@@ -235,7 +244,7 @@ const AboutSection = React.memo(() => {
             <div className="min-h-[100dvh] md:min-h-[95dvh] flex flex-col justify-center w-full py-[100px]">
               <div className="container mx-auto px-6 relative z-10">
                 <div 
-                    className={`about-customer-experience-panel ${isMobile ? 'opacity-100' : 'opacity-0'}`}
+                    className="about-customer-experience-panel opacity-100"
                 >
                     <div className="about-customer-experience-header">
                         <h2 className="about-customer-experience-title">{content.sectionTitle}</h2>
@@ -285,17 +294,17 @@ const AboutSection = React.memo(() => {
                             </div>
                         </motion.div>
 
-                        <div 
+                        <motion.div 
                             className="about-customer-experience-media"
                             style={isMobile ? {} : { 
                                 scale: imageScale,
                                 perspective: 1000
                             }}
                         >
-                            <div
+                            <motion.div
                                 style={isMobile ? {} : {
-                                    rotateX: useTransform(springY, (v) => v * -8),
-                                    rotateY: useTransform(springX, (v) => v * 8),
+                                    rotateX: rotateXValue,
+                                    rotateY: rotateYValue,
                                     perspective: 1000,
                                     willChange: "transform"
                                 }}
@@ -324,9 +333,9 @@ const AboutSection = React.memo(() => {
                                         </div>
                                     )}
                                 </div>
-                            </div>
+                            </motion.div>
                             {!isMobile && <p className="about-customer-experience-video-caption">{content.videoCaption}</p>}
-                        </div>
+                        </motion.div>
                     </div>
                 </div>
               </div>
@@ -358,7 +367,7 @@ const AboutSection = React.memo(() => {
                     </h4>
                 </StackedFlashCards>
             </div>
-            </section>
+        </section>
     );
 });
 

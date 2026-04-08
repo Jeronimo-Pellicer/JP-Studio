@@ -90,7 +90,7 @@ function TrustBadge({ language }) {
                                 src={avatar.src} 
                                 alt={avatar.name} 
                                 decoding="async"
-                                fetchPriority={index === 0 ? "high" : "auto"}
+                                fetchpriority={index === 0 ? "high" : "auto"}
                                 width="36" 
                                 height="36" 
                             />

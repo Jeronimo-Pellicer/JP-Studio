@@ -76,12 +76,12 @@
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@500;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&family=Schoolbell&display=swap"></noscript>
     
     <link rel="icon" type="image/png" href="/favicon.png" />
-    <script type="module" crossorigin src="/assets/index-Da_1LtBr.js"></script>
+    <script type="module" crossorigin src="/assets/index-aHImppa_.js"></script>
     <link rel="modulepreload" crossorigin href="/assets/react-vendor-CkebN-nG.js">
     <link rel="modulepreload" crossorigin href="/assets/framer-DuvWI75C.js">
     <link rel="modulepreload" crossorigin href="/assets/react-router-D8_tp-lN.js">
     <link rel="modulepreload" crossorigin href="/assets/ui-components-KMEJfJrh.js">
-    <link rel="stylesheet" crossorigin href="/assets/index-DdB1oHhI.css">
+    <link rel="stylesheet" crossorigin href="/assets/index-Cru-zfsF.css">
     <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
   </head>
   <body>
@@ -89,15 +89,79 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MDBJ7G6N"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-    <div id="root">
-      <div id="prerender-hero" style="min-height: 100vh; background-color: #09090b; display: flex; flex-direction: column; align-items: center; padding-top: 15vh;">
-        <div style="max-width: 1024px; text-align: center;">
-          <h1 style="font-size: 3rem; font-weight: 900; line-height: 0.95; letter-spacing: -0.05em; font-family: system-ui, -apple-system, sans-serif; color: white;">
-            <span style="display: block;">Menos fricción.</span>
-            <span style="display: block;">Más conversión.</span>
-          </h1>
-        </div>
-      </div>
-    </div>
+    <style id="critical-css">
+      :root {
+        --background: #09090b;
+        --foreground: #fafafa;
+      }
+      body {
+        margin: 0;
+        background-color: #09090b;
+        color: #fafafa;
+        font-family: system-ui, -apple-system, sans-serif;
+        overflow-x: hidden;
+      }
+      @keyframes fadeInUpCSS {
+        0% { opacity: 0; transform: translateY(20px); }
+        100% { opacity: 1; transform: translateY(0); }
+      }
+      .animate-fade-in-up {
+        animation: fadeInUpCSS 0.8s ease-out forwards;
+      }
+      .hero-title {
+        font-size: 3rem;
+        font-weight: 900;
+        line-height: 0.95;
+        letter-spacing: -0.05em;
+        background: linear-gradient(to right, #fff, #34d399, #2dd4bf);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 1rem;
+      }
+      .hero-subtitle {
+        font-size: 1rem;
+        color: #d4d4d8;
+        line-height: 1.6;
+        max-width: 42rem;
+        margin-bottom: 1.5rem;
+      }
+      .trust-badge {
+        display: flex;
+        align-items: center;
+        padding: 9px 16px;
+        border-radius: 9999px;
+        background: rgba(24, 24, 27, 0.7);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(39, 39, 42, 0.6);
+        max-width: 342px;
+        margin: 0 auto 32px;
+      }
+      .avatar-stack {
+        display: flex;
+        align-items: center;
+        width: 88px;
+      }
+      .avatar-item {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        border: 2.5px solid #18181b;
+        margin-left: -10px;
+      }
+      .avatar-item:first-child { margin-left: 0; }
+      .trust-badge-text {
+        color: #ffffff;
+        font-size: 11.25px;
+        font-weight: 600;
+        padding-left: 12px;
+      }
+    </style>
+    
+    <!-- Load main CSS asynchronously -->
+    <link rel="preload" href="/assets/index.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/assets/index.css"></noscript>
+
+    <div id="root"></div>
   </body>
 </html>

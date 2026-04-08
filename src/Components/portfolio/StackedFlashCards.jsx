@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, useMotionValue } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useLanguage } from './LanguageContext';
 
@@ -41,63 +41,59 @@ const getCardsData = (isEnglish) => [
 const FlashCard = React.memo(({ card, index, scrollYProgress, totalCards, isDesktop, isEnglish }) => {
   const activeProgress = index / (totalCards - 1);
   const prevProgress = (index - 1) / (totalCards - 1);
+  const isFirst = index === 0;
 
-  // Card enters from below (mobile)
-  const y = useTransform(
+  // Card enters from below (mobile) or right (desktop)
+  // Transition should happen within its allocated range [prevProgress, activeProgress]
+  const entryY = useTransform(
     scrollYProgress,
-    [-1, prevProgress, activeProgress, 2],
-    ['100vh', '100vh', '0vh', '0vh']
+    [Math.max(0, prevProgress), activeProgress],
+    [isDesktop ? '0vh' : '100vh', '0vh']
   );
 
-  // Card enters from right (desktop)
-  const x = useTransform(
+  const entryX = useTransform(
     scrollYProgress,
-    [-1, prevProgress, activeProgress, 2],
-    ['100vw', '100vw', '0vw', '0vw']
+    [Math.max(0, prevProgress), activeProgress],
+    [isDesktop ? '100vw' : '0vw', '0vw']
   );
 
-  const entryY = isDesktop ? '0vh' : y;
-  const entryX = isDesktop ? x : '0vw';
-
-  // Once active, if we scroll further down, it scales back slightly to give depth to the next incoming card
+  // Once active, if we scroll further down, it scales back slightly (staggered)
   const scale = useTransform(
     scrollYProgress,
-    [-1, activeProgress, 1, 2],
-    [1, 1, 1 - (totalCards - index - 1) * 0.05, 1 - (totalCards - index - 1) * 0.05]
+    [activeProgress, 1],
+    [1, 1 - (totalCards - index - 1) * 0.04]
   );
 
-  // Near-solid darken effect is not needed if background cards are visible
-  const darkenOpacity = useTransform(
-    scrollYProgress,
-    [-1, activeProgress, activeProgress + 0.1, 2],
-    [0, 0, 0.1, 0.1]
-  );
-
-  // Maintain opacity 1 when active, but fade in during entry. 
-  // It won't fade out fully because the next card covers it seamlessly!
+  // Smooth fade-in during entry, stay at 1 until next card starts covering
   const opacity = useTransform(
     scrollYProgress,
-    [-1, prevProgress, activeProgress, 2],
-    [0, 1, 1, 1]
+    [Math.max(0, prevProgress), activeProgress],
+    [isFirst ? 1 : 0, 1]
+  );
+
+  // Darken slightly as next cards come in to focus current active card better
+  const darkenOpacity = useTransform(
+    scrollYProgress,
+    [activeProgress, Math.min(1, activeProgress + 0.25)],
+    [0, 0.15]
   );
 
   // Enforce first card to not transition y or opacity when scroll is 0
-  const isFirst = index === 0;
 
   return (
     <motion.div
       style={{
-        y: isFirst ? '0vh' : entryY,
-        x: isFirst ? '0vw' : entryX,
+        y: entryY,
+        x: entryX,
         scale,
-        opacity: isFirst ? 1 : opacity,
+        opacity,
         zIndex: index + 10,
         willChange: 'transform, opacity',
       }}
       className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center p-4 sm:p-6 pt-[80px] md:pt-[120px]"
     >
       <div
-        className="w-full max-w-[560px] md:max-w-[850px] bg-zinc-950/95 md:backdrop-blur-xl border border-emerald-500/10 rounded-[30px] md:rounded-[40px] p-8 md:p-16 shadow-lg md:shadow-[0_40px_100px_-20px_rgba(0,0,0,0.5),inset_0_1px_1px_rgba(255,255,255,0.05)] flex flex-col md:flex-row items-center md:items-start text-center md:text-left gap-8 md:gap-16 overflow-hidden relative group/card transform-gpu"
+        className="w-full max-w-[560px] md:max-w-[850px] bg-zinc-950 md:backdrop-blur-xl border border-emerald-500/10 rounded-[30px] md:rounded-[40px] p-8 md:p-16 shadow-lg md:shadow-[0_40px_100px_-20px_rgba(0,0,0,0.5),inset_0_1px_1px_rgba(255,255,255,0.05)] flex flex-col md:flex-row items-center md:items-start text-center md:text-left gap-8 md:gap-16 overflow-hidden relative group/card transform-gpu"
       >
         {/* Background Index Number for depth */}
         <div className="absolute -bottom-10 -right-10 text-[180px] font-black text-emerald-500/[0.03] select-none pointer-events-none italic leading-none transition-transform duration-700 group-hover/card:-translate-x-4">
@@ -166,14 +162,13 @@ const StackedFlashCards = ({ children }) => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Creates a scroll progress relative to the container element - Refactored to avoid measurements on mobile
-  const { scrollYProgress: rawScrollY } = useScroll({
-    target: isMobile ? null : containerRef,
+  const isMobile = !isDesktop;
+
+  // Creates a scroll progress relative to the container element
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
     offset: ["start start", "end end"]
   });
-
-  const staticProgress = useMotionValue(0);
-  const scrollYProgress = isMobile ? staticProgress : rawScrollY;
 
   return (
     // The height of this container determines how long the scroll animation lasts
