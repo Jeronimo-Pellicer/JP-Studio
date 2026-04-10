@@ -26,11 +26,13 @@ const projectDetails = {
     'topper-plan-mobile-first': {
         slug: 'topper-plan-mobile-first',
         heroImage: '/topper/topper-0001.webp',
-        role: { es: 'Gerente de Marketing Digital', en: 'Digital Marketing Manager' },
+        title: { es: 'Topper', en: 'Topper' },
+        headline: { es: 'Plan de marketing integral + paid media', en: 'Integral marketing + paid media plan' },
+        role: { es: 'Estrategia Digital y Paid Media', en: 'Digital Strategy and Paid Media' },
         client: 'Topper Argentina',
-        date: '2024 – 2025',
-        context: { es: 'Universidad Escuela Argentina de Negocios (UEAN) — Marketing Digital II', en: 'Universidad Escuela Argentina de Negocios (UEAN) — Digital Marketing II' },
-        overview: { es: `Como equipo de Marketing en este proyecto para Topper, mi labor se centró en desarrollar un Plan de Marketing Digital integral diseñado para potenciar la marca y cumplir con sus objetivos estratégicos en el mercado argentino. Mi enfoque abarcó desde un análisis profundo del contexto actual hasta la planificación de campañas específicas para productos clave.`, en: `As part of the Marketing team on this Topper project, my work focused on developing a comprehensive Digital Marketing Plan designed to strengthen the brand and meet its strategic objectives in the Argentine market. My approach spanned from an in-depth analysis of the current context to planning specific campaigns for key products.` },
+        date: '2024 - 2025',
+        context: { es: 'Plan integral con foco mobile-first', en: 'Comprehensive plan with mobile-first focus' },
+        overview: { es: `Desarrollé un plan integral para Topper que combina análisis de mercado, definición de audiencias, objetivos SMART y una arquitectura paid media orientada a awareness, ventas y retargeting. El caso conecta estrategia de marca y ejecución táctica para acelerar resultados en el entorno digital argentino.`, en: `I developed an integrated plan for Topper that combines market analysis, audience definition, SMART objectives and a paid media architecture focused on awareness, sales and retargeting. The case connects brand strategy and tactical execution to accelerate results in Argentina's digital environment.` },
         sections: [
             {
                 id: 'intro',
@@ -52,17 +54,17 @@ Topper is a sports brand with presence in Argentina, Uruguay, Brazil, Paraguay, 
                 subtitle: { es: 'Investigación exhaustiva del entorno y la competencia', en: 'Comprehensive research of the environment and competition' },
                 content: { es: `Realicé una investigación exhaustiva para comprender la posición de Topper frente a su entorno y competencia:
 
-• Análisis del Macroentorno (PESTEL): Evalué cómo factores políticos, económicos y sociales impactan el negocio. Identifiqué desafíos como la inflación y la baja del poder adquisitivo, pero también oportunidades en las nuevas medidas para facilitar importaciones y el auge de la cultura fitness.
+â¢ Análisis del Macroentorno (PESTEL): Evalué cómo factores políticos, económicos y sociales impactan el negocio. Identifiqué desafíos como la inflación y la baja del poder adquisitivo, pero también oportunidades en las nuevas medidas para facilitar importaciones y el auge de la cultura fitness.
 
-• Análisis del Microentorno: Utilicé la Matriz BCG para categorizar productos, identificando a las zapatillas Drill como "Estrella" y a las Block Revolver como "Interrogante", siendo estas últimas el foco de mi estrategia posterior.
+â¢ Análisis del Microentorno: Utilicé la Matriz BCG para categorizar productos, identificando a las zapatillas Drill como "Estrella" y a las Block Revolver como "Interrogante", siendo estas últimas el foco de mi estrategia posterior.
 
-• Benchmarking y Diferenciación: Comparé a Topper con competidores como Puma, Umbro y Athix, concluyendo que nuestra ventaja reside en la identidad local y precios accesibles, aunque con una identidad visual menos diferenciada que debemos fortalecer.`, en: `I conducted comprehensive research to understand Topper's position within its environment and competition:
+â¢ Benchmarking y Diferenciación: Comparé a Topper con competidores como Puma, Umbro y Athix, concluyendo que nuestra ventaja reside en la identidad local y precios accesibles, aunque con una identidad visual menos diferenciada que debemos fortalecer.`, en: `I conducted comprehensive research to understand Topper's position within its environment and competition:
 
-• Macro-environment Analysis (PESTEL): I evaluated how political, economic and social factors impact the business. I identified challenges such as inflation and declining purchasing power, but also opportunities in new measures to facilitate imports and the rise of fitness culture.
+â¢ Macro-environment Analysis (PESTEL): I evaluated how political, economic and social factors impact the business. I identified challenges such as inflation and declining purchasing power, but also opportunities in new measures to facilitate imports and the rise of fitness culture.
 
-• Micro-environment Analysis: I used the BCG Matrix to categorize products, identifying Drill sneakers as "Star" and Block Revolver as "Question Mark", with the latter becoming the focus of my subsequent strategy.
+â¢ Micro-environment Analysis: I used the BCG Matrix to categorize products, identifying Drill sneakers as "Star" and Block Revolver as "Question Mark", with the latter becoming the focus of my subsequent strategy.
 
-• Benchmarking and Differentiation: I compared Topper with competitors like Puma, Umbro and Athix, concluding that our advantage lies in local identity and accessible prices, although with a less differentiated visual identity that we need to strengthen.` },
+â¢ Benchmarking and Differentiation: I compared Topper with competitors like Puma, Umbro and Athix, concluding that our advantage lies in local identity and accessible prices, although with a less differentiated visual identity that we need to strengthen.` },
                 images: [
                     { src: '/topper/topper-0005.webp', caption: { es: 'Análisis PESTEL del macroentorno', en: 'PESTEL macro-environment analysis' } },
                     { src: '/topper/topper-0006.webp', caption: { es: 'Análisis del microentorno y Matriz BCG', en: 'Micro-environment analysis and BCG Matrix' } },
@@ -76,20 +78,20 @@ Topper is a sports brand with presence in Argentina, Uruguay, Brazil, Paraguay, 
                 subtitle: { es: 'Perfiles de clientes ideales y mapas de empatía', en: 'Ideal customer profiles and empathy maps' },
                 content: { es: `Para personalizar las estrategias, definí dos perfiles de clientes ideales que representan nuestra base de consumidores:
 
-• Raúl (30 años): Profesor de educación física interesado en comodidad y rendimiento a un precio justo.
+â¢ Raúl (30 años): Profesor de educación física interesado en comodidad y rendimiento a un precio justo.
 
-• Sabrina (55 años): Ama de casa que prioriza la durabilidad y el costo para equipar a su familia.
+â¢ Sabrina (55 años): Ama de casa que prioriza la durabilidad y el costo para equipar a su familia.
 
 Diseñé un Mapa de Empatía y un Customer Journey Map para entender sus dolores, como la inflación y los procesos de compra online complejos, y convertirlos en puntos de mejora.`, en: `To personalize strategies, I defined two ideal customer profiles that represent our consumer base:
 
-• Raúl (30 years old): Physical education teacher interested in comfort and performance at a fair price.
+â¢ Raúl (30 years old): Physical education teacher interested in comfort and performance at a fair price.
 
-• Sabrina (55 years old): Homemaker who prioritizes durability and cost to equip her family.
+â¢ Sabrina (55 years old): Homemaker who prioritizes durability and cost to equip her family.
 
 I designed an Empathy Map and a Customer Journey Map to understand their pain points, such as inflation and complex online purchasing processes, and turn them into improvement opportunities.` },
                 images: [
-                    { src: '/topper/topper-0009.webp', caption: { es: 'Buyer Persona: Raúl — perfil detallado', en: 'Buyer Persona: Raúl — detailed profile' } },
-                    { src: '/topper/topper-0010.webp', caption: { es: 'Buyer Persona: Sabrina — perfil detallado', en: 'Buyer Persona: Sabrina — detailed profile' } },
+                    { src: '/topper/topper-0009.webp', caption: { es: 'Buyer Persona: Raúl ÃÆÃâÃâÃÂ¢ÃÆÃÂ¢ÃÂ¢Ã¢âÂ¬ÃÂ¡ÃâÃÂ¬ÃÆÃÂ¢ÃÂ¢Ã¢â¬Å¡ÃÂ¬ÃâÃÂ perfil detallado', en: 'Buyer Persona: Raúl ÃÆÃâÃâÃÂ¢ÃÆÃÂ¢ÃÂ¢Ã¢âÂ¬ÃÂ¡ÃâÃÂ¬ÃÆÃÂ¢ÃÂ¢Ã¢â¬Å¡ÃÂ¬ÃâÃÂ detailed profile' } },
+                    { src: '/topper/topper-0010.webp', caption: { es: 'Buyer Persona: Sabrina ÃÆÃâÃâÃÂ¢ÃÆÃÂ¢ÃÂ¢Ã¢âÂ¬ÃÂ¡ÃâÃÂ¬ÃÆÃÂ¢ÃÂ¢Ã¢â¬Å¡ÃÂ¬ÃâÃÂ perfil detallado', en: 'Buyer Persona: Sabrina ÃÆÃâÃâÃÂ¢ÃÆÃÂ¢ÃÂ¢Ã¢âÂ¬ÃÂ¡ÃâÃÂ¬ÃÆÃÂ¢ÃÂ¢Ã¢â¬Å¡ÃÂ¬ÃâÃÂ detailed profile' } },
                     { src: '/topper/topper-0011.webp', caption: { es: 'Mapa de Empatía del consumidor', en: 'Consumer Empathy Map' } },
                     { src: '/topper/topper-0012.webp', caption: { es: 'Customer Journey Map completo', en: 'Complete Customer Journey Map' } },
                 ]
@@ -100,17 +102,17 @@ I designed an Empathy Map and a Customer Journey Map to understand their pain po
                 subtitle: { es: 'Estrategia concentrada en el producto "Interrogante"', en: 'Strategy focused on the "Question Mark" product' },
                 content: { es: `Mi estrategia se concentró en el producto "Interrogante" (Zapatillas Block Revolver) para transformarlo en un éxito de mercado mediante tres objetivos específicos para el periodo de enero a junio de 2025:
 
-• Reconocimiento: Lograr 2 millones de impresiones en Google Ads (un aumento del 50%).
+â¢ Reconocimiento: Lograr 2 millones de impresiones en Meta Ads (un aumento del 50%).
 
-• Ventas: Incrementar un 20% las ventas en e-commerce a través de Meta Ads.
+â¢ Ventas: Incrementar un 20% las ventas en e-commerce a través de Meta Ads.
 
-• Retargeting: Reactivar al 30% de clientes previos para que el 10% realice una nueva compra.`, en: `My strategy focused on the "Question Mark" product (Block Revolver Sneakers) to transform it into a market success through three specific objectives for the January to June 2025 period:
+â¢ Retargeting: Reactivar al 30% de clientes previos para que el 10% realice una nueva compra.`, en: `My strategy focused on the "Question Mark" product (Block Revolver Sneakers) to transform it into a market success through three specific objectives for the January to June 2025 period:
 
-• Awareness: Achieve 2 million impressions on Google Ads (a 50% increase).
+â¢ Awareness: Achieve 2 million impressions on Meta Ads (a 50% increase).
 
-• Sales: Increase e-commerce sales by 20% through Meta Ads.
+â¢ Sales: Increase e-commerce sales by 20% through Meta Ads.
 
-• Retargeting: Reactivate 30% of previous customers so that 10% make a new purchase.` },
+â¢ Retargeting: Reactivate 30% of previous customers so that 10% make a new purchase.` },
                 images: [
                     { src: '/topper/topper-0013.webp', caption: { es: 'Objetivos SMART del Plan de Marketing', en: 'Marketing Plan SMART Objectives' } },
                     { src: '/topper/topper-0014.webp', caption: { es: 'Estrategia para el producto Block Revolver', en: 'Strategy for the Block Revolver product' } },
@@ -122,20 +124,20 @@ I designed an Empathy Map and a Customer Journey Map to understand their pain po
                 subtitle: { es: 'Presupuesto de $20M distribuido estratégicamente', en: '$20M budget strategically distributed' },
                 content: { es: `Asigné un presupuesto de 20 millones de pesos distribuidos estratégicamente:
 
-• Google Ads (Reconocimiento): Creé anuncios segmentados para Raúl y Sabrina enfocados en los beneficios del nuevo modelo.
+â¢ Meta Ads (Reconocimiento): Creé anuncios segmentados para Raúl y Sabrina enfocados en los beneficios del nuevo modelo.
 
-• Meta Ads (Ventas): Implementé campañas con imágenes y copys diferenciados según el buyer persona para maximizar la conversión en redes sociales.
+â¢ Meta Ads (Ventas): Implementé campañas con imágenes y copys diferenciados según el buyer persona para maximizar la conversión en redes sociales.
 
-• Retargeting (Display): Diseñé piezas para invitar a antiguos clientes a "repetir su experiencia" basándome en los datos del CRM.`, en: `I allocated a budget of 20 million pesos distributed strategically:
+â¢ Retargeting (Display): Diseñé piezas para invitar a antiguos clientes a "repetir su experiencia" basándome en los datos del CRM.`, en: `I allocated a budget of 20 million pesos distributed strategically:
 
-• Google Ads (Awareness): I created segmented ads for Raúl and Sabrina focused on the benefits of the new model.
+â¢ Meta Ads (Awareness): I created segmented ads for Raúl and Sabrina focused on the benefits of the new model.
 
-• Meta Ads (Sales): I implemented campaigns with differentiated images and copy according to buyer persona to maximize social media conversion.
+â¢ Meta Ads (Sales): I implemented campaigns with differentiated images and copy according to buyer persona to maximize social media conversion.
 
-• Retargeting (Display): I designed creatives to invite former customers to "repeat their experience" based on CRM data.` },
+â¢ Retargeting (Display): I designed creatives to invite former customers to "repeat their experience" based on CRM data.` },
                 images: [
                     { src: '/topper/topper-0015.webp', caption: { es: 'Distribución del presupuesto de campaña', en: 'Campaign budget distribution' } },
-                    { src: '/topper/topper-0016.webp', caption: { es: 'Configuración de Google Ads (Reconocimiento)', en: 'Google Ads setup (Awareness)' } },
+                    { src: '/topper/topper-0016.webp', caption: { es: 'Configuración de Meta Ads (Reconocimiento)', en: 'Meta Ads setup (Awareness)' } },
                     { src: '/topper/topper-0017.webp', caption: { es: 'Campaña de Meta Ads: segmentación por Buyer Persona', en: 'Meta Ads campaign: Buyer Persona segmentation' } },
                     { src: '/topper/topper-0018.webp', caption: { es: 'Estrategia de Retargeting con Google Display', en: 'Retargeting strategy with Google Display' } },
                 ]
@@ -156,72 +158,72 @@ My intervention provided Topper with a clear roadmap to capitalize on its streng
             },
             {
                 id: 'ads-meta-premium',
-                title: { es: 'Campaña Meta Ads: Conversión a Premium', en: 'Meta Ads Campaign: Premium Conversion' },
-                subtitle: { es: 'Anuncios orientados a usuarios existentes', en: 'Ads targeting existing users' },
-                content: { es: `Esta campaña se centró en usuarios existentes o interesados en escalar su experiencia en la aplicación.
+                title: { es: 'Meta Ads: Objetivos y narrativa comercial', en: 'Meta Ads: Objectives and commercial narrative' },
+                subtitle: { es: 'Bloque táctico para awareness, ventas y retargeting', en: 'Tactical block for awareness, sales and retargeting' },
+                content: { es: `En esta etapa ordené la narrativa de campaña alrededor del producto Block Revolver para que la pauta no fuera solo estética, sino estratégicamente consistente.
 
-• Ad Futurista: Orientado a la innovación y el control tecnológico de las finanzas. Copys como "¿Estás listo para tomar el control total de tus finanzas?" con CTA "Instalar".
+â¢ Objetivos SMART: El trabajo se organizó alrededor de tres metas concretas: aumentar impresiones, empujar ventas en e-commerce y reactivar audiencias mediante retargeting.
 
-• Ad Control Total: Mensajes directos sobre la gestión integral y el orden financiero. Gráficos comparativos para analizar progresos.
+â¢ Narrativa del producto: El foco estuvo puesto en volver a instalar a Topper "en juego" frente a competidores emergentes, usando mensajes asociados a diseño, rendimiento y accesibilidad.
 
-• Ad Desbloquear Beneficios: Resalta las funcionalidades exclusivas de la versión de pago con enlace profundo diferido directo a la URL de suscripción Premium.`, en: `This campaign focused on existing users or those interested in upgrading their app experience.
+â¢ Estructura del funnel: Cada línea creativa se pensó para responder a una etapa distinta del embudo y conectar con los buyer persona definidos previamente.`, en: `At this stage I organized the campaign narrative around the Block Revolver product so media execution would be not only visual, but strategically consistent.
 
-• Futuristic Ad: Focused on innovation and technological financial control. Copy like "Are you ready to take full control of your finances?" with CTA "Install".
+â¢ SMART objectives: The work was organized around three concrete goals: increasing impressions, pushing e-commerce sales and reactivating audiences through retargeting.
 
-• Total Control Ad: Direct messaging about comprehensive management and financial order. Comparative graphics to analyze progress.
+â¢ Product narrative: The focus was to put Topper "back in the game" against emerging competitors through messaging tied to design, performance and accessibility.
 
-• Unlock Benefits Ad: Highlights exclusive paid version features with deferred deep link directly to the Premium subscription URL.` },
+â¢ Funnel structure: Each creative line was designed to respond to a different stage of the funnel and connect with the buyer personas defined earlier.` },
                 images: [
-                    { src: '/topper/topper-0021.webp', caption: { es: 'Ad Futurista — Creativa y copys', en: 'Futuristic Ad — Creative and copy' } },
-                    { src: '/topper/topper-0022.webp', caption: { es: 'Ad Control Total — Variantes de texto', en: 'Total Control Ad — Text variants' } },
-                    { src: '/topper/topper-0023.webp', caption: { es: 'Ad Desbloquear Beneficios — Deep link premium', en: 'Unlock Benefits Ad — Premium deep link' } },
+                    { src: '/topper/topper-0021.webp', caption: { es: 'Objetivos SMART y narrativa de campaña para Block Revolver', en: 'SMART objectives and campaign narrative for Block Revolver' } },
+                    { src: '/topper/topper-0022.webp', caption: { es: 'Introducción táctica al bloque de estrategia y táctica', en: 'Tactical introduction to the strategy and tactics block' } },
+                    { src: '/topper/topper-0023.webp', caption: { es: 'Funnel de reconocimiento, ventas y retargeting', en: 'Awareness, sales and retargeting funnel' } },
                 ]
             },
             {
                 id: 'ads-meta-captacion',
-                title: { es: 'Campaña Meta Ads: Captación (Aumento de Descargas)', en: 'Meta Ads Campaign: Acquisition (Download Growth)' },
-                subtitle: { es: 'Expansión de la base de usuarios con modelo Freemium', en: 'User base expansion with Freemium model' },
-                content: { es: `Diseñada para atraer nuevos usuarios a la versión gratuita (Freemium) y expandir la base instalada.
+                title: { es: 'Meta Ads: Creatividades de conversión', en: 'Meta Ads: Conversion creatives' },
+                subtitle: { es: 'Piezas diferenciadas para Buyer Sabrina y Buyer Raúl', en: 'Differentiated assets for Buyer Sabrina and Buyer Raul' },
+                content: { es: `La ejecución en Meta Ads se diseñó con segmentación creativa por audiencia para empujar ventas en el e-commerce de Block Revolver.
 
-• Ad Control Free: Propuesta de gestión de gastos sin costo inicial. "Tu aliado para organizar tus finanzas está aquí".
+â¢ Buyer persona por conjunto: Se separaron públicos y mensajes para Sabrina y Raúl, permitiendo que cada ad set compitiera sin presupuesto fijo asignado a cada pieza.
 
-• Ad Entidades Free: Conectividad con bancos y billeteras virtuales. "Compatible con tus cuentas bancarias y billeteras virtuales".
+â¢ Creatividades por producto y contexto: Las piezas mostraron distintos ángulos del calzado y beneficios concretos para mejorar la respuesta de cada segmento.
 
-• Ad Planificación Free: Herramientas de ahorro y visualización de datos. "¿Querés planificar mejor tu futuro financiero?"`, en: `Designed to attract new users to the free version (Freemium) and expand the installed base.
+â¢ Orientación a conversión: El objetivo fue incrementar ventas, no solo interacción, conectando la creatividad con el sitio de producto y la acción de compra.`, en: `Execution in Meta Ads was designed with audience-based creative segmentation to drive Block Revolver sales in e-commerce.
 
-• Free Control Ad: Expense management proposal at no initial cost. "Your ally to organize your finances is here".
+â¢ Buyer persona by ad set: Audiences and messages were split for Sabrina and Raul so each ad set could compete without a fixed budget assigned to each asset.
 
-• Free Entities Ad: Connectivity with banks and virtual wallets. "Compatible with your bank accounts and virtual wallets".
+â¢ Product and context-based creatives: Assets showcased different product angles and concrete benefits to improve response from each segment.
 
-• Free Planning Ad: Savings tools and data visualization. "Want to better plan your financial future?"` },
+â¢ Conversion-oriented setup: The goal was to increase sales, not just engagement, connecting creative work with the product page and purchase action.` },
                 images: [
-                    { src: '/topper/topper-0024.webp', caption: { es: 'Ad Control Free — Versión gratuita', en: 'Free Control Ad — Free version' } },
-                    { src: '/topper/topper-0025.webp', caption: { es: 'Ad Entidades Free — Conectividad bancaria', en: 'Free Entities Ad — Banking connectivity' } },
-                    { src: '/topper/topper-0026.webp', caption: { es: 'Ad Planificación Free — Herramientas de ahorro', en: 'Free Planning Ad — Savings tools' } },
+                    { src: '/topper/topper-0024.webp', caption: { es: 'Ejecución de ventas en Meta Ads con segmentación por buyer persona', en: 'Meta Ads sales execution with buyer persona segmentation' } },
+                    { src: '/topper/topper-0025.webp', caption: { es: 'Piezas creativas para Buyer Sabrina y Buyer Raúl', en: 'Creative assets for Buyer Sabrina and Buyer Raul' } },
+                    { src: '/topper/topper-0026.webp', caption: { es: 'Métricas de control para reconocimiento y alcance', en: 'Control metrics for awareness and reach' } },
                 ]
             },
             {
                 id: 'ads-google',
-                title: { es: 'Campaña Google Ads (Display)', en: 'Google Ads Campaign (Display)' },
-                subtitle: { es: 'Alto impacto visual para maximizar conversiones', en: 'High visual impact to maximize conversions' },
-                content: { es: `Configuré una campaña de alto impacto visual para maximizar las conversiones de membresía.
+                title: { es: 'Control, KPIs y cierre del plan', en: 'Control, KPIs and plan closeout' },
+                subtitle: { es: 'Lectura de métricas para optimizar la pauta', en: 'Metric reading to optimize paid media' },
+                content: { es: `El último bloque consolidó el sistema de control para medir si la estrategia estaba llegando a nuevas audiencias y sosteniendo eficiencia en el tiempo.
 
-• Anuncio Adaptable de Display: Sistema que combina hasta 5 títulos y descripciones para optimizar el rendimiento automáticamente. Títulos como "Easy Track Premium", "Pasate al lado Premium" y "Siempre con vos, Easy Track".
+â¢ KPIs de awareness: Se revisaron alcance, CPM, frecuencia e impresiones para validar si Topper estaba ganando visibilidad sin saturar a la audiencia.
 
-• Seguimiento: URL final con parámetros UTM específicos (utm_campaign=premium_push) para rastrear cada clic y conversión proveniente de Google.
+â¢ KPIs de performance: El tablero conectó métricas de interacción y resultados con la toma de decisiones sobre inversión y continuidad de campañas.
 
-Cada anuncio fue diseñado para ser flexible, permitiendo que el algoritmo de Advantage+ en Meta y la Puja de Maximizar Conversiones en Google mostraran la combinación de imagen y texto con mayor probabilidad de éxito.`, en: `I configured a high visual impact campaign to maximize membership conversions.
+â¢ Cierre estratégico: La conclusión ordena oportunidades, amenazas y próximos pasos para sostener el crecimiento digital de la marca.`, en: `The final block consolidated the control system used to measure whether the strategy was reaching new audiences and sustaining efficiency over time.
 
-• Responsive Display Ad: System that combines up to 5 headlines and descriptions to automatically optimize performance. Headlines like "Easy Track Premium", "Switch to Premium" and "Always with you, Easy Track".
+â¢ Awareness KPIs: Reach, CPM, frequency and impressions were reviewed to validate whether Topper was gaining visibility without overexposing the audience.
 
-• Tracking: Final URL with specific UTM parameters (utm_campaign=premium_push) to track every click and conversion from Google.
+â¢ Performance KPIs: The dashboard connected interaction metrics and results with investment decisions and campaign continuity.
 
-Each ad was designed to be flexible, allowing Meta's Advantage+ algorithm and Google's Maximize Conversions bidding to show the image and text combination with the highest probability of success.` },
+â¢ Strategic closeout: The conclusion organizes opportunities, threats and next steps to sustain the brand's digital growth.` },
                 images: [
-                    { src: '/topper/topper-0027.webp', caption: { es: 'Anuncio Adaptable de Display — Configuración', en: 'Responsive Display Ad — Setup' } },
-                    { src: '/topper/topper-0028.webp', caption: { es: 'Títulos y descripciones optimizados', en: 'Optimized headlines and descriptions' } },
-                    { src: '/topper/topper-0029.webp', caption: { es: 'Configuración de UTM y seguimiento', en: 'UTM setup and tracking' } },
-                    { src: '/topper/topper-0030.webp', caption: { es: 'Resumen final de la estructura publicitaria', en: 'Final summary of ad structure' } },
+                    { src: '/topper/topper-0027.webp', caption: { es: 'KPIs clave para medir alcance, CPM, frecuencia e impresiones', en: 'Key KPIs to measure reach, CPM, frequency and impressions' } },
+                    { src: '/topper/topper-0028.webp', caption: { es: 'Resumen de desempeño y lectura de métricas', en: 'Performance summary and metric reading' } },
+                    { src: '/topper/topper-0029.webp', caption: { es: 'Conclusión estratégica del caso Topper', en: 'Strategic conclusion of the Topper case' } },
+                    { src: '/topper/topper-0030.webp', caption: { es: 'Cierre final y próximos pasos del plan', en: 'Final closeout and next steps of the plan' } },
                 ]
             },
         ],
@@ -235,6 +237,8 @@ Each ad was designed to be flexible, allowing Meta's Advantage+ algorithm and Go
     'stiberman-law-seo-sem': {
         slug: 'stiberman-law-seo-sem',
         heroImage: '/stiberman/Digital Marketing Brief (3)_page-0001.webp',
+        title: { es: 'Stiberman Law', en: 'Stiberman Law' },
+        headline: { es: 'SEO/SEM', en: 'SEO/SEM' },
         role: { es: 'Consultor SEO/SEM', en: 'SEO/SEM Consultant' },
         client: 'Stiberman Law',
         date: '2025',
@@ -247,13 +251,13 @@ Each ad was designed to be flexible, allowing Meta's Advantage+ algorithm and Go
                 subtitle: { es: 'Asistencia legal en bancarrotas y finanzas', en: 'Legal assistance in bankruptcy and finance' },
                 content: { es: `Stiberman Law, reconocida como "La Firma de Abogados de Florida", provee asistencia legal crítica en reestructuración financiera. Mi investigación identificó las áreas principales:
 
-• Bancarrota en Florida: Especialización en presentaciones de Capítulo 7, 11 y 13.
+â¢ Bancarrota en Florida: Especialización en presentaciones de Capítulo 7, 11 y 13.
 
-• Consolidación de Deudas: Soluciones para el manejo integral de deudas en Florida.`, en: `Stiberman Law, recognized as "The Florida Law Firm", provides critical legal assistance in financial restructuring. My research identified the main areas:
+â¢ Consolidación de Deudas: Soluciones para el manejo integral de deudas en Florida.`, en: `Stiberman Law, recognized as "The Florida Law Firm", provides critical legal assistance in financial restructuring. My research identified the main areas:
 
-• Florida Bankruptcy: Specialization in Chapter 7, 11 and 13 filings.
+â¢ Florida Bankruptcy: Specialization in Chapter 7, 11 and 13 filings.
 
-• Debt Consolidation: Solutions for comprehensive debt management in Florida.` },
+â¢ Debt Consolidation: Solutions for comprehensive debt management in Florida.` },
                 images: [
                     { src: '/stiberman/Digital Marketing Brief (3)_page-0002.webp', caption: { es: 'Enfoque de servicios legales', en: 'Legal services focus' } },
                     { src: '/stiberman/Digital Marketing Brief (3)_page-0003.webp', caption: { es: 'Estrategia de resolución de deudas', en: 'Debt resolution strategy' } },
@@ -275,17 +279,17 @@ Each ad was designed to be flexible, allowing Meta's Advantage+ algorithm and Go
                 subtitle: { es: 'SEM para la adquisición rápida de leads valiosos', en: 'SEM for rapid acquisition of valuable leads' },
                 content: { es: `Para solucionar el problema de visibilidad, desarrollé un plan multifacético:
 
-• Pay-Per-Click (PPC): Implementé un modelo enfocado en palabras clave legales de alto valor.
+â¢ Pay-Per-Click (PPC): Implementé un modelo enfocado en palabras clave legales de alto valor.
 
-• Geo-Targeting: Debido a la localización de los servicios, utilicé anuncios geo-orientados para asegurar visibilidad dentro de Florida, previniendo el desperdicio de clics.
+â¢ Geo-Targeting: Debido a la localización de los servicios, utilicé anuncios geo-orientados para asegurar visibilidad dentro de Florida, previniendo el desperdicio de clics.
 
-• A/B Testing & Tracking: Uso de A/B testing para refinar el ad copy y mejorar el tracking de conversiones clave.`, en: `To solve the visibility problem, I developed a multifaceted plan:
+â¢ A/B Testing & Tracking: Uso de A/B testing para refinar el ad copy y mejorar el tracking de conversiones clave.`, en: `To solve the visibility problem, I developed a multifaceted plan:
 
-• Pay-Per-Click (PPC): I implemented a model focused on high-value legal keywords.
+â¢ Pay-Per-Click (PPC): I implemented a model focused on high-value legal keywords.
 
-• Geo-Targeting: Due to the localized nature of the services, I used geo-targeted ads to ensure visibility within Florida, preventing click waste.
+â¢ Geo-Targeting: Due to the localized nature of the services, I used geo-targeted ads to ensure visibility within Florida, preventing click waste.
 
-• A/B Testing & Tracking: Used A/B testing to refine ad copy and improve key conversion tracking.` },
+â¢ A/B Testing & Tracking: Used A/B testing to refine ad copy and improve key conversion tracking.` },
                 images: [
                     { src: '/stiberman/Digital Marketing Brief (3)_page-0006.webp', caption: { es: 'Estrategia PPC y Pujas', en: 'PPC and Bidding Strategy' } },
                     { src: '/stiberman/Digital Marketing Brief (3)_page-0007.webp', caption: { es: 'Segmentación geográfica (Geo-targeting)', en: 'Geographic segmentation (Geo-targeting)' } },
@@ -298,17 +302,17 @@ Each ad was designed to be flexible, allowing Meta's Advantage+ algorithm and Go
                 subtitle: { es: 'Crecimiento orgánico y autoridad a largo plazo', en: 'Organic growth and long-term authority' },
                 content: { es: `Mi misión fue lograr rankings orgánicos más altos para llegar a una audiencia amplia:
 
-• SEO Técnico: Enfoque en velocidad del sitio, código limpio y mentalidad "mobile-first" adaptada al nuevo algoritmo de Google.
+â¢ SEO Técnico: Enfoque en velocidad del sitio, código limpio y mentalidad "mobile-first" adaptada al nuevo algoritmo de Google.
 
-• SEO Off-Site: Construcción de autoridad a través de backlinks de calidad de la industria legal.
+â¢ SEO Off-Site: Construcción de autoridad a través de backlinks de calidad de la industria legal.
 
-• Marketing de Contenidos: Actualizaciones regulares mediante un blog y contenidos de video para humanizar la marca y asentar su expertise.`, en: `My mission was to achieve higher organic rankings to reach a broader audience:
+â¢ Marketing de Contenidos: Actualizaciones regulares mediante un blog y contenidos de video para humanizar la marca y asentar su expertise.`, en: `My mission was to achieve higher organic rankings to reach a broader audience:
 
-• Technical SEO: Focus on site speed, clean code and "mobile-first" mindset adapted to Google's new algorithm.
+â¢ Technical SEO: Focus on site speed, clean code and "mobile-first" mindset adapted to Google's new algorithm.
 
-• Off-Site SEO: Authority building through quality backlinks from the legal industry.
+â¢ Off-Site SEO: Authority building through quality backlinks from the legal industry.
 
-• Content Marketing: Regular updates through a blog and video content to humanize the brand and establish expertise.` },
+â¢ Content Marketing: Regular updates through a blog and video content to humanize the brand and establish expertise.` },
                 images: [
                     { src: '/stiberman/Digital Marketing Brief (3)_page-0009.webp', caption: { es: 'Estrategia Mobile-First y SEO Técnico', en: 'Mobile-First Strategy and Technical SEO' } },
                     { src: '/stiberman/Digital Marketing Brief (3)_page-0010.webp', caption: { es: 'Construcción de contenido orgánico', en: 'Organic content building' } },
@@ -318,15 +322,15 @@ Each ad was designed to be flexible, allowing Meta's Advantage+ algorithm and Go
                 id: 'conversion-automation',
                 title: { es: '3. Optimización de Conversión y Automatización', en: '3. Conversion Optimization and Automation' },
                 subtitle: { es: 'Retargeting y acompañamiento del usuario', en: 'Retargeting and user engagement' },
-                content: { es: `• Retargeting Ads: Despliegue de campañas para reconectar con usuarios pre-visitantes mediante mensajes altamente personalizados.
+                content: { es: `â¢ Retargeting Ads: Despliegue de campañas para reconectar con usuarios pre-visitantes mediante mensajes altamente personalizados.
 
-• Optimización Móvil: Basándome en el uso del 95% de tráfico en smartphones, configuré botones "click-to-call" inmediatos y optimización responsiva.
+â¢ Optimización Móvil: Basándome en el uso del 95% de tráfico en smartphones, configuré botones "click-to-call" inmediatos y optimización responsiva.
 
-• Integración de Chatbot con IA: Setup de asistentes virtuales 24/7 capacitados para responder inquietudes instantáneas, elevando la satisfacción exponencialmente.`, en: `• Retargeting Ads: Deployment of campaigns to reconnect with pre-visiting users through highly personalized messages.
+â¢ Integración de Chatbot con IA: Setup de asistentes virtuales 24/7 capacitados para responder inquietudes instantáneas, elevando la satisfacción exponencialmente.`, en: `â¢ Retargeting Ads: Deployment of campaigns to reconnect with pre-visiting users through highly personalized messages.
 
-• Mobile Optimization: Based on 95% of traffic coming from smartphones, I configured immediate "click-to-call" buttons and responsive optimization.
+â¢ Mobile Optimization: Based on 95% of traffic coming from smartphones, I configured immediate "click-to-call" buttons and responsive optimization.
 
-• AI Chatbot Integration: Setup of 24/7 virtual assistants trained to respond to instant inquiries, exponentially increasing satisfaction.` },
+â¢ AI Chatbot Integration: Setup of 24/7 virtual assistants trained to respond to instant inquiries, exponentially increasing satisfaction.` },
                 images: [
                     { src: '/stiberman/Digital Marketing Brief (3)_page-0011.webp', caption: { es: 'Secuencias de Retargeting', en: 'Retargeting sequences' } },
                     { src: '/stiberman/Digital Marketing Brief (3)_page-0012.webp', caption: { es: 'Optimización de UX móvil', en: 'Mobile UX optimization' } },
@@ -337,11 +341,11 @@ Each ad was designed to be flexible, allowing Meta's Advantage+ algorithm and Go
                 id: 'analytical-foundation',
                 title: { es: '4. Base Analítica', en: '4. Analytical Foundation' },
                 subtitle: { es: 'Datos y Objetivos de Negocio Reales', en: 'Data and Real Business Objectives' },
-                content: { es: `• Objetivos SMART: Cada acción quedó atada a un resultado Específico, Medible, Alcanzable, Relevante y con Tiempo limitado.
+                content: { es: `â¢ Objetivos SMART: Cada acción quedó atada a un resultado Específico, Medible, Alcanzable, Relevante y con Tiempo limitado.
 
-• Análisis de Mercado: Investigación constante de la competencia y del comportamiento de búsqueda del usuario para garantizar que Stiberman Law siempre mantenga su ventaja estratégica.`, en: `• SMART Objectives: Each action was tied to a Specific, Measurable, Achievable, Relevant and Time-bound result.
+â¢ Análisis de Mercado: Investigación constante de la competencia y del comportamiento de búsqueda del usuario para garantizar que Stiberman Law siempre mantenga su ventaja estratégica.`, en: `â¢ SMART Objectives: Each action was tied to a Specific, Measurable, Achievable, Relevant and Time-bound result.
 
-• Market Analysis: Constant research of competition and user search behavior to ensure Stiberman Law always maintains its strategic advantage.` },
+â¢ Market Analysis: Constant research of competition and user search behavior to ensure Stiberman Law always maintains its strategic advantage.` },
                 images: [
                     { src: '/stiberman/Digital Marketing Brief (3)_page-0014.webp', caption: { es: 'Implementación de Objetivos SMART', en: 'SMART Objectives implementation' } },
                     { src: '/stiberman/Digital Marketing Brief (3)_page-0015.webp', caption: { es: 'Dashboard analítico competitivo', en: 'Competitive analytics dashboard' } },
@@ -358,7 +362,9 @@ Each ad was designed to be flexible, allowing Meta's Advantage+ algorithm and Go
     'lisicki-litvin-metricas': {
         slug: 'lisicki-litvin-metricas',
         heroImage: '/licki/KPI Monthly Presentation_page-0001.webp',
-        role: 'Data Analyst & Consultant',
+        title: { es: 'Lisicki Litvin Corp', en: 'Lisicki Litvin Corp' },
+        headline: { es: 'Métricas', en: 'Metrics' },
+        role: { es: 'Analista de Datos y Reporting', en: 'Data Analyst and Reporting Consultant' },
         client: 'Estudio Lisicki, Litvin & Asociados',
         date: { es: 'Enero 2025', en: 'January 2025' },
         context: { es: 'Presentación Ejecutiva Mensual de KPIs', en: 'Monthly Executive KPI Presentation' },
@@ -370,21 +376,21 @@ Each ad was designed to be flexible, allowing Meta's Advantage+ algorithm and Go
                 subtitle: { es: 'Evaluación de la salud de la empresa', en: 'Company health assessment' },
                 content: { es: `Me enfoqué en evaluar la salud de la empresa a través de un riguroso análisis de métricas financieras y operativas.
 
-• Crecimiento de Ingresos: Monitoreé y reporté un ingreso total de $93,745, lo que representó un aumento del 5.6% respecto al mes anterior.
+â¢ Crecimiento de Ingresos: Monitoreé y reporté un ingreso total de $93,745, lo que representó un aumento del 5.6% respecto al mes anterior.
 
-• Análisis de Rentabilidad: Calculé un Margen de Beneficio Neto del 30%, gestionando un beneficio neto de $120,000 sobre ventas totales de $280,000.
+â¢ Análisis de Rentabilidad: Calculé un Margen de Beneficio Neto del 30%, gestionando un beneficio neto de $120,000 sobre ventas totales de $280,000.
 
-• Control de Gastos: Rastreé gastos totales por $66,830, manteniendo una tasa de crecimiento consistente del 5.6% en línea con los ingresos para asegurar un escalado equilibrado.
+â¢ Control de Gastos: Rastreé gastos totales por $66,830, manteniendo una tasa de crecimiento consistente del 5.6% en línea con los ingresos para asegurar un escalado equilibrado.
 
-• Optimización de Márgenes: Supervisé la Ganancia Bruta, que alcanzó los $220,000, superando el objetivo de crecimiento del 2% al lograr un incremento del 5.6%.`, en: `I focused on evaluating the company's health through rigorous analysis of financial and operational metrics.
+â¢ Optimización de Márgenes: Supervisé la Ganancia Bruta, que alcanzó los $220,000, superando el objetivo de crecimiento del 2% al lograr un incremento del 5.6%.`, en: `I focused on evaluating the company's health through rigorous analysis of financial and operational metrics.
 
-• Revenue Growth: I monitored and reported total revenue of $93,745, representing a 5.6% increase from the previous month.
+â¢ Revenue Growth: I monitored and reported total revenue of $93,745, representing a 5.6% increase from the previous month.
 
-• Profitability Analysis: I calculated a 30% Net Profit Margin, managing a net profit of $120,000 on total sales of $280,000.
+â¢ Profitability Analysis: I calculated a 30% Net Profit Margin, managing a net profit of $120,000 on total sales of $280,000.
 
-• Expense Control: I tracked total expenses of $66,830, maintaining a consistent growth rate of 5.6% in line with revenue to ensure balanced scaling.
+â¢ Expense Control: I tracked total expenses of $66,830, maintaining a consistent growth rate of 5.6% in line with revenue to ensure balanced scaling.
 
-• Margin Optimization: I oversaw Gross Profit, which reached $220,000, exceeding the 2% growth target by achieving a 5.6% increase.` },
+â¢ Margin Optimization: I oversaw Gross Profit, which reached $220,000, exceeding the 2% growth target by achieving a 5.6% increase.` },
                 images: [
                     { src: '/licki/KPI Monthly Presentation_page-0002.webp', caption: { es: 'Resumen Ejecutivo y Crecimiento de Ingresos', en: 'Executive Summary and Revenue Growth' } },
                     { src: '/licki/KPI Monthly Presentation_page-0003.webp', caption: { es: 'Análisis de Rentabilidad Lograda', en: 'Achieved Profitability Analysis' } },
@@ -393,21 +399,21 @@ Each ad was designed to be flexible, allowing Meta's Advantage+ algorithm and Go
             },
             {
                 id: 'operational-kpi',
-                title: { es: '2. Productividad Operativa y Éxito del Cliente', en: '2. Operational Productivity and Client Success' },
+                title: { es: '2. Productividad Operativa y Ãxito del Cliente', en: '2. Operational Productivity and Client Success' },
                 subtitle: { es: 'Identificación de oportunidades de mejora estratégica', en: 'Identifying strategic improvement opportunities' },
                 content: { es: `Mis iniciativas fueron diseñadas para identificar oportunidades de mejora y guiar la toma de decisiones estratégicas.
 
-• Monitoreo de Productividad: Traseé la actividad operativa en 52.6%, con un total de 520 horas de trabajo registradas en un solo período, manteniendo una tasa de eficiencia del 48.1%.
+â¢ Monitoreo de Productividad: Traseé la actividad operativa en 52.6%, con un total de 520 horas de trabajo registradas en un solo período, manteniendo una tasa de eficiencia del 48.1%.
 
-• Experiencia del Cliente: Implementé un seguimiento para el Customer Satisfaction Score (CSAT), alcanzando un 66% (incremento del 5.6% MoM), y mantuve un tiempo de respuesta promedio de 15 minutos.
+â¢ Experiencia del Cliente: Implementé un seguimiento para el Customer Satisfaction Score (CSAT), alcanzando un 66% (incremento del 5.6% MoM), y mantuve un tiempo de respuesta promedio de 15 minutos.
 
-• Feedback del Mercado: Analicé el Net Promoter Score (NPS) y el Customer Effort Score (CES) para garantizar un servicio de máxima calidad que cree valor sostenible a través de toda la cartera de clientes.`, en: `My initiatives were designed to identify improvement opportunities and guide strategic decision-making.
+â¢ Feedback del Mercado: Analicé el Net Promoter Score (NPS) y el Customer Effort Score (CES) para garantizar un servicio de máxima calidad que cree valor sostenible a través de toda la cartera de clientes.`, en: `My initiatives were designed to identify improvement opportunities and guide strategic decision-making.
 
-• Productivity Monitoring: I tracked operational activity at 52.6%, with a total of 520 work hours logged in a single period, maintaining an efficiency rate of 48.1%.
+â¢ Productivity Monitoring: I tracked operational activity at 52.6%, with a total of 520 work hours logged in a single period, maintaining an efficiency rate of 48.1%.
 
-• Client Experience: I implemented tracking for the Customer Satisfaction Score (CSAT), reaching 66% (5.6% MoM increase), and maintained an average response time of 15 minutes.
+â¢ Client Experience: I implemented tracking for the Customer Satisfaction Score (CSAT), reaching 66% (5.6% MoM increase), and maintained an average response time of 15 minutes.
 
-• Market Feedback: I analyzed the Net Promoter Score (NPS) and Customer Effort Score (CES) to ensure maximum quality service that creates sustainable value across the entire client portfolio.` },
+â¢ Market Feedback: I analyzed the Net Promoter Score (NPS) and Customer Effort Score (CES) to ensure maximum quality service that creates sustainable value across the entire client portfolio.` },
                 images: [
                     { src: '/licki/KPI Monthly Presentation_page-0005.webp', caption: { es: 'Métricas de Productividad Operativa y Eficiencia', en: 'Operational Productivity and Efficiency Metrics' } },
                     { src: '/licki/KPI Monthly Presentation_page-0006.webp', caption: { es: 'Dashboard de Experiencia del Cliente (CSAT, NPS, CES)', en: 'Client Experience Dashboard (CSAT, NPS, CES)' } }
@@ -419,17 +425,17 @@ Each ad was designed to be flexible, allowing Meta's Advantage+ algorithm and Go
                 subtitle: { es: 'Supervisión de métricas de capital humano', en: 'Human capital metrics oversight' },
                 content: { es: `Monitoricé exhaustivamente las métricas de capital humano de la firma para asegurar la estabilidad organizacional a largo plazo.
 
-• Estrategia de Retención: Gestioné una fuerza laboral total de 237 empleados con una antigüedad promedio notable de 7.23 años, navegando hábilmente una tasa de deserción del 14.86%.
+â¢ Estrategia de Retención: Gestioné una fuerza laboral total de 237 empleados con una antigüedad promedio notable de 7.23 años, navegando hábilmente una tasa de deserción del 14.86%.
 
-• Análisis Departamental: Categoricé la fuerza laboral a través de todos los departamentos clave (Finanzas, IT, Ventas y Contabilidad), asegurando niveles de plantilla adecuados operativos ininterrumpidos.
+â¢ Análisis Departamental: Categoricé la fuerza laboral a través de todos los departamentos clave (Finanzas, IT, Ventas y Contabilidad), asegurando niveles de plantilla adecuados operativos ininterrumpidos.
 
-• Revisión de Compensaciones: Monitoreé la distribución salarial a nivel gerencial y operativo, notando un salario promedio de 66.7K, para mantener fuerte competitividad frente al mercado de la contaduría y consultoría.`, en: `I comprehensively monitored the firm's human capital metrics to ensure long-term organizational stability.
+â¢ Revisión de Compensaciones: Monitoreé la distribución salarial a nivel gerencial y operativo, notando un salario promedio de 66.7K, para mantener fuerte competitividad frente al mercado de la contaduría y consultoría.`, en: `I comprehensively monitored the firm's human capital metrics to ensure long-term organizational stability.
 
-• Retention Strategy: I managed a total workforce of 237 employees with a notable average tenure of 7.23 years, skillfully navigating an attrition rate of 14.86%.
+â¢ Retention Strategy: I managed a total workforce of 237 employees with a notable average tenure of 7.23 years, skillfully navigating an attrition rate of 14.86%.
 
-• Departmental Analysis: I categorized the workforce across all key departments (Finance, IT, Sales and Accounting), ensuring adequate staffing levels for uninterrupted operations.
+â¢ Departmental Analysis: I categorized the workforce across all key departments (Finance, IT, Sales and Accounting), ensuring adequate staffing levels for uninterrupted operations.
 
-• Compensation Review: I monitored salary distribution at managerial and operational levels, noting an average salary of 66.7K, to maintain strong competitiveness against the accounting and consulting market.` },
+â¢ Compensation Review: I monitored salary distribution at managerial and operational levels, noting an average salary of 66.7K, to maintain strong competitiveness against the accounting and consulting market.` },
                 images: [
                     { src: '/licki/KPI Monthly Presentation_page-0007.webp', caption: { es: 'Análisis de Fuerza Laboral y Estrategia de Retención', en: 'Workforce Analysis and Retention Strategy' } },
                     { src: '/licki/KPI Monthly Presentation_page-0008.webp', caption: { es: 'Distribución Departamental y Compensaciones', en: 'Departmental Distribution and Compensation' } }
@@ -455,6 +461,8 @@ Each ad was designed to be flexible, allowing Meta's Advantage+ algorithm and Go
     'kiddo-franquicias': {
         slug: 'kiddo-franquicias',
         heroImage: '/kiddo/Franchising Kiddo _ Comercial_page-0001.webp',
+        title: { es: 'Kiddo', en: 'Kiddo' },
+        headline: { es: 'Estrategia de franquicias', en: 'Franchising strategy' },
         role: { es: 'Consultor de Negocios & Franquicias', en: 'Business & Franchise Consultant' },
         client: 'Kiddo / Burger Kid',
         date: '2024 - 2030',
@@ -467,13 +475,13 @@ Each ad was designed to be flexible, allowing Meta's Advantage+ algorithm and Go
                 subtitle: { es: 'Capitalizando 15 años de conocimiento', en: 'Capitalizing on 15 years of knowledge' },
                 content: { es: `He trabajado para capitalizar los más de 15 años de conocimiento de Alejandro Roig (Burger Kid) en el mundo de las hamburguesas, transformando esa influencia digital en un modelo de negocio tangible y altamente rentable.
 
-• Diferenciación: Nos enfocamos en un menú reducido pero cuidadosamente elaborado, priorizando la calidad total de los ingredientes y la simplicidad operativa para asegurar velocidad en despacho.
+â¢ Diferenciación: Nos enfocamos en un menú reducido pero cuidadosamente elaborado, priorizando la calidad total de los ingredientes y la simplicidad operativa para asegurar velocidad en despacho.
 
-• Resultados Probados: Respaldamos la propuesta con métricas sólidas, destacando la venta de 25.000 hamburguesas mensuales por local y una facturación promedio mensual sostenida de USD 100.000.`, en: `I have worked to capitalize on over 15 years of knowledge from Alejandro Roig (Burger Kid) in the burger world, transforming that digital influence into a tangible and highly profitable business model.
+â¢ Resultados Probados: Respaldamos la propuesta con métricas sólidas, destacando la venta de 25.000 hamburguesas mensuales por local y una facturación promedio mensual sostenida de USD 100.000.`, en: `I have worked to capitalize on over 15 years of knowledge from Alejandro Roig (Burger Kid) in the burger world, transforming that digital influence into a tangible and highly profitable business model.
 
-• Differentiation: We focus on a reduced but carefully crafted menu, prioritizing total ingredient quality and operational simplicity to ensure fast dispatch.
+â¢ Differentiation: We focus on a reduced but carefully crafted menu, prioritizing total ingredient quality and operational simplicity to ensure fast dispatch.
 
-• Proven Results: We back the proposition with solid metrics, highlighting 25,000 monthly burger sales per location and a sustained average monthly revenue of USD 100,000.` },
+â¢ Proven Results: We back the proposition with solid metrics, highlighting 25,000 monthly burger sales per location and a sustained average monthly revenue of USD 100,000.` },
                 images: [
                     { src: '/kiddo/Franchising Kiddo _ Comercial_page-0002.webp', caption: { es: 'Consolidación del "Know-How" y trayectoria', en: '"Know-How" consolidation and track record' } },
                     { src: '/kiddo/Franchising Kiddo _ Comercial_page-0003.webp', caption: { es: 'Diferenciación de marca y resultados comerciales', en: 'Brand differentiation and commercial results' } }
@@ -485,13 +493,13 @@ Each ad was designed to be flexible, allowing Meta's Advantage+ algorithm and Go
                 subtitle: { es: 'Estructuración de oferta para inversores', en: 'Structuring investment offerings' },
                 content: { es: `Mi servicio se ha centrado en estructurar una oferta altamente atractiva para inversores, garantizando exclusividad territorial y soporte corporativo continuo.
 
-• Eficiencia Operativa: Hemos diseñado un modelo de negocio a prueba de fallos que permite un Margen EBIT operativo del 25% tras curva de aprendizaje.
+â¢ Eficiencia Operativa: Hemos diseñado un modelo de negocio a prueba de fallos que permite un Margen EBIT operativo del 25% tras curva de aprendizaje.
 
-• Ventajas Competitivas: Facilitamos directamente el acceso a un "Pool de Compras" exclusivo de la franquicia y procesos estandarizados basados en investigación de mercado constante para mantener la alta preferencia del consumidor.`, en: `My service has focused on structuring a highly attractive offering for investors, guaranteeing territorial exclusivity and continuous corporate support.
+â¢ Ventajas Competitivas: Facilitamos directamente el acceso a un "Pool de Compras" exclusivo de la franquicia y procesos estandarizados basados en investigación de mercado constante para mantener la alta preferencia del consumidor.`, en: `My service has focused on structuring a highly attractive offering for investors, guaranteeing territorial exclusivity and continuous corporate support.
 
-• Operational Efficiency: We have designed a fail-proof business model that allows a 25% operational EBIT Margin after the learning curve.
+â¢ Operational Efficiency: We have designed a fail-proof business model that allows a 25% operational EBIT Margin after the learning curve.
 
-• Competitive Advantages: We directly facilitate access to an exclusive franchise "Purchasing Pool" and standardized processes based on constant market research to maintain high consumer preference.` },
+â¢ Competitive Advantages: We directly facilitate access to an exclusive franchise "Purchasing Pool" and standardized processes based on constant market research to maintain high consumer preference.` },
                 images: [
                     { src: '/kiddo/Franchising Kiddo _ Comercial_page-0004.webp', caption: { es: 'Desarrollo financiero del modelo de Franquicia', en: 'Financial development of the Franchise model' } },
                     { src: '/kiddo/Franchising Kiddo _ Comercial_page-0005.webp', caption: { es: 'Ventajas Competitivas y Pool de Compras', en: 'Competitive Advantages and Purchasing Pool' } }
@@ -503,23 +511,23 @@ Each ad was designed to be flexible, allowing Meta's Advantage+ algorithm and Go
                 subtitle: { es: 'Proyección de crecimiento nacional e internacional', en: 'National and international growth projection' },
                 content: { es: `El proyecto es profundamente visual, desde la estética premium de nuestros locales hasta la impecable presentación de nuestros productos "Core" como la Melvin Cheeseburger. He colaborado directamente en la proyección de crecimiento que incluye:
 
-• Diversidad de Formatos: Desde locales de "Barra y Take Away" en Palermo hasta el innovador formato "Drive Thru" (AutoKiddo) en Lomas de Zamora.
+â¢ Diversidad de Formatos: Desde locales de "Barra y Take Away" en Palermo hasta el innovador formato "Drive Thru" (AutoKiddo) en Lomas de Zamora.
 
-• Internacionalización: El plan de expansión ya se encuentra en marcha con aperturas estratégicas pautadas en:
+â¢ Internacionalización: El plan de expansión ya se encuentra en marcha con aperturas estratégicas pautadas en:
   - Estados Unidos: Miami (zona residencial y NW 24th St) y New York (5th Ave).
   - Uruguay: Montevideo.
-  - Brasil: São Paulo y Rio de Janeiro.
+  - Brasil: SÃ£o Paulo y Rio de Janeiro.
 
-• Visión a Futuro: Proyectamos escalar sistemáticamente hasta alcanzar los 39 locales para el año 2029 y expandir fuertemente las Master Franquicias hacia el mercado de Europa a partir de 2030.`, en: `The project is deeply visual, from the premium aesthetics of our locations to the impeccable presentation of our "Core" products like the Melvin Cheeseburger. I have collaborated directly on the growth projection that includes:
+â¢ Visión a Futuro: Proyectamos escalar sistemáticamente hasta alcanzar los 39 locales para el año 2029 y expandir fuertemente las Master Franquicias hacia el mercado de Europa a partir de 2030.`, en: `The project is deeply visual, from the premium aesthetics of our locations to the impeccable presentation of our "Core" products like the Melvin Cheeseburger. I have collaborated directly on the growth projection that includes:
 
-• Format Diversity: From "Bar and Take Away" locations in Palermo to the innovative "Drive Thru" format (AutoKiddo) in Lomas de Zamora.
+â¢ Format Diversity: From "Bar and Take Away" locations in Palermo to the innovative "Drive Thru" format (AutoKiddo) in Lomas de Zamora.
 
-• Internationalization: The expansion plan is already underway with strategic openings scheduled in:
+â¢ Internationalization: The expansion plan is already underway with strategic openings scheduled in:
   - United States: Miami (residential area and NW 24th St) and New York (5th Ave).
   - Uruguay: Montevideo.
-  - Brazil: São Paulo and Rio de Janeiro.
+  - Brazil: SÃ£o Paulo and Rio de Janeiro.
 
-• Future Vision: We project to systematically scale to reach 39 locations by 2029 and strongly expand Master Franchises into the European market starting in 2030.` },
+â¢ Future Vision: We project to systematically scale to reach 39 locations by 2029 and strongly expand Master Franchises into the European market starting in 2030.` },
                 images: [
                     { src: '/kiddo/Franchising Kiddo _ Comercial_page-0006.webp', caption: { es: 'Estrategia de Expansión y Formatos de Locales', en: 'Expansion Strategy and Location Formats' } },
                     { src: '/kiddo/Franchising Kiddo _ Comercial_page-0007.webp', caption: { es: 'Proyección Internacional: USA, Uruguay, Brasil', en: 'International Projection: USA, Uruguay, Brazil' } },
@@ -532,15 +540,15 @@ Each ad was designed to be flexible, allowing Meta's Advantage+ algorithm and Go
                 subtitle: { es: 'Sistema probado de éxito global', en: 'Proven system for global success' },
                 content: { es: `Hemos definido una identidad sumamente clara para cada segmento de nuestro menú, lo que agiliza y facilita enormemente la gestión operativa de la franquicia y el rápido reconocimiento por parte del cliente:
 
-• Core Business: Hamburguesas emblemáticas que lideran las ventas (Melvin, Park).
+â¢ Core Business: Hamburguesas emblemáticas que lideran las ventas (Melvin, Park).
 
-• Snacks & Co: Complementos esenciales como los Chiddo Chicken Nuggets y las infaltables papas fritas SureCrisp.
+â¢ Snacks & Co: Complementos esenciales como los Chiddo Chicken Nuggets y las infaltables papas fritas SureCrisp.
 
 Mi compromiso personal y profesional en este proyecto es asegurar que cada nuevo franquiciado no solo compre el nombre de una marca, sino un ecosistema y sistema operativo probado de absoluto éxito, con una proyección de crecimiento global sin precedentes en el competitivo sector del fast food argentino.`, en: `We have defined an extremely clear identity for each segment of our menu, which greatly streamlines and facilitates the franchise's operational management and rapid customer recognition:
 
-• Core Business: Flagship burgers that lead sales (Melvin, Park).
+â¢ Core Business: Flagship burgers that lead sales (Melvin, Park).
 
-• Snacks & Co: Essential complements like Chiddo Chicken Nuggets and the essential SureCrisp fries.
+â¢ Snacks & Co: Essential complements like Chiddo Chicken Nuggets and the essential SureCrisp fries.
 
 My personal and professional commitment in this project is to ensure that each new franchisee doesn't just buy a brand name, but a proven ecosystem and operating system of absolute success, with unprecedented global growth projection in the competitive Argentine fast food sector.` },
                 images: [
@@ -558,45 +566,47 @@ My personal and professional commitment in this project is to ensure that each n
     'easytrack-reporte-financiero': {
         slug: 'easytrack-reporte-financiero',
         heroImage: '/easytrack/Presentación Informe Paid Media_page-0001.webp',
-        role: { es: 'Responsable de Paid Media', en: 'Paid Media Manager' },
-        client: 'EASY TRACK (Fintech)',
+        title: { es: 'EasyTruck', en: 'EasyTruck' },
+        headline: { es: 'Paid Media & App Growth', en: 'Paid Media & App Growth' },
+        role: { es: 'Responsable de Paid Media / App Growth', en: 'Paid Media / App Growth Manager' },
+        client: 'EASY TRUCK (Fintech)',
         date: '2025',
-        context: { es: 'Estructura Publicitaria Integral', en: 'Comprehensive Advertising Structure' },
-        overview: { es: `Como responsable de la estrategia de Paid Media para este proyecto, mi gestión se centró en el diseño y la implementación de una estructura publicitaria integral para *EASY TRACK*, una aplicación de planificación financiera y gestión de gastos. Mi servicio abarcó desde la planificación presupuestaria hasta la configuración detallada de campañas en Meta y Google Ads, con el objetivo de maximizar tanto el crecimiento de la base de usuarios como la conversión a membresías Premium.`, en: `As the person responsible for the Paid Media strategy on this project, my management focused on the design and implementation of a comprehensive advertising structure for *EASY TRACK*, a financial planning and expense management application. My service spanned from budget planning to detailed campaign configuration in Meta and Google Ads, with the goal of maximizing both user base growth and Premium membership conversion.` },
+        context: { es: 'Estrategia full-funnel para crecimiento y conversión', en: 'Full-funnel strategy for growth and conversion' },
+        overview: { es: `Diseñé una estrategia de paid media full-funnel para EasyTruck, una app fintech enfocada en planificación financiera y gestión de gastos. El trabajo integró el diseño presupuestario, la arquitectura de audiencias por cohorte, implementación de deep links y testing creativo para crecer en instalaciones y empujar upgrades a membresía Premium en Meta Ads.`, en: `I designed a full-funnel paid media strategy for EasyTruck, a fintech app focused on financial planning and expense management. The work integrated budget design, cohort-based audience architecture, deep link implementation and creative testing to grow installs and push Premium membership upgrades across Meta Ads.` },
         sections: [
             {
                 id: 'gestion-presupuestaria',
                 title: { es: '1. Gestión Presupuestaria y Estratégica', en: '1. Budget and Strategic Management' },
-                subtitle: { es: 'Distribución de inversión en el embudo', en: 'Investment distribution across the funnel' },
-                content: { es: `Diseñé un plan de inversión de $20.000.000 distribuido de forma equitativa para cubrir todo el embudo de conversión:
+                subtitle: { es: 'Inversión enfocada en el crecimiento de la App', en: 'Investment focused on App growth' },
+                content: { es: `Diseñé un plan de inversión de $20.000.000 optimizado para cubrir todo el embudo de conversión en Meta Ads:
 
-• Meta Ads ($10.000.000): Segmentado en dos grandes pilares para Apple Store y Google Play: maximizar eventos dentro de la app (conversiones a Premium) y maximizar instalaciones para nuevos usuarios.
+• Estrategia de Instalaciones: Segmentado para Apple Store y Google Play para maximizar el volumen de nuevos usuarios con intención de uso financiero.
 
-• Google Ads ($10.000.000): Destinado a una campaña de Display enfocada en maximizar conversiones, aprovechando la red visual para atraer tráfico cualificado.
+• Push de Suscripciones Premium: Campañas específicas para incentivar el upgrade de usuarios existentes mediante audiencias personalizadas.
 
-• Optimización Dinámica: Implementé una lógica de competencia de rendimiento; el presupuesto se reasigna en tiempo real hacia la plataforma o tienda con mejores resultados para garantizar eficiencia y ROAS.`, en: `I designed a $20,000,000 investment plan distributed equitably to cover the entire conversion funnel:
+• Optimización de ROAS: Implementé una lógica de reasignación presupuestaria en tiempo real basada en el costo por acción (CPA) de cada tienda.`, en: `I designed a $20,000,000 investment plan optimized to cover the entire conversion funnel in Meta Ads:
 
-• Meta Ads ($10,000,000): Segmented into two major pillars for Apple Store and Google Play: maximizing in-app events (Premium conversions) and maximizing installations for new users.
+• Install Strategy: Segmented for Apple Store and Google Play to maximize the volume of new users with financial intent.
 
-• Google Ads ($10,000,000): Dedicated to a Display campaign focused on maximizing conversions, leveraging the visual network to attract qualified traffic.
+• Premium Subscription Push: Specific campaigns to incentivize upgrades from existing users through custom audiences.
 
-• Dynamic Optimization: I implemented a performance competition logic; the budget is reallocated in real-time toward the platform or store with the best results to guarantee efficiency and ROAS.` },
+• ROAS Optimization: I implemented a real-time budget reallocation logic based on the cost per action (CPA) of each store.` },
                 images: [
-                    { src: '/easytrack/Presentación Informe Paid Media_page-0002.webp', caption: { es: 'Distribución de Presupuesto Inicial', en: 'Initial Budget Distribution' } },
-                    { src: '/easytrack/Presentación Informe Paid Media_page-0003.webp', caption: { es: 'Segmentación entre Meta y Google Ads', en: 'Segmentation between Meta and Google Ads' } }
+                    { src: '/easytrack/Presentación Informe Paid Media_page-0002.webp', caption: { es: 'Distribución de Presupuesto en Meta Ads', en: 'Budget Distribution in Meta Ads' } },
+                    { src: '/easytrack/Presentación Informe Paid Media_page-0003.webp', caption: { es: 'Modelado de inversión por plataforma', en: 'Investment modeling by platform' } }
                 ]
             },
             {
                 id: 'estructura-meta',
                 title: { es: '2. Arquitectura de Campañas Meta Ads', en: '2. Meta Ads Campaign Architecture' },
                 subtitle: { es: 'Advantage+ y Deep Linking', en: 'Advantage+ and Deep Linking' },
-                content: { es: `Para Easy Track, configuré una arquitectura de campañas Advantage+ para aprovechar el aprendizaje automático de Meta.
+                content: { es: `Para EasyTruck, configuré una arquitectura de campañas Advantage+ para aprovechar el aprendizaje automático de Meta.
 
 • Segmentación Avanzada: Definí un público objetivo de entre 18 y 45 años en Argentina. Excluí activamente a usuarios Premium para optimizar el CPA.
 
 • Iniciativa Creativa: Desarrollé múltiples variaciones (Ad Futurista, Ad Control Total) para testear ángulos de comunicación según la etapa del usuario.
 
-• Configuración Técnica: Implementé enlaces profundos diferidos (deep links) hacia la suscripción Premium dentro de la app, mejorando sustancialmente el porcentaje de conversión de clics a compra en un solo tap.`, en: `For Easy Track, I configured an Advantage+ campaign architecture to leverage Meta's machine learning.
+• Configuración Técnica: Implementé enlaces profundos diferidos (deep links) hacia la suscripción Premium dentro de la app, mejorando sustancialmente el porcentaje de conversión de clics a compra en un solo tap.`, en: `For EasyTruck, I configured an Advantage+ campaign architecture to leverage Meta's machine learning.
 
 • Advanced Segmentation: I defined a target audience between 18 and 45 years old in Argentina. I actively excluded Premium users to optimize CPA.
 
@@ -609,30 +619,8 @@ My personal and professional commitment in this project is to ensure that each n
                 ]
             },
             {
-                id: 'google-ads',
-                title: { es: '3. Implementación en Google Ads', en: '3. Google Ads Implementation' },
-                subtitle: { es: 'Maximizar Conversiones en Red de Display', en: 'Maximize Conversions on Display Network' },
-                content: { es: `Mi trabajo iterativo en Google Ads se enfocó en capturar sólidamente la intención de los usuarios a través de la Red de Display Visual.
-
-• Configuración de Conversiones: Acción específica vinculada de manera nativa con Google Play para un seguimiento preciso de cada instalación trazable de calidad.
-
-• Anuncios Adaptables: Creé y despaché anuncios de display combinando 5 títulos y descripciones distintas, dejando que el machine learning optimice su entrega.
-
-• Estrategia de Puja: Configuré la campaña para Maximizar Conversiones asegurando que el presupuesto de $5.000.000 se traduzca en el mayor volumen posible de suscripciones operativas diarias.`, en: `My iterative work on Google Ads focused on solidly capturing user intent through the Visual Display Network.
-
-• Conversion Configuration: Specific action natively linked with Google Play for precise tracking of each quality traceable installation.
-
-• Responsive Ads: I created and dispatched display ads combining 5 different headlines and descriptions, letting machine learning optimize their delivery.
-
-• Bidding Strategy: I configured the campaign to Maximize Conversions ensuring that the $5,000,000 budget translates into the highest possible volume of daily operational subscriptions.` },
-                images: [
-                    { src: '/easytrack/Presentación Informe Paid Media_page-0006.webp', caption: { es: 'Tracking de Conversiones en Google', en: 'Google Conversion Tracking' } },
-                    { src: '/easytrack/Presentación Informe Paid Media_page-0007.webp', caption: { es: 'Configuración Analítica de Pujas', en: 'Analytical Bidding Configuration' } }
-                ]
-            },
-            {
                 id: 'deep-research',
-                title: { es: '4. Deep Research: El Valor del Producto', en: '4. Deep Research: The Product Value' },
+                title: { es: '3. Deep Research: El Valor del Producto', en: '3. Deep Research: The Product Value' },
                 subtitle: { es: 'Pilares de comunicación y neuromarketing', en: 'Communication pillars and neuromarketing' },
                 content: { es: `A través de mi análisis del comportamiento en onboarding, identifiqué los pilares de valor absoluto que inyecté en los copys de captación y retargeting:
 
@@ -652,7 +640,7 @@ My personal and professional commitment in this project is to ensure that each n
             },
             {
                 id: 'premium-conversion',
-                title: { es: '5. Meta Ads: Conversión y Upselling a Premium', en: '5. Meta Ads: Premium Conversion and Upselling' },
+                title: { es: '4. Conversión y Upselling a Premium', en: '4. Conversion and Upselling to Premium' },
                 subtitle: { es: 'Estrategia de reactivación de Cohortes', en: 'Cohort Reactivation Strategy' },
                 content: { es: `Esta campaña en particular se centró exclusivamente en usuarios existentes (o registrados recientemente sin tarjeta en archivo) interesados en escalar su experiencia in-app.
 
@@ -674,13 +662,13 @@ My personal and professional commitment in this project is to ensure that each n
             },
             {
                 id: 'captacion-free',
-                title: { es: '6. Meta Ads: Captación (CPA/Descargas)', en: '6. Meta Ads: Acquisition (CPA/Downloads)' },
+                title: { es: '5. Captación (CPA/Descargas)', en: '5. Acquisition (CPA/Downloads)' },
                 subtitle: { es: 'Inyecciones diarias Masivas al Freemium', en: 'Massive Daily Injections to Freemium' },
-                content: { es: `Diseñada e instrumentada puramente a la generación infinita de TOFU y a expandir capilarmente la base de suscriptores Freemium para nutrir el ecosistema futuro. Todo el esfuerzo de ad copy es hacia la fricción cero del Onboarding:
+                content: { es: `Diseñada e instrumentada puramente a la generación de TOFU y a expandir la base de suscriptores Freemium para nutrir el ecosistema futuro. Todo el esfuerzo de ad copy busca la fricción cero:
 
 • Ad Control Free: Gestión de gastos a margen cero. "Tu aliado vitalicio está aquí".
 • Ad Entidades Free: "Sincroniza todas tus billeteras sin pagar fees ocultos".
-• Ad Planificación Free: Instrumentos de ahorro que apelan al sueño de previsibilidad financiera del usuario target.`, en: `Designed and instrumented purely for infinite TOFU generation and to capillarily expand the Freemium subscriber base to nurture the future ecosystem. All ad copy effort is directed toward zero-friction Onboarding:
+• Ad Planificación Free: Instrumentos de ahorro que apelan al sueño de previsibilidad financiera del usuario target.`, en: `Designed and instrumented purely for TOFU generation and to expand the Freemium subscriber base to nurture the future ecosystem. All ad copy effort seeks zero friction:
 
 • Free Control Ad: Expense management at zero margin. "Your lifelong ally is here".
 • Free Entities Ad: "Sync all your wallets without paying hidden fees".
@@ -691,32 +679,191 @@ My personal and professional commitment in this project is to ensure that each n
                 ]
             },
             {
-                id: 'display-campaign',
-                title: { es: '7. Google Ads: Campaña de Display Adaptable', en: '7. Google Ads: Responsive Display Campaign' },
-                subtitle: { es: 'Pautas Visuales en ecosistema Web AdSense', en: 'Visual Ads in the AdSense Web Ecosystem' },
-                content: { es: `Los formatos Display permitieron invadir espacios de oportunidad mientras el usuario navega contenido económico y de finanzas generalistas con la altísima visibilidad de banners adaptables:
+                id: 'meta-placements',
+                title: { es: '6. Adaptación creativa por placement', en: '6. Creative adaptation by placement' },
+                subtitle: { es: 'Formatos flexibles para feed e historias', en: 'Flexible formats for feed and stories' },
+                content: { es: `Trabajé las piezas para que mantuvieran legibilidad y propuesta de valor en distintos formatos dentro del ecosistema de Meta.
 
-• Copywriting Ágil: "Easy Track Premium", y "Siempre es bueno tener un mentor económico en tu bolsillo".
+• Adaptación visual: Se prepararon versiones cuadradas, verticales y horizontales para sostener el mensaje sin perder jerarquía visual.
 
-• Seguimiento Avanzado vía UTMs: Se instauró una minuciosa jerarquía analítica en la URL final (utm_campaign=premium_push_arg) que luego permitiera atribuir fielmente el mérito absoluto a la Red de Display dentro de Looker Studio.`, en: `Display formats allowed us to invade opportunity spaces while users browse economic and general finance content with the extremely high visibility of responsive banners:
+• Cohesión mobile-first: El diseño priorizó claridad en pantallas pequeñas, con copys breves, contraste alto y foco en el beneficio principal.
 
-• Agile Copywriting: "Easy Track Premium", and "It's always good to have an economic mentor in your pocket".
+• Optimización por placement: La lógica de ajuste permitió que el anuncio se redistribuyera según ubicación con mejores probabilidades de rendimiento.`, en: `I prepared the assets so they could preserve readability and value proposition across different Meta placements.
 
-• Advanced Tracking via UTMs: A meticulous analytical hierarchy was established in the final URL (utm_campaign=premium_push_arg) that would later faithfully attribute absolute merit to the Display Network within Looker Studio.` },
+• Visual adaptation: Square, vertical and horizontal versions were prepared to keep the message consistent without losing visual hierarchy.
+
+• Mobile-first cohesion: The design prioritized clarity on small screens, with short copy, high contrast and emphasis on the main benefit.
+
+• Placement optimization: The adjustment logic allowed the ad to redistribute according to the placements with the strongest performance signals.` },
                 images: [
-                    { src: '/easytrack/Presentación Informe Paid Media_page-0014.webp', caption: { es: 'Renders Dinámicos de Display para AdSense', en: 'Dynamic Display Renders for AdSense' } },
-                    { src: '/easytrack/Presentación Informe Paid Media_page-0015.webp', caption: { es: 'Ruteo de Enlaces Parametrizados (UTM)', en: 'Parameterized Link Routing (UTM)' } }
+                    { src: '/easytrack/Presentación Informe Paid Media_page-0016.webp', caption: { es: 'Configuración de contenido multimedia flexible', en: 'Flexible multimedia setup' } },
+                    { src: '/easytrack/Presentación Informe Paid Media_page-0017.webp', caption: { es: 'Ajustes creativos por formato y placement', en: 'Creative adjustments by format and placement' } }
+                ]
+            },
+            {
+                id: 'meta-architecture-detail',
+                title: { es: '7. Estructura de Audiencias Avanzada', en: '7. Advanced Audience Structure' },
+                subtitle: { es: 'Separación por intención y tipo de usuario', en: 'Split by intent and user type' },
+                content: { es: `La cuenta se estructuró para separar crecimiento de base instalada y empuje a conversión, manteniendo control sobre las señales de aprendizaje.
+
+• Cohortes diferenciadas: Se distinguieron campañas para nuevos públicos y para usuarios con mayor probabilidad de upgrade.
+
+• Segmentación y exclusiones: Se trabajó con rangos etarios, ubicación en Argentina y exclusión de audiencias ya activadas para optimizar el CPA.
+
+• Lectura operativa: La configuración permite visualizar qué conjunto ataca cada objetivo y facilita una optimización más ágil.`, en: `The account was structured to separate installed-base growth from conversion push while keeping learning signals under control.
+
+• Differentiated cohorts: Campaigns were split between new audiences and users with higher upgrade probability.
+
+• Segmentation and exclusions: Work was done with age ranges, Argentina-based targeting and exclusion of already-activated audiences to optimize CPA.
+
+• Operational clarity: The configuration allows visualization of which ad set attacks each objective and enables faster optimization.` },
+                images: [
+                    { src: '/easytrack/Presentación Informe Paid Media_page-0018.webp', caption: { es: 'Estructura general de campañas en Meta', en: 'Overall Meta campaign structure' } },
+                    { src: '/easytrack/Presentación Informe Paid Media_page-0020.webp', caption: { es: 'Público Advantage+ y segmentación base', en: 'Advantage+ audience and base targeting' } }
                 ]
             }
         ],
         stats: [
             { value: '$20M', label: { es: 'Presupuesto Administrado', en: 'Managed Budget' } },
-            { value: '50/50', label: { es: 'Distribución Meta/Google', en: 'Meta/Google Distribution' } },
             { value: '+135%', label: { es: 'Aumento Leads Diarios', en: 'Daily Leads Increase' } },
             { value: 'Cohortes', label: { es: 'Metodología Predictiva', en: 'Predictive Methodology' } }
         ]
+    },
+    'pinturerias-coco-transformacion-digital': {
+        slug: 'pinturerias-coco-transformacion-digital',
+        heroImage: '/pinturerias-coco/1.webp',
+        title: { es: 'Pinturerías Coco', en: 'Pinturerías Coco' },
+        headline: { es: 'Plan de Transformación Digital', en: 'Digital Transformation Plan' },
+        role: { es: 'Consultor de Estrategia Digital', en: 'Digital Strategy Consultant' },
+        client: 'Pinturerías Coco',
+        date: '2025',
+        context: { es: 'Transformación omnicanal para retail líder en pinturas', en: 'Omnichannel transformation for a leading paint retailer' },
+        overview: { es: `Lideré el diseño de un plan integral de transformación digital para Pinturerías Coco, una cadena tradicional de retail. El objetivo fue romper con la dependencia del tráfico físico y la guerra de precios, migrando hacia un ecosistema digital centrado en el valor, la innovación tecnológica y la experiencia del cliente para dominar el mercado de renovación del hogar.`, en: `I led the design of a comprehensive digital transformation plan for Pinturerías Coco, a traditional retail chain. The goal was to break the dependence on physical traffic and price wars, migrating towards a digital ecosystem focused on value, technological innovation, and customer experience to dominate the home renovation market.` },
+        sections: [
+            {
+                id: 'diagnostico-estrategico',
+                title: { es: '1. Diagnóstico y Estrategia Océano Azul', en: '1. Diagnosis and Blue Ocean Strategy' },
+                subtitle: { es: 'De la guerra de precios al valor agregado', en: 'From price war to added value' },
+                content: { es: `Identifiqué que el sector se encontraba en un "Océano Rojo" de alta competencia por precio. Propuse un giro estratégico hacia el "Océano Azul":
+
+• Problema: Falta de presencia digital, stock no sincronizado y dependencia 100% de la venta de salón.
+
+• Solución: Posicionar a Pinturerías Coco no solo como vendedor de latas, sino como facilitador integral de proyectos de renovación del hogar.
+
+• Diferenciación: Enfoque en servicios de consultoría, herramientas digitales exclusivas y conveniencia logística.`, en: `I identified that the sector was in a "Red Ocean" of high price competition. I proposed a strategic shift towards a "Blue Ocean":
+
+• Problem: Lack of digital presence, non-synchronized stock, and 100% dependence on showroom sales.
+
+• Solution: Position Pinturerías Coco not just as a paint seller, but as a comprehensive facilitator of home renovation projects.
+
+• Differentiation: Focus on consulting services, exclusive digital tools, and logistical convenience.` },
+                images: [
+                    { src: '/pinturerias-coco/2.webp', caption: { es: 'Análisis del contexto competitivo', en: 'Competitive context analysis' } },
+                    { src: '/pinturerias-coco/3.webp', caption: { es: 'Estrategia de Océano Azul', en: 'Blue Ocean Strategy' } },
+                    { src: '/pinturerias-coco/4.webp', caption: { es: 'Propuesta de Valor Renovada', en: 'Renewed Value Proposition' } }
+                ]
+            },
+            {
+                id: 'ecosistema-digital',
+                title: { es: '2. Ecosistema Digital & E-commerce', en: '2. Digital Ecosystem & E-commerce' },
+                subtitle: { es: 'Infraestructura WooCommerce y Stock Unificado', en: 'WooCommerce Infrastructure & Unified Stock' },
+                content: { es: `Diseñé la arquitectura de un ecosistema digital robusto basado en WooCommerce para permitir la venta online escalable.
+
+• Sincronización de Stock: Integración operativa entre los depósitos de las tiendas físicas y la tienda online para evitar quiebres de stock.
+
+• Experiencia Mobile-First: Interfaz optimizada para decisiones rápidas de compra desde dispositivos móviles.
+
+• Logística Omnicanal: Implementación de "Click & Collect" y envíos programados para optimizar la última milla.`, en: `I designed the architecture of a robust digital ecosystem based on WooCommerce to enable scalable online sales.
+
+• Stock Synchronization: Operational integration between physical store warehouses and the online store to avoid stockouts.
+
+• Mobile-First Experience: Interface optimized for quick purchase decisions from mobile devices.
+
+• Omnichannel Logistics: Implementation of "Click & Collect" and scheduled shipments to optimize the last mile.` },
+                images: [
+                    { src: '/pinturerias-coco/5.webp', caption: { es: 'Arquitectura del Ecosistema WooCommerce', en: 'WooCommerce Ecosystem Architecture' } },
+                    { src: '/pinturerias-coco/8.webp', caption: { es: 'Flujo de Click & Collect y Logística', en: 'Click & Collect Flow and Logistics' } }
+                ]
+            },
+            {
+                id: 'innovacion-tecnologica',
+                title: { es: '3. Innovación y Experiencia del Usuario', en: '3. Innovation and User Experience' },
+                subtitle: { es: 'Realidad Virtual, Chatbots y Fórmulas Térmicas', en: 'Virtual Reality, Chatbots, and Thermal Formulas' },
+                content: { es: `Para distanciarse de la competencia, integramos herramientas tecnológicas que resuelven fricciones históricas del cliente.
+
+• Visualizador de Ambientes: Uso de VR/AR para permitir que el cliente vea el color en sus paredes antes de comprar.
+
+• Chatbot IA 24/7: Atención automatizada para consultas técnicas, cálculo de litros y seguimiento de pedidos.
+
+• Base de Datos de Fórmulas: Guardado digital de fórmulas de color personalizadas para compras recurrentes sin errores de tono.`, en: `To stand out from the competition, we integrated technological tools that solve historical customer friction.
+
+• Room Visualizer: Use of VR/AR to allow customers to see color on their walls before buying.
+
+• 24/7 AI Chatbot: Automated service for technical queries, liter calculation, and order tracking.
+
+• Formula Database: Digital storage of custom color formulas for error-free recurring purchases.` },
+                images: [
+                    { src: '/pinturerias-coco/6.webp', caption: { es: 'Visualizador de Realidad Virtual (AR)', en: 'Virtual Reality Visualizer (AR)' } },
+                    { src: '/pinturerias-coco/7.webp', caption: { es: 'Implementación de Chatbot IA especializado', en: 'Specialized AI Chatbot implementation' } },
+                    { src: '/pinturerias-coco/9.webp', caption: { es: 'Conectividad y Personalización', en: 'Connectivity and Personalization' } }
+                ]
+            },
+            {
+                id: 'marketing-performance',
+                title: { es: '4. Estrategia de Paid Media Full-Funnel', en: '4. Full-Funnel Paid Media Strategy' },
+                subtitle: { es: 'Captación en Meta Ads y Google Ads', en: 'Acquisition on Meta Ads and Google Ads' },
+                content: { es: `Ejecutamos un plan de medios orientado a resultados (performance) para traccionar tráfico cualificado tanto al e-commerce como a las sucursales.
+
+• Top of Funnel (Brand Awareness): Campañas de video en Meta Ads para posicionar el posicionamiento "Premium" de la marca.
+
+• Middle/Bottom (Conversión): Campañas de Search y Performance Max en Google Ads capturando la intención de búsqueda de pintura y decoración.
+
+• Retargeting Dinámico: Impacto a usuarios que visitaron productos específicos sin concretar la compra.`, en: `We executed a result-oriented (performance) media plan to drive qualified traffic to both the e-commerce site and physical branches.
+
+• Top of Funnel (Brand Awareness): Video campaigns on Meta Ads to establish the brand's "Premium" positioning.
+
+• Middle/Bottom (Conversion): Search and Performance Max campaigns on Google Ads capturing search intent for paint and decoration.
+
+• Dynamic Retargeting: Re-engaging users who visited specific products without completing a purchase.` },
+                images: [
+                    { src: '/pinturerias-coco/10.webp', caption: { es: 'Embudo de Marketing y Medios', en: 'Marketing and Media Funnel' } },
+                    { src: '/pinturerias-coco/11.webp', caption: { es: 'Estrategia de Paid Media Omnicanal', en: 'Omnichannel Paid Media Strategy' } },
+                    { src: '/pinturerias-coco/12.webp', caption: { es: 'Remarketing y Fidelización', en: 'Remarketing and Loyalty' } }
+                ]
+            },
+            {
+                id: 'resultados-roadmap',
+                title: { es: '5. Roadmap de Escalabilidad y Resultados', en: '5. Scalability Roadmap and Results' },
+                subtitle: { es: 'Fases de expansión y KPIs', en: 'Expansion phases and KPIs' },
+                content: { es: `El proyecto se planteó en etapas para asegurar un crecimiento sostenido y una adopción cultural interna de las nuevas herramientas.
+
+• Fase 1: Lanzamiento de E-commerce y sincronización logística base.
+• Fase 2: Integración de herramientas de AR y automatización de CX.
+• Fase 3: Expansión nacional y fidelización basada en datos (CRM).
+
+• Impacto: Incremento proyectado en el ticket promedio por venta consultiva y reducción drástica en el costo de adquisición (CPA).`, en: `The project was planned in stages to ensure sustained growth and internal cultural adoption of the new tools.
+
+• Phase 1: E-commerce launch and base logistics synchronization.
+• Phase 2: Integration of AR tools and CX automation.
+• Phase 3: National expansion and data-driven loyalty (CRM).
+
+• Impact: Projected increase in average ticket through consulting sales and a drastic reduction in cost per acquisition (CPA).` },
+                images: [
+                    { src: '/pinturerias-coco/14.webp', caption: { es: 'Roadmap de Transformación - Fase 1', en: 'Transformation Roadmap - Phase 1' } },
+                    { src: '/pinturerias-coco/15.webp', caption: { es: 'Roadmap de Transformación - Fase 2', en: 'Transformation Roadmap - Phase 2' } },
+                    { src: '/pinturerias-coco/16.webp', caption: { es: 'Escalabilidad y Cierre del Plan', en: 'Scalability and Plan Closeout' } }
+                ]
+            }
+        ],
+        stats: [
+            { value: 'ROAS 5.0', label: { es: 'Retorno Publicitario', en: 'Ad Return' } },
+            { value: 'Click & Collect', label: { es: 'Eficiencia Logística', en: 'Logistical Efficiency' } },
+            { value: 'Omnicanal', label: { es: 'Estrategia Unificada', en: 'Unified Strategy' } }
+        ]
     }
 };
+
+
 
 export function getProjectDetails(slug, language = 'es') {
     const raw = projectDetails[slug];

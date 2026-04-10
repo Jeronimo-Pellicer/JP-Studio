@@ -5,7 +5,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink, Filter, ArrowRight, Sparkles } from 'lucide-react';
 import { useLanguage } from '@/Components/portfolio/LanguageContext';
 import { createProjectSlug } from '../utils/projectUtils';
-import { getProjectDetails } from '../data/projectDetails';
 
 function Projects() {
     const { t, language } = useLanguage();
@@ -13,65 +12,66 @@ function Projects() {
 
     const allProjects = [
         {
-            title: t.projects.project5.title,
-            description: t.projects.project5.description,
-            image: '/stiberman/Digital Marketing Brief (3)_page-0001.webp',
-            tags: ['SEO/SEM', 'Legal Marketing', 'Digital Strategy'],
+            title: t.projects.project3.title,
+            description: t.projects.project3.description,
+            image: '/easytrack/Presentación Informe Paid Media_page-0001.webp',
+            tags: ['Paid Media', 'Fintech', 'Performance Marketing'],
             category: 'marketing',
             liveUrl: '#',
             githubUrl: '#',
-            detailSlug: 'stiberman-law-seo-sem'
-        },
-        {
-            title: t.projects.project1.title,
-            description: t.projects.project1.description,
-            image: '/kiddo/Franchising Kiddo _ Comercial_page-0001.webp',
-            tags: ['Business Strategy', 'Franchising', 'Commercial'],
-            category: 'strategy',
-            liveUrl: '#',
-            githubUrl: '#',
-            detailSlug: 'kiddo-franquicias',
+            detailSlug: 'easytrack-reporte-financiero'
         },
         {
             title: t.projects.project2.title,
             description: t.projects.project2.description,
             image: '/topper/topper-0001.webp',
-            tags: ['Marketing Strategy', 'Mobile Growth', 'Paid Media'],
+            tags: ['Marketing Strategy', 'Paid Media', 'Mobile-First'],
             category: 'marketing',
             liveUrl: '#',
             githubUrl: '#',
             detailSlug: 'topper-plan-mobile-first',
         },
         {
+            title: t.projects.project5.title,
+            description: t.projects.project5.description,
+            image: '/stiberman/Digital Marketing Brief (3)_page-0001.webp',
+            tags: ['SEO/SEM', 'Legal Marketing', 'Lead Generation'],
+            category: 'marketing',
+            liveUrl: '#',
+            githubUrl: '#',
+            detailSlug: 'stiberman-law-seo-sem',
+        },
+        {
+            title: t.projects.project6.title,
+            description: t.projects.project6.description,
+            image: '/pinturerias-coco/1.webp',
+            tags: ['Digital Transformation', 'Omnichannel', 'E-Commerce'],
+            category: 'strategy',
+            liveUrl: '#',
+            githubUrl: '#',
+            detailSlug: 'pinturerias-coco-transformacion-digital'
+        },
+        {
             title: t.projects.project4.title,
             description: t.projects.project4.description,
             image: '/licki/KPI Monthly Presentation_page-0001.webp',
-            tags: ['Data Visualization', 'Corporate Reporting', 'KPIs'],
+            tags: ['Data Visualization', 'Executive Reporting', 'KPIs'],
             category: 'analytics',
             liveUrl: '#',
             githubUrl: '#',
             detailSlug: 'lisicki-litvin-metricas',
         },
         {
-            title: t.projects.project6.title,
-            description: t.projects.project6.description,
-            image: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=1200&h=800&fit=crop',
-            tags: ['Social Media', 'Content Strategy', 'Analytics'],
-            category: 'marketing',
+            title: t.projects.project1.title,
+            description: t.projects.project1.description,
+            image: '/kiddo/Franchising Kiddo _ Comercial_page-0001.webp',
+            tags: ['Business Strategy', 'Franchising', 'Expansion'],
+            category: 'strategy',
             liveUrl: '#',
             githubUrl: '#',
-            beta: true,
+            detailSlug: 'kiddo-franquicias',
         },
-        {
-            title: t.projects.project3.title,
-            description: t.projects.project3.description,
-            image: '/easytrack/Presentación Informe Paid Media_page-0001.webp',
-            tags: ['Fintech', 'Data Analysis', 'Performance Marketing'],
-            category: 'analytics',
-            liveUrl: '#',
-            githubUrl: '#',
-            detailSlug: 'easytrack-reporte-financiero',
-        },
+
         {
             title: 'E-Commerce Platform Redesign',
             description: 'Complete UX/UI redesign and conversion optimization for an online retail platform, increasing conversion rates by 40%.',
@@ -238,7 +238,7 @@ function Projects() {
                             {t.projects.description}
                         </motion.p>
 
-                        {/* Beta Message */}
+                        {/* Portfolio Note */}
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -247,12 +247,12 @@ function Projects() {
                         >
                             <div className="flex items-start gap-3">
                                 <span className="px-3 py-1 bg-emerald-500 text-black text-xs font-bold rounded-lg uppercase tracking-wider">
-                                    Beta
+                                    Curated
                                 </span>
                                 <p className="text-zinc-300 text-sm leading-relaxed flex-1 text-left">
                                     {language === 'en' 
-                                        ? 'Project viewing is temporarily limited. This section is currently in beta and under optimization to deliver a more complete and intuitive experience. For more information, please get in touch through the available contact channel.' 
-                                        : 'La visualización de los proyectos se encuentra temporalmente limitada. Esta sección está en fase beta y en proceso de optimización para brindar una experiencia más completa e intuitiva. Para más información, podés comunicarte a través del contacto disponible.'}
+                                        ? 'A curated selection of strategy, paid media, SEO/SEM and reporting projects. Each case study was organized to show process, deliverables and the thinking behind the work.' 
+                                        : 'Una selección curada de proyectos de estrategia, paid media, SEO/SEM y reporting. Cada caso fue ordenado para mostrar con claridad el proceso, los entregables y el criterio detrás del trabajo.'}
                                 </p>
                             </div>
                         </motion.div>

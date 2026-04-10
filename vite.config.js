@@ -16,6 +16,7 @@ export default defineConfig({
           '/projects/lisicki-litvin-metricas',
           '/projects/kiddo-franquicias',
           '/projects/easytrack-reporte-financiero',
+          '/projects/easytruck-app-growth-campaigns',
           '/herramientas',
           '/herramientas/calculadora-roi',
           '/herramientas/buyer-persona',

@@ -108,27 +108,27 @@ export const translations = {
             },
             project1: {
                 title: 'Kiddo Franchising Strategy',
-                description: 'Development of a commercial expansion strategy and franchising model for a gastronomic brand, focusing on scalability and business modeling.',
+                description: 'Expansion and franchising strategy for a fast-food brand, focused on scalable formats, unit economics and international growth.',
             },
             project2: {
-                title: 'Topper Mobile-First Plan',
-                description: 'Creation of a comprehensive digital marketing brief and paid media campaign planning for a leading apparel brand, specifically optimized for mobile user acquisition.',
+                title: 'Topper Integrated Marketing Plan + Paid Media',
+                description: 'Comprehensive marketing plan with mobile-first paid media, buyer personas and campaign architecture for awareness, sales and retargeting.',
             },
             project3: {
-                title: 'EasyTrack Financial Report',
-                description: 'Paid Media performance analysis for a personal finance (fintech) application, optimizing campaign ROI and user tracking.',
+                title: 'EasyTruck Paid Media & App Growth',
+                description: 'Full-funnel paid media strategy & app growth execution for a fintech app, combining budget design, campaign structure, deep linking, and Premium subscription growth.',
             },
             project4: {
                 title: 'Lisicki Litvin Corp Metrics',
-                description: 'Design of executive KPI Monthly Presentations and dashboards for a top-tier accounting firm to visualize operational efficiency and service metrics.',
+                description: 'Executive KPI reporting system for translating financial, operational and client-service metrics into actionable decisions.',
             },
             project5: {
                 title: 'Stiberman Law SEO/SEM',
-                description: 'Strategic Digital Marketing Brief focused on SEO and SEM positioning for a US-based Bankruptcy Law Firm.',
+                description: 'SEO and SEM strategy built to capture high-intent legal demand and close the visibility gap of a US bankruptcy law firm.',
             },
             project6: {
-                title: 'Social Media Dashboard',
-                description: 'Unified dashboard for managing multiple social media accounts with scheduling and analytics.',
+                title: 'Pinturerías Coco Digital Transformation',
+                description: 'Full-funnel digital transformation plan for a retail chain, bridging the gap between physical stores and a robust omnichannel ecosystem.',
             },
             liveDemo: 'Live Demo',
             source: 'Source',
@@ -1151,27 +1151,27 @@ export const translations = {
             },
             project1: {
                 title: 'Kiddo Estrategia de Franquicias',
-                description: 'Desarrollo de una estrategia de expansión comercial y modelo de franquicias para una marca gastronómica, enfocada en escalabilidad y modelado de negocio.',
+                description: 'Estrategia de expansión y franquicias para una marca gastronómica, enfocada en formatos escalables, unit economics y crecimiento internacional.',
             },
             project2: {
-                title: 'Topper Plan Mobile-First',
-                description: 'Creación de un brief integral de marketing digital y planificación de campañas de medios pagos para una marca líder de indumentaria, específicamente optimizado para adquisición de usuarios móviles.',
+                title: 'Topper Plan de marketing integral + paid media',
+                description: 'Plan de marketing integral con enfoque mobile-first, buyer personas y campañas paid media para awareness, ventas y retargeting.',
             },
             project3: {
-                title: 'EasyTrack Reporte Financiero',
-                description: 'Análisis de rendimiento de Paid Media para una aplicación de finanzas personales (fintech), optimizando el ROI de campañas y seguimiento de usuarios.',
+                title: 'EasyTruck Paid Media & App Growth',
+                description: 'Estrategia full-funnel de paid media y app growth para una app fintech, combinando presupuesto, estructura de campañas, deep linking y crecimiento de suscripciones Premium.',
             },
             project4: {
                 title: 'Lisicki Litvin Corp Métricas',
-                description: 'Diseño de presentaciones ejecutivas mensuales de KPIs y dashboards para una firma contable de primer nivel para visualizar eficiencia operativa y métricas de servicio.',
+                description: 'Sistema de reporting ejecutivo para traducir KPIs financieros, operativos y de servicio en decisiones claras y accionables.',
             },
             project5: {
                 title: 'Stiberman Law SEO/SEM',
-                description: 'Brief Estratégico de Marketing Digital enfocado en posicionamiento SEO y SEM para una firma de abogados de quiebras con sede en EE.UU.',
+                description: 'Estrategia SEO y SEM para captar demanda legal de alta intención y corregir la brecha de visibilidad de una firma de bancarrota en EE.UU.',
             },
             project6: {
-                title: 'Dashboard Redes Sociales',
-                description: 'Panel unificado para gestionar múltiples cuentas de redes sociales con programación y análisis.',
+                title: 'Pinturerías Coco Transformación Digital',
+                description: 'Plan integral de transformación digital para una cadena de retail, conectando la venta física con un ecosistema omnicanal robusto.',
             },
             liveDemo: 'Demo en Vivo',
             source: 'Código',

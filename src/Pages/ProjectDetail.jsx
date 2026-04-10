@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { createPortal } from 'react-dom';
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, ExternalLink, ChevronLeft, ChevronRight, X, Target, TrendingUp, Users, BarChart3, Megaphone, Settings, Smartphone, MonitorSpeaker } from 'lucide-react';
 import { useLanguage } from '@/Components/portfolio/LanguageContext';
@@ -18,6 +18,9 @@ const sectionIcons = {
     'ads-meta-premium': Smartphone,
     'ads-meta-captacion': Smartphone,
     'ads-google': MonitorSpeaker,
+    'meta-placements': Smartphone,
+    'meta-architecture': Users,
+    'meta-messaging': Megaphone,
 };
 
 // Lightbox component for full-screen image viewing
@@ -229,8 +232,7 @@ function ProjectSection({ section, index }) {
 
 function ProjectDetailContent() {
     const { projectId } = useParams();
-    const { t, language } = useLanguage();
-    const navigate = useNavigate();
+    const { language } = useLanguage();
 
     const details = getProjectDetails(projectId, language);
 
@@ -263,13 +265,13 @@ function ProjectDetailContent() {
         );
     }
 
-    // Collect ALL images from all sections for the table of contents mini-gallery
-    const allImages = details.sections.flatMap(s => s.images || []);
+    const heroTitle = details.title || details.client;
+    const heroHeadline = details.headline || details.context;
 
     return (
         <>
         <SEO
-            title={`${details.client} - ${details.role} | JP Studio`}
+            title={`${heroTitle}${heroHeadline ? ` - ${heroHeadline}` : ''} | JP Studio`}
             description={typeof details.overview === 'string' ? details.overview.substring(0, 160) : ''}
             url={`/projects/${projectId}`}
         />
@@ -294,7 +296,7 @@ function ProjectDetailContent() {
                 <div className="relative h-[50vh] md:h-[65vh] overflow-hidden">
                     <img
                         src={details.heroImage}
-                        alt={details.slug}
+                        alt={heroTitle}
                         className="w-full h-full object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/60 to-transparent" />
@@ -322,10 +324,12 @@ function ProjectDetailContent() {
                                 className="text-4xl md:text-6xl lg:text-7xl font-black text-white mb-4 leading-[0.95]"
                                 style={{ fontFamily: 'system-ui, -apple-system, sans-serif', letterSpacing: '-0.04em' }}
                             >
-                                Topper
-                                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400">
-                                    Plan de Marketing Digital
-                                </span>
+                                {heroTitle}
+                                {heroHeadline && (
+                                    <span className="block text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400">
+                                        {heroHeadline}
+                                    </span>
+                                )}
                             </h1>
 
                             <p className="text-zinc-400 text-lg md:text-xl max-w-2xl leading-relaxed mb-8"

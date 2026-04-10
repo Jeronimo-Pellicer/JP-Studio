@@ -6,28 +6,28 @@ import { Link } from 'react-router-dom';
 
 export default function ProjectsSection() {
     const { t, language } = useLanguage();
-    
+
     const featuredProjects = [
+        {
+            title: t.projects.project3.title,
+            description: t.projects.project3.description,
+            image: '/easytrack/Presentaci%C3%B3n%20Informe%20Paid%20Media_page-0001.webp',
+            tags: ['Paid Media', 'Fintech', 'Performance Marketing'],
+            detailSlug: 'easytrack-reporte-financiero',
+        },
         {
             title: t.projects.project2.title,
             description: t.projects.project2.description,
             image: '/topper/topper-0001.webp',
-            tags: ['Marketing Strategy', 'Mobile Growth', 'Paid Media'],
+            tags: ['Marketing Strategy', 'Paid Media', 'Brand Growth'],
             detailSlug: 'topper-plan-mobile-first',
         },
         {
-            title: t.projects.project1.title,
-            description: t.projects.project1.description,
-            image: '/kiddo/Franchising Kiddo _ Comercial_page-0001.webp',
-            tags: ['Business Strategy', 'Franchising', 'Commercial'],
-            detailSlug: 'kiddo-franquicias',
-        },
-        {
-            title: t.projects.project3.title,
-            description: t.projects.project3.description,
-            image: '/easytrack/Presentación Informe Paid Media_page-0001.webp',
-            tags: ['Fintech', 'Data Analysis', 'Performance Marketing'],
-            detailSlug: 'easytrack-reporte-financiero',
+            title: t.projects.project5.title,
+            description: t.projects.project5.description,
+            image: '/stiberman/Digital Marketing Brief (3)_page-0001.webp',
+            tags: ['SEO/SEM', 'Legal Marketing', 'Lead Generation'],
+            detailSlug: 'stiberman-law-seo-sem',
         }
     ];
 
@@ -45,7 +45,7 @@ export default function ProjectsSection() {
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, margin: "-50px" }}
+                        viewport={{ once: true, margin: '-50px' }}
                         transition={{ duration: 0.6 }}
                         className="text-center mb-16"
                     >
@@ -53,7 +53,7 @@ export default function ProjectsSection() {
                             initial={{ scale: 0 }}
                             whileInView={{ scale: 1 }}
                             viewport={{ once: true }}
-                            transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
+                            transition={{ type: 'spring', stiffness: 200, delay: 0.2 }}
                             className="inline-block mb-3"
                         >
                             <Sparkles className="w-10 h-10 text-emerald-400 mx-auto" />
@@ -62,17 +62,17 @@ export default function ProjectsSection() {
                             {language === 'en' ? 'Featured Case Studies' : 'Casos de Estudio Destacados'}
                         </h2>
                         <p className="text-zinc-400 max-w-2xl mx-auto text-lg md:text-xl leading-relaxed font-sans">
-                            {language === 'en' 
-                                ? 'A selection of projects that showcase my framework for converting complex business challenges into data-driven digital solutions.' 
+                            {language === 'en'
+                                ? 'A selection of projects that showcase my framework for converting complex business challenges into data-driven digital solutions.'
                                 : 'Una selección de proyectos que muestran mi marco de trabajo para convertir desafíos comerciales complejos en soluciones digitales rentables.'}
                         </p>
-                        
-                        <motion.div 
+
+                        <motion.div
                             initial={{ width: 0 }}
                             whileInView={{ width: 80 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.2, duration: 0.8 }}
-                            className="h-1 bg-gradient-to-r from-emerald-500 to-teal-500 mx-auto rounded-full mt-8" 
+                            className="h-1 bg-gradient-to-r from-emerald-500 to-teal-500 mx-auto rounded-full mt-8"
                         />
                     </motion.div>
 
@@ -83,17 +83,17 @@ export default function ProjectsSection() {
                                 key={project.detailSlug}
                                 initial={{ opacity: 0, y: 40 }}
                                 whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true, margin: "-50px" }}
-                                transition={{ 
-                                    duration: 0.5, 
+                                viewport={{ once: true, margin: '-50px' }}
+                                transition={{
+                                    duration: 0.5,
                                     delay: index * 0.1,
-                                    ease: "easeOut"
+                                    ease: 'easeOut'
                                 }}
                                 className="group relative h-full"
                             >
                                 <Link to={`/projects/${project.detailSlug}`} className="block h-full">
                                     <div className="relative h-full bg-gradient-to-br from-zinc-900/90 to-zinc-950/90 backdrop-blur-xl border border-zinc-800/50 group-hover:border-emerald-500/40 rounded-3xl overflow-hidden transition-all duration-500 shadow-2xl group-hover:shadow-emerald-500/10 md:group-hover:-translate-y-1 transform-gpu">
-                                        
+
                                         {/* Image */}
                                         <div className="relative h-64 overflow-hidden bg-zinc-800/50">
                                             <img
@@ -104,7 +104,7 @@ export default function ProjectsSection() {
                                                 className="w-full h-full object-cover transition-transform duration-700 md:group-hover:scale-105 will-change-transform"
                                             />
                                             <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-transparent opacity-80" />
-                                            
+
                                             {/* Hover CTA Indicator */}
                                             <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-2 group-hover:translate-x-0">
                                                 <span className="px-3 py-1.5 bg-emerald-500 text-black text-xs font-bold rounded-lg shadow-lg flex items-center gap-1">
@@ -112,7 +112,7 @@ export default function ProjectsSection() {
                                                 </span>
                                             </div>
                                         </div>
-                                        
+
                                         {/* Content */}
                                         <div className="p-6">
                                             <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-emerald-400 transition-colors tracking-tight font-sans">
@@ -121,7 +121,7 @@ export default function ProjectsSection() {
                                             <p className="text-zinc-400 text-sm mb-6 leading-relaxed line-clamp-3 font-sans">
                                                 {project.description}
                                             </p>
-                                            
+
                                             {/* Tags */}
                                             <div className="flex flex-wrap gap-2 pt-4 border-t border-zinc-800/50">
                                                 {project.tags.slice(0, 3).map((tag) => (
@@ -148,7 +148,7 @@ export default function ProjectsSection() {
                         transition={{ duration: 0.6, delay: 0.3 }}
                         className="mt-16 text-center"
                     >
-                        <Link 
+                        <Link
                             to="/projects"
                             className="inline-flex items-center gap-2 px-8 py-4 bg-zinc-900 border border-zinc-800 hover:border-emerald-500/50 text-white rounded-xl transition-all duration-300 group font-semibold shadow-lg hover:shadow-emerald-500/20 active:scale-95 transform-gpu"
                         >
