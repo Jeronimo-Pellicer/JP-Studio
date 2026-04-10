@@ -38,9 +38,9 @@ const projectDetails = {
                 id: 'intro',
                 title: { es: 'Introducción y Contexto', en: 'Introduction and Context' },
                 subtitle: { es: 'Presentación del caso y antecedentes de la empresa', en: 'Case presentation and company background' },
-                content: { es: `Como Gerentes de Marketing de la empresa y en representación del departamento, expondremos el desarrollo de un Plan de Marketing Digital integral para la empresa a fin de lograr cumplir con los objetivos estratégicos de la empresa y potenciar la marca.
+                content: { es: `Como equipo integral, expondremos el desarrollo de un Plan de Marketing Digital integral para la empresa a fin de lograr cumplir con los objetivos estratégicos de la empresa y potenciar la marca.
 
-Topper es una marca deportiva con presencia en Argentina, Uruguay, Brasil, Paraguay, Bolivia y Chile. Su propósito es democratizar el deporte en Latinoamérica y en el mundo, uniendo moda y deporte generando productos accesibles y de calidad.`, en: `As Marketing Managers of the company and on behalf of the department, we will present the development of a comprehensive Digital Marketing Plan for the company in order to achieve the company's strategic objectives and strengthen the brand.
+Topper es una marca deportiva con presencia en Argentina, Uruguay, Brasil, Paraguay, Bolivia y Chile. Su propósito es democratizar el deporte en Latinoamérica y en el mundo, uniendo moda y deporte generando productos accesibles y de calidad.`, en: `As an integral team, we will present the development of a comprehensive Digital Marketing Plan for the company in order to achieve the company's strategic objectives and strengthen the brand.
 
 Topper is a sports brand with presence in Argentina, Uruguay, Brazil, Paraguay, Bolivia and Chile. Its purpose is to democratize sports in Latin America and worldwide, merging fashion and sports to create accessible, quality products.` },
                 images: [
