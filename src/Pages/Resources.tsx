@@ -5,7 +5,7 @@ import AlphabetSlider from '../Components/ui/AlphabetSlider';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FileSpreadsheet, FileText, Image } from 'lucide-react';
 import { useLanguage } from '../Components/portfolio/LanguageContext';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, useParams } from 'react-router-dom';
 
 const Prism = lazy(() => import('../Components/resources/Prism'));
 import ResourceHero from '../Components/resources/ResourceHero';
@@ -22,14 +22,15 @@ import { resourcesData } from '../data/resourcesData';
 export default function Resources() {
   const { t, language } = useLanguage();
   const [searchParams, setSearchParams] = useSearchParams();
+  const { articleId } = useParams(); // Get article from URL param
   const [activeFilter, setActiveFilter] = useState('all');
   const [selectedResource, setSelectedResource] = useState(null);
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
   const [isPaymentOpen, setIsPaymentOpen] = useState(false);
   const [activeLetter, setActiveLetter] = useState(null);
 
-  // Derive state from searchParams
-  const selectedArticleId = searchParams.get('article');
+  // Derive state from URL: prefer path param (/recursos/:articleId) over query param (?article=)
+  const selectedArticleId = articleId || searchParams.get('article');
 
   // Handle filter changes from URL
   useEffect(() => {
