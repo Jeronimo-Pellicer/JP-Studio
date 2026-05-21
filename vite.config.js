@@ -4,9 +4,8 @@ import sitemap from 'vite-plugin-sitemap'
 import path from 'path'
 
 export default defineConfig(({ command, mode }) => {
-  // SSR is detected by Vite automatically when building with --ssr flag
-  // We check the ssr flag via process.env or mode
-  const isSsr = process.env.VITE_SSR === 'true' || mode === 'ssr'
+  // Detect SSR build via process.argv (vite build --ssr passes --ssr flag)
+  const isSsr = process.argv.includes('--ssr')
   
   const buildConfig = {
     outDir: isSsr ? 'dist/server' : 'dist',
