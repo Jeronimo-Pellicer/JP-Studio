@@ -325,7 +325,9 @@ function LayoutContent({ children, currentPageName }) {
         document.body.removeChild(link);
     };
 
-    const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 768);
+    const [isDesktop, setIsDesktop] = useState(() => (
+        typeof window !== 'undefined' ? window.innerWidth >= 768 : true
+    ));
 
     useEffect(() => {
         const handleResize = () => setIsDesktop(window.innerWidth >= 768);
