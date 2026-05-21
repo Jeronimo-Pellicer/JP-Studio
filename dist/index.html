@@ -76,12 +76,12 @@
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@500;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&family=Schoolbell&display=swap"></noscript>
     
     <link rel="icon" type="image/png" href="/favicon.png" />
-    <script type="module" crossorigin src="/assets/index-aHImppa_.js"></script>
+    <script type="module" crossorigin src="/assets/index-C3vKUnPb.js"></script>
     <link rel="modulepreload" crossorigin href="/assets/react-vendor-CkebN-nG.js">
     <link rel="modulepreload" crossorigin href="/assets/framer-DuvWI75C.js">
     <link rel="modulepreload" crossorigin href="/assets/react-router-D8_tp-lN.js">
-    <link rel="modulepreload" crossorigin href="/assets/ui-components-KMEJfJrh.js">
-    <link rel="stylesheet" crossorigin href="/assets/index-Cru-zfsF.css">
+    <link rel="modulepreload" crossorigin href="/assets/ui-components-M1KvzknN.js">
+    <link rel="stylesheet" crossorigin href="/assets/index-Dy7pwheX.css">
     <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
   </head>
   <body>
@@ -119,12 +119,24 @@
         -webkit-text-fill-color: transparent;
         margin-bottom: 1rem;
       }
+      @media (min-width: 768px) {
+        .hero-title { font-size: 4.5rem; }
+      }
+      @media (min-width: 1024px) {
+        .hero-title { font-size: 6rem; }
+      }
+      @media (min-width: 1280px) {
+        .hero-title { font-size: 8rem; }
+      }
       .hero-subtitle {
         font-size: 1rem;
         color: #d4d4d8;
         line-height: 1.6;
         max-width: 42rem;
         margin-bottom: 1.5rem;
+      }
+      @media (min-width: 768px) {
+        .hero-subtitle { font-size: 1.125rem; }
       }
       .trust-badge {
         display: flex;
@@ -158,10 +170,6 @@
       }
     </style>
     
-    <!-- Load main CSS asynchronously -->
-    <link rel="preload" href="/assets/index.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="/assets/index.css"></noscript>
-
     <div id="root"></div>
   </body>
 </html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { font-family: sans-serif; background: #222; color: #fff; }
+        .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+        .card { border: 1px solid #555; padding: 10px; }
+        img { max-width: 100%; height: auto; }
+    </style>
+</head>
+<body>
+    <h1>Image Logo Analysis Tracker</h1>
+    <div class="grid">
+        <script>
+            for(let i=1; i<=42; i++) {
+                let num = i.toString().padStart(4, '0');
+                let src = `public/easytrack/Presentación Informe Paid Media_page-${num}.webp`;
+                document.write(`
+                    <div class="card">
+                        <h3>Image ${num}</h3>
+                        <img src="${src}" alt="Image ${num}">
+                    </div>
+                `);
+            }
+        </script>
+    </div>
+</body>
+</html>
