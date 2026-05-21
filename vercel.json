@@ -3,6 +3,7 @@
   "framework": "vite",
   "routes": [
     { "handle": "filesystem" },
+    { "src": "^/recursos\\?article=(?<article>[^&]+)$", "headers": { "Location": "/recursos/$article" }, "status": 301 },
     { "src": "^/recursos/(?<article>[^/]+)/?$", "dest": "/recursos/$article/index.html" },
     { "src": "/(.*)", "dest": "/index.html" }
   ]
