@@ -46,29 +46,38 @@ async function prerender() {
   const template = fs.readFileSync(path.join(distDir, 'index.html'), 'utf-8');
   const { render } = await import(pathToFileURL(serverEntry).href);
 
+  let successCount = 0;
+  let failureCount = 0;
+
   for (const route of routes) {
-    const { appHtml, head } = await render(route);
-    const html = template
-      .replace('<!--app-head-->', head || '')
-      .replace('<!--app-html-->', appHtml || '');
+    try {
+      const { appHtml, head } = await render(route);
+      const html = template
+        .replace('<!--app-head-->', head || '')
+        .replace('<!--app-html-->', appHtml || '');
 
-    let filePath;
-    if (route === '/') {
-      filePath = path.join(distDir, 'index.html');
-    } else if (route.includes('?')) {
-      // Para URLs con query params: /recursos?article=X → /recursos/article-X/index.html
-      const [basePath, queryString] = route.split('?');
-      const articleId = queryString.split('=')[1];
-      filePath = path.join(distDir, basePath, `${articleId}`, 'index.html');
-    } else {
-      filePath = path.join(distDir, route, 'index.html');
+      let filePath;
+      if (route === '/') {
+        filePath = path.join(distDir, 'index.html');
+      } else if (route.includes('?')) {
+        // Para URLs con query params: /recursos?article=X → /recursos/article-X/index.html
+        const [basePath, queryString] = route.split('?');
+        const articleId = queryString.split('=')[1];
+        filePath = path.join(distDir, basePath, `${articleId}`, 'index.html');
+      } else {
+        filePath = path.join(distDir, route, 'index.html');
+      }
+
+      fs.mkdirSync(path.dirname(filePath), { recursive: true });
+      fs.writeFileSync(filePath, html);
+      successCount++;
+    } catch (error) {
+      console.warn(`⚠ Failed to render ${route}: ${error.message}`);
+      failureCount++;
     }
-
-    fs.mkdirSync(path.dirname(filePath), { recursive: true });
-    fs.writeFileSync(filePath, html);
   }
 
-  console.log(`✓ Prerendered ${routes.length} routes`);
+  console.log(`✓ Prerendered ${successCount} routes (${failureCount} failed)`);
 }
 
 prerender().catch((error) => {
