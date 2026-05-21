@@ -18,6 +18,19 @@ const routes = [
   '/herramientas/matriz-priorizacion',
   '/herramientas/quiz-estrategia',
   '/recursos',
+  '/recursos?article=cjm-template',
+  '/recursos?article=foda-kit',
+  '/recursos?article=content-calendar',
+  '/recursos?article=nps-template',
+  '/recursos?article=content-strategy',
+  '/recursos?article=guia-customer-journey-map',
+  '/recursos?article=guia-seo-local',
+  '/recursos?article=guia-estrategia-linkedin',
+  '/recursos?article=cx-metrics-guide',
+  '/recursos?article=infografia-anatomia-post-linkedin',
+  '/recursos?article=infografia-optimizacion-atencion-cliente',
+  '/recursos?article=infografia-palabras-clave',
+  '/recursos?article=infografia-elementos-landing-page',
   '/books',
   '/glosario-marketing',
 ];
@@ -39,9 +52,17 @@ async function prerender() {
       .replace('<!--app-head-->', head || '')
       .replace('<!--app-html-->', appHtml || '');
 
-    const filePath = route === '/'
-      ? path.join(distDir, 'index.html')
-      : path.join(distDir, route, 'index.html');
+    let filePath;
+    if (route === '/') {
+      filePath = path.join(distDir, 'index.html');
+    } else if (route.includes('?')) {
+      // Para URLs con query params: /recursos?article=X → /recursos/article-X/index.html
+      const [basePath, queryString] = route.split('?');
+      const articleId = queryString.split('=')[1];
+      filePath = path.join(distDir, basePath, `${articleId}`, 'index.html');
+    } else {
+      filePath = path.join(distDir, route, 'index.html');
+    }
 
     fs.mkdirSync(path.dirname(filePath), { recursive: true });
     fs.writeFileSync(filePath, html);
