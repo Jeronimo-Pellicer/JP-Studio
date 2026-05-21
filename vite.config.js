@@ -39,9 +39,10 @@ export default defineConfig(({ ssrBuild }) => ({
     emptyOutDir: !ssrBuild,
     ssrManifest: !ssrBuild,
     rollupOptions: {
+      external: ssrBuild ? ['react', 'react-dom', 'react-router-dom'] : [],
       output: {
-        manualChunks: {
-          // Separate heavy vendor libraries into their own chunks
+        manualChunks: !ssrBuild ? {
+          // Separate heavy vendor libraries into their own chunks (client-side only)
           'react-vendor': ['react', 'react-dom'],
           'react-router': ['react-router-dom'],
           'gsap': ['gsap'],
@@ -50,7 +51,7 @@ export default defineConfig(({ ssrBuild }) => ({
           'dnd': ['@hello-pangea/dnd'],
           'ogl': ['ogl'],
           'ui-components': ['sonner', 'lucide-react'],
-        },
+        } : {},
       },
     },
     // Optimize chunk size warnings
