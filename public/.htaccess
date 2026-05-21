@@ -1,0 +1,22 @@
+# Apache rewrite rules for SPA with static file handling
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Don't rewrite requests for actual files or directories
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # Don't rewrite specific files that should be served as-is
+  RewriteRule ^(sitemap\.xml|robots\.txt|favicon\.ico|\.well-known/.*)$ - [L]
+
+  # Rewrite everything else to index.html for SPA routing
+  RewriteRule ^ /index.html [QSA,L]
+</IfModule>
+
+# Set correct MIME types
+<IfModule mod_mime.c>
+  AddType application/xml .xml
+  AddType text/plain .txt
+</IfModule>
