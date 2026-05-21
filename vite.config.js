@@ -3,11 +3,42 @@ import react from '@vitejs/plugin-react'
 import sitemap from 'vite-plugin-sitemap'
 import path from 'path'
 
-export default defineConfig({
-  plugins: [
-    react(),
-    sitemap({
-      hostname: 'https://jpstudio.app',
+export default defineConfig(({ command, mode }) => {
+  // Detect SSR build via process.argv (vite build --ssr passes --ssr flag)
+  const isSsr = process.argv.includes('--ssr')
+  
+  const buildConfig = {
+    outDir: isSsr ? 'dist/server' : 'dist',
+    emptyOutDir: !isSsr,
+    ssrManifest: !isSsr,
+    chunkSizeWarningLimit: 1000,
+    minify: 'esbuild',
+  }
+
+  // Only add rollupOptions for client builds
+  if (!isSsr) {
+    buildConfig.rollupOptions = {
+      output: {
+        manualChunks: {
+          'react-vendor': ['react', 'react-dom'],
+          'react-router': ['react-router-dom'],
+          'gsap': ['gsap'],
+          'framer': ['framer-motion'],
+          'radix-ui': ['@radix-ui/react-label', '@radix-ui/react-progress', '@radix-ui/react-select', '@radix-ui/react-slider', '@radix-ui/react-slot', '@radix-ui/react-tabs', '@radix-ui/react-tooltip'],
+          'dnd': ['@hello-pangea/dnd'],
+          'ogl': ['ogl'],
+          'ui-components': ['sonner', 'lucide-react'],
+        },
+      },
+    }
+  }
+
+  return {
+    plugins: [
+      react(),
+      sitemap({
+        hostname: 'https://jpstudio.app',
+        outDir: './public',
         dynamicRoutes: [
           '/',
           '/projects',
@@ -26,37 +57,17 @@ export default defineConfig({
           '/books',
           '/glosario-marketing',
         ],
-    }),
-  ],
-  resolve: {
-    alias: {
-      '@': path.resolve(__dirname, './src'),
-    },
-  },
-  build: {
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          // Separate heavy vendor libraries into their own chunks
-          'react-vendor': ['react', 'react-dom'],
-          'react-router': ['react-router-dom'],
-          'gsap': ['gsap'],
-          'framer': ['framer-motion'],
-          'radix-ui': ['@radix-ui/react-label', '@radix-ui/react-progress', '@radix-ui/react-select', '@radix-ui/react-slider', '@radix-ui/react-slot', '@radix-ui/react-tabs', '@radix-ui/react-tooltip'],
-          'dnd': ['@hello-pangea/dnd'],
-          'ogl': ['ogl'],
-          'ui-components': ['sonner', 'lucide-react'],
-        },
+      }),
+    ],
+    resolve: {
+      alias: {
+        '@': path.resolve(__dirname, './src'),
       },
     },
-    // Optimize chunk size warnings
-    chunkSizeWarningLimit: 1000,
-    // Minify for production using esbuild (built-in, no dependencies needed)
-    minify: 'esbuild',
-  },
-  // Optimize dependencies
-  optimizeDeps: {
-    include: ['react', 'react-dom', 'react-router-dom', 'framer-motion'],
-    exclude: ['ogl'],
-  },
+    build: buildConfig,
+    optimizeDeps: {
+      include: ['react', 'react-dom', 'react-router-dom', 'framer-motion'],
+      exclude: ['ogl'],
+    },
+  }
 })
