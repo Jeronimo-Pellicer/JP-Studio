@@ -1,22 +1,31 @@
 import React from 'react';
-import { hydrateRoot } from 'react-dom/client';
+import { createRoot, hydrateRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import App from './App.jsx';
 import './index.css';
 
-hydrateRoot(
-  document.getElementById('root'),
-  <React.StrictMode>
-    <HelmetProvider>
-      <BrowserRouter
-        future={{
-          v7_startTransition: true,
-          v7_relativeSplatPath: true,
-        }}
-      >
-        <App />
-      </BrowserRouter>
-    </HelmetProvider>
-  </React.StrictMode>
-);
+const container = document.getElementById('root');
+
+if (container) {
+  const app = (
+    <React.StrictMode>
+      <HelmetProvider>
+        <BrowserRouter
+          future={{
+            v7_startTransition: true,
+            v7_relativeSplatPath: true,
+          }}
+        >
+          <App />
+        </BrowserRouter>
+      </HelmetProvider>
+    </React.StrictMode>
+  );
+
+  if (import.meta.env.DEV) {
+    createRoot(container).render(app);
+  } else {
+    hydrateRoot(container, app);
+  }
+}
