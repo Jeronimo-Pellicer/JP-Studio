@@ -3,19 +3,21 @@ import react from '@vitejs/plugin-react'
 import sitemap from 'vite-plugin-sitemap'
 import path from 'path'
 
-export default defineConfig(({ command, mode, ssrBuild }) => {
-  const isSSR = ssrBuild === true
+export default defineConfig(({ command, mode }) => {
+  // SSR is detected by Vite automatically when building with --ssr flag
+  // We check the ssr flag via process.env or mode
+  const isSsr = process.env.VITE_SSR === 'true' || mode === 'ssr'
   
   const buildConfig = {
-    outDir: isSSR ? 'dist/server' : 'dist',
-    emptyOutDir: !isSSR,
-    ssrManifest: !isSSR,
+    outDir: isSsr ? 'dist/server' : 'dist',
+    emptyOutDir: !isSsr,
+    ssrManifest: !isSsr,
     chunkSizeWarningLimit: 1000,
     minify: 'esbuild',
   }
 
   // Only add rollupOptions for client builds
-  if (!isSSR) {
+  if (!isSsr) {
     buildConfig.rollupOptions = {
       output: {
         manualChunks: {
