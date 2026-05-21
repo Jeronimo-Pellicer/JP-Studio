@@ -38,22 +38,23 @@ export default defineConfig(({ ssrBuild }) => ({
     outDir: ssrBuild ? 'dist/server' : 'dist',
     emptyOutDir: !ssrBuild,
     ssrManifest: !ssrBuild,
-    rollupOptions: {
-      external: ssrBuild ? ['react', 'react-dom', 'react-router-dom'] : [],
-      output: {
-        manualChunks: !ssrBuild ? {
-          // Separate heavy vendor libraries into their own chunks (client-side only)
-          'react-vendor': ['react', 'react-dom'],
-          'react-router': ['react-router-dom'],
-          'gsap': ['gsap'],
-          'framer': ['framer-motion'],
-          'radix-ui': ['@radix-ui/react-label', '@radix-ui/react-progress', '@radix-ui/react-select', '@radix-ui/react-slider', '@radix-ui/react-slot', '@radix-ui/react-tabs', '@radix-ui/react-tooltip'],
-          'dnd': ['@hello-pangea/dnd'],
-          'ogl': ['ogl'],
-          'ui-components': ['sonner', 'lucide-react'],
-        } : {},
+    ...(ssrBuild ? {} : {
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            // Separate heavy vendor libraries into their own chunks (client-side only)
+            'react-vendor': ['react', 'react-dom'],
+            'react-router': ['react-router-dom'],
+            'gsap': ['gsap'],
+            'framer': ['framer-motion'],
+            'radix-ui': ['@radix-ui/react-label', '@radix-ui/react-progress', '@radix-ui/react-select', '@radix-ui/react-slider', '@radix-ui/react-slot', '@radix-ui/react-tabs', '@radix-ui/react-tooltip'],
+            'dnd': ['@hello-pangea/dnd'],
+            'ogl': ['ogl'],
+            'ui-components': ['sonner', 'lucide-react'],
+          },
+        },
       },
-    },
+    }),
     // Optimize chunk size warnings
     chunkSizeWarningLimit: 1000,
     // Minify for production using esbuild (built-in, no dependencies needed)
