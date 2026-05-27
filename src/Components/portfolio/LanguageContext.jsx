@@ -207,7 +207,8 @@ export const translations = {
         books: {
             kicker: 'Staff Picks',
             title: 'Staff I Recommend',
-            description: 'Curated newsletters, podcasts, books, YC resources, and papers to keep on your radar.',
+            description: '',
+            seoDescription: 'Curated newsletters, podcasts, books, YC resources, and papers to keep on your radar.',
             backToHome: 'Back to Home',
             focusLabel: 'Focus',
             linkLabel: 'Link',
@@ -1251,7 +1252,8 @@ export const translations = {
         books: {
             kicker: 'Para chusmear',
             title: 'Para chusmear',
-            description: 'Selección curada de newsletters, podcasts, libros, recursos YC y papers técnicos para tener siempre a mano.',
+            description: '',
+            seoDescription: 'Selección curada de newsletters, podcasts, libros, recursos YC y papers técnicos para tener siempre a mano.',
             backToHome: 'Volver al Inicio',
             focusLabel: 'Enfoque',
             linkLabel: 'Enlace',

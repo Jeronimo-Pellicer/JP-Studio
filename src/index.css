@@ -897,6 +897,10 @@ body {
   padding: 140px 0;
 }
 
+.projects-section.staff-section {
+  padding: 110px 0 140px;
+}
+
 .projects-section::before {
   content: "";
   position: absolute;
@@ -1163,7 +1167,7 @@ body {
 }
 
 .projects-back {
-  margin-bottom: 28px;
+  margin-bottom: 16px;
 }
 
 .projects-back-link {
@@ -1324,6 +1328,10 @@ body {
 @media (max-width: 900px) {
   .projects-section {
     padding: 110px 0;
+  }
+
+  .projects-section.staff-section {
+    padding: 92px 0 110px;
   }
 
   .projects-title {
