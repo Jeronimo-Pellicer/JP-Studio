@@ -167,7 +167,6 @@ const staffCategories = [
 
 export default function Books() {
     const { t, language } = useLanguage();
-    const [activeCategory, setActiveCategory] = useState(staffCategories[0].key);
     const [expandedItem, setExpandedItem] = useState(null);
 
     const categories = useMemo(() => (
@@ -177,15 +176,6 @@ export default function Books() {
             count: category.items.length
         }))
     ), [language]);
-
-    const activeCategoryData = staffCategories.find((category) => category.key === activeCategory)
-        || staffCategories[0];
-    const activeItems = activeCategoryData.items;
-
-    const handleCategoryChange = (key) => {
-        setActiveCategory(key);
-        setExpandedItem(null);
-    };
 
     const seoTitle = `${t.books.title} | Jerónimo Pellicer`;
     const seoDescription = t.books.description;
@@ -215,71 +205,68 @@ export default function Books() {
                     <p className="projects-description">{t.books.description}</p>
                 </motion.div>
 
-                <div className="projects-filters">
+                <div className="recommendations-categories" aria-live="polite">
                     {categories.map((category) => (
-                        <button
-                            key={category.key}
-                            type="button"
-                            onClick={() => handleCategoryChange(category.key)}
-                            className={`filter-item${activeCategory === category.key ? ' is-active' : ''}`}
-                        >
-                            <span className="filter-left">
-                                <span className="filter-symbol">+</span>
-                                <span className="filter-name">{category.label}</span>
-                            </span>
-                            <span className="filter-count">
-                                {String(category.count).padStart(2, '0')}
-                            </span>
-                        </button>
-                    ))}
-                </div>
+                        <section key={category.key} className="recommendation-category">
+                            <div className="filter-item filter-item--static">
+                                <span className="filter-left">
+                                    <span className="filter-symbol">+</span>
+                                    <span className="filter-name">{category.label}</span>
+                                </span>
+                                <span className="filter-count">
+                                    {String(category.count).padStart(2, '0')}
+                                </span>
+                            </div>
 
-                <div className="recommendations-list" aria-live="polite">
-                    {activeItems.map((item) => {
-                        const isOpen = expandedItem === item.id;
-                        const bodyId = `${item.id}-details`;
+                            <div className="recommendations-list recommendation-category-items">
+                                {category.items.map((item) => {
+                                    const isOpen = expandedItem === item.id;
+                                    const bodyId = `${item.id}-details`;
 
-                        return (
-                            <div key={item.id} className={`recommendation-item${isOpen ? ' is-open' : ''}`}>
-                                <button
-                                    type="button"
-                                    className="recommendation-header"
-                                    onClick={() => setExpandedItem(isOpen ? null : item.id)}
-                                    aria-expanded={isOpen}
-                                    aria-controls={bodyId}
-                                >
-                                    <span className="recommendation-title">{item.title}</span>
-                                    <span className="recommendation-toggle" aria-hidden="true">
-                                        {isOpen ? '−' : '+'}
-                                    </span>
-                                </button>
-
-                                {isOpen && (
-                                    <div id={bodyId} className="recommendation-body">
-                                        <span className="recommendation-focus-label">{t.books.focusLabel}</span>
-                                        <p className="recommendation-focus-text">{item.focus}</p>
-                                        <div className="recommendation-links">
-                                            <span className="recommendation-link-label">{t.books.linkLabel}</span>
-                                            <a
-                                                href={item.link}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="recommendation-link"
-                                                aria-label={`${t.books.openLink}: ${item.linkLabel}`}
+                                    return (
+                                        <div key={item.id} className={`recommendation-item${isOpen ? ' is-open' : ''}`}>
+                                            <button
+                                                type="button"
+                                                className="recommendation-header"
+                                                onClick={() => setExpandedItem(isOpen ? null : item.id)}
+                                                aria-expanded={isOpen}
+                                                aria-controls={bodyId}
                                             >
-                                                <span>{item.linkLabel}</span>
-                                                <span className="recommendation-link-icon" aria-hidden="true">↗</span>
-                                            </a>
+                                                <span className="recommendation-title">{item.title}</span>
+                                                <span className="recommendation-toggle" aria-hidden="true">
+                                                    {isOpen ? '−' : '+'}
+                                                </span>
+                                            </button>
+
+                                            {isOpen && (
+                                                <div id={bodyId} className="recommendation-body">
+                                                    <span className="recommendation-focus-label">{t.books.focusLabel}</span>
+                                                    <p className="recommendation-focus-text">{item.focus}</p>
+                                                    <div className="recommendation-links">
+                                                        <span className="recommendation-link-label">{t.books.linkLabel}</span>
+                                                        <a
+                                                            href={item.link}
+                                                            target="_blank"
+                                                            rel="noopener noreferrer"
+                                                            className="recommendation-link"
+                                                            aria-label={`${t.books.openLink}: ${item.linkLabel}`}
+                                                        >
+                                                            <span>{item.linkLabel}</span>
+                                                            <span className="recommendation-link-icon" aria-hidden="true">↗</span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            )}
                                         </div>
-                                    </div>
+                                    );
+                                })}
+
+                                {category.items.length === 0 && (
+                                    <p className="recommendations-empty">{t.books.emptyMessage}</p>
                                 )}
                             </div>
-                        );
-                    })}
-
-                    {activeItems.length === 0 && (
-                        <p className="recommendations-empty">{t.books.emptyMessage}</p>
-                    )}
+                        </section>
+                    ))}
                 </div>
             </div>
         </div>

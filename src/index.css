@@ -1188,6 +1188,26 @@ body {
   height: 14px;
 }
 
+.filter-item--static {
+  cursor: default;
+}
+
+.filter-item--static:hover {
+  transform: none;
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+.recommendations-categories {
+  display: flex;
+  flex-direction: column;
+  gap: 34px;
+}
+
+.recommendation-category-items {
+  margin-top: 14px;
+  padding-left: 26px;
+}
+
 .recommendations-list {
   display: flex;
   flex-direction: column;
@@ -1323,6 +1343,10 @@ body {
 @media (max-width: 700px) {
   .projects-grid {
     grid-template-columns: 1fr;
+  }
+
+  .recommendation-category-items {
+    padding-left: 14px;
   }
 
   .project-media {
