@@ -138,6 +138,8 @@ export const translations = {
             title: 'Get In Touch',
             heading: "Let's Connect",
             description: "Looking for someone to optimize your customer experience or drive your digital strategy? Let's talk about how I can help your business grow.",
+            formTitle: 'Contact',
+            formDescription: 'Identify your key objectives and explore the opportunities where our expertise can enhance your results.',
             info: {
                 email: 'Email',
                 location: 'Location',
@@ -194,7 +196,7 @@ export const translations = {
         footer: {
             tagline: 'Optimizing customer experiences through data and strategy',
             copyright: 'enjoy this sh¡t.',
-            booksRecommend: 'Books I Recommend',
+            booksRecommend: 'Staff I Recommend',
         },
         // Marquee Sections
         marquee: {
@@ -203,16 +205,14 @@ export const translations = {
         },
         // Books Section
         books: {
-            title: 'Books I Recommend',
-            description: 'A selection of books that have influenced my thinking about business, design, and personal development.',
+            kicker: 'Staff Picks',
+            title: 'Staff I Recommend',
+            description: 'Curated newsletters, podcasts, books, YC resources, and papers to keep on your radar.',
             backToHome: 'Back to Home',
-            buyOnAmazon: 'Buy on Amazon',
-            opinions: {
-                atomicHabits: 'A fundamental book on habit building. Clear explains clearly and practically how small changes can generate extraordinary results. The "1% better each day" methodology is transformative and applicable to any area of life.',
-                thinkingSystems: 'A masterpiece on systems thinking. Meadows provides a comprehensive framework for understanding complex systems and how to intervene effectively. Essential for anyone working with organizational change, policy, or complex problems.',
-                thinkingFast: 'Kahneman explores the two systems of thinking that govern our decisions. It\'s fascinating to discover how our brain makes decisions and the cognitive biases that affect us. Essential for understanding human behavior in business and design.',
-                juegoVida: 'Una obra profunda sobre estrategia, toma de decisiones y pensamiento sistémico aplicado a la vida personal y profesional. Llovet ofrece insights valiosos sobre cómo navegar la complejidad del mundo moderno.',
-            },
+            focusLabel: 'Focus',
+            linkLabel: 'Link',
+            openLink: 'Open resource',
+            emptyMessage: 'No recommendations in this category yet.',
         },
         // Project Detail
         projectDetail: {
@@ -1182,6 +1182,8 @@ export const translations = {
             title: 'Contáctame',
             heading: 'Conectemos',
             description: '¿Buscas a alguien para optimizar la experiencia del cliente o impulsar tu estrategia digital? Hablemos sobre cómo puedo ayudar a que tu negocio crezca.',
+            formTitle: 'Contacto',
+            formDescription: 'Identifica tus objetivos clave y explora las oportunidades donde mi experiencia puede potenciar tus resultados.',
             info: {
                 email: 'Email',
                 location: 'Ubicación',
@@ -1238,7 +1240,7 @@ export const translations = {
         footer: {
             tagline: 'Optimizando experiencias del cliente a través de datos y estrategia',
             copyright: 'enjoy this sh¡t.',
-            booksRecommend: 'Libros que Recomiendo',
+            booksRecommend: 'Para chusmear',
         },
         // Secciones Marquee
         marquee: {
@@ -1247,16 +1249,14 @@ export const translations = {
         },
         // Sección Libros
         books: {
-            title: 'Libros que Recomiendo',
-            description: 'Una selección de libros que han influido en mi forma de pensar sobre negocios, diseño y desarrollo personal.',
+            kicker: 'Para chusmear',
+            title: 'Para chusmear',
+            description: 'Selección curada de newsletters, podcasts, libros, recursos YC y papers técnicos para tener siempre a mano.',
             backToHome: 'Volver al Inicio',
-            buyOnAmazon: 'Comprar en Amazon',
-            opinions: {
-                atomicHabits: 'Un libro fundamental sobre la construcción de hábitos. Clear explica de manera clara y práctica cómo pequeños cambios pueden generar resultados extraordinarios. La metodología de "1% mejor cada día" es transformadora y aplicable a cualquier área de la vida.',
-                thinkingSystems: 'Una obra maestra sobre pensamiento sistémico. Meadows proporciona un marco comprensivo para entender sistemas complejos y cómo intervenir efectivamente. Esencial para cualquiera que trabaje con cambio organizacional, políticas o problemas complejos.',
-                thinkingFast: 'Kahneman explora los dos sistemas de pensamiento que gobiernan nuestras decisiones. Es fascinante descubrir cómo nuestro cerebro toma decisiones y los sesgos cognitivos que nos afectan. Fundamental para entender el comportamiento humano en negocios y diseño.',
-                juegoVida: 'Una obra profunda sobre estrategia, toma de decisiones y pensamiento sistémico aplicado a la vida personal y profesional. Llovet ofrece insights valiosos sobre cómo navegar la complejidad del mundo moderno.',
-            },
+            focusLabel: 'Enfoque',
+            linkLabel: 'Enlace',
+            openLink: 'Abrir recurso',
+            emptyMessage: 'Todavía no hay recomendaciones en esta categoría.',
         },
         // Detalle de Proyecto
         projectDetail: {
