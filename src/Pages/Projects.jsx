@@ -213,6 +213,12 @@ function Projects() {
                     ))}
                 </div>
 
+                <div className="projects-viewall">
+                    <a href="#projects-grid" className="projects-viewall-link">
+                        {t.projects.viewAll} <span className="projects-viewall-icon">-&gt;</span>
+                    </a>
+                </div>
+
                 <AnimatePresence mode="wait">
                     <motion.div
                         key={activeFilter}
@@ -221,6 +227,7 @@ function Projects() {
                         animate="visible"
                         exit="hidden"
                         className="projects-grid"
+                        id="projects-grid"
                     >
                         {filteredProjects.map((project, index) => {
                             const projectSlug = createProjectSlug(project.title);
