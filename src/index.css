@@ -973,15 +973,36 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border: none;
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  padding-bottom: 16px;
+  padding: 0 0 16px;
   transition: 0.35s ease;
   cursor: pointer;
+  background: transparent;
+  width: 100%;
+  text-align: left;
+  color: inherit;
 }
 
 .filter-item:hover {
   transform: translateX(8px);
   border-color: rgba(71, 245, 194, 0.2);
+}
+
+.filter-item.is-active {
+  border-color: rgba(71, 245, 194, 0.35);
+}
+
+.filter-item.is-active .filter-name {
+  color: #47f5c2;
+}
+
+.filter-item.is-active .filter-symbol {
+  opacity: 1;
+}
+
+.filter-item.is-active .filter-count {
+  color: rgba(71, 245, 194, 0.6);
 }
 
 .filter-left {
@@ -1056,6 +1077,16 @@ body {
   box-shadow: 0 0 40px rgba(71, 245, 194, 0.06);
 }
 
+.project-card.is-disabled {
+  opacity: 0.7;
+}
+
+.project-card.is-disabled:hover {
+  transform: none;
+  border-color: rgba(255, 255, 255, 0.06);
+  box-shadow: none;
+}
+
 .project-card-link {
   display: block;
   height: 100%;
@@ -1111,6 +1142,13 @@ body {
   letter-spacing: 1px;
   font-family: "Space Grotesk", "Inter", sans-serif;
   background: rgba(71, 245, 194, 0.04);
+}
+
+.projects-empty {
+  margin-top: 60px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 16px;
 }
 
 @media (max-width: 900px) {

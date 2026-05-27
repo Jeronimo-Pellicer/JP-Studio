@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../Components/shared/SEO';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ExternalLink, Filter, ArrowRight, Sparkles } from 'lucide-react';
 import { useLanguage } from '@/Components/portfolio/LanguageContext';
 import { createProjectSlug } from '../utils/projectUtils';
 
@@ -132,6 +131,16 @@ function Projects() {
         { key: 'design', label: t.projects.filter.design },
     ];
 
+    const categoryCounts = allProjects.reduce((acc, project) => {
+        acc[project.category] = (acc[project.category] || 0) + 1;
+        return acc;
+    }, {});
+
+    const filterItems = filters.map((filter) => ({
+        ...filter,
+        count: filter.key === 'all' ? allProjects.length : (categoryCounts[filter.key] || 0)
+    }));
+
     const filteredProjects = activeFilter === 'all' 
         ? allProjects 
         : allProjects.filter(project => project.category === activeFilter);
@@ -161,267 +170,113 @@ function Projects() {
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-zinc-950 via-zinc-900 to-black relative overflow-hidden">
+        <div className="projects-section">
             <SEO 
                 title="Proyectos y Casos de Éxito | Jerónimo Pellicer"
                 description="Proyectos de diseño UX, desarrollo frontend y estrategias de marketing digital con resultados reales para clientes en Argentina."
                 url="/projects"
             />
-            {/* Animated Background - Optimized for mobile performance */}
-            <div className="fixed inset-0 overflow-hidden pointer-events-none opacity-0 md:opacity-100 transition-opacity duration-300">
+            <div className="projects-wrapper">
                 <motion.div
-                    animate={{
-                        x: [0, 100, 0],
-                        y: [0, 50, 0],
-                        rotate: [0, 90, 0],
-                    }}
-                    transition={{
-                        duration: 20,
-                        repeat: Infinity,
-                        ease: "linear"
-                    }}
-                    className="absolute top-0 left-0 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl"
-                    style={{ willChange: 'transform', transform: 'translateZ(0) translate3d(0,0,0)', backfaceVisibility: 'hidden' }}
-                />
-                <motion.div
-                    animate={{
-                        x: [0, -100, 0],
-                        y: [0, -50, 0],
-                        rotate: [0, -90, 0],
-                    }}
-                    transition={{
-                        duration: 25,
-                        repeat: Infinity,
-                        ease: "linear",
-                        delay: 1
-                    }}
-                    className="absolute bottom-0 right-0 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl"
-                    style={{ willChange: 'transform', transform: 'translateZ(0) translate3d(0,0,0)', backfaceVisibility: 'hidden' }}
-                />
-            </div>
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                    className="projects-header"
+                >
+                    <p className="projects-kicker">
+                        / {language === 'en' ? 'My Work' : 'Mi Trabajo'}
+                    </p>
+                    <h1 className="projects-title">
+                        {language === 'en' ? 'Projects' : 'Proyectos'}
+                    </h1>
+                    <p className="projects-description">
+                        {t.projects.description}
+                    </p>
+                </motion.div>
 
-            {/* Hero Section */}
-            <section className="relative pt-10 pb-20">
-                <div className="container mx-auto px-6">
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, ease: [0.6, 0.05, 0.01, 0.9] }}
-                        className="max-w-5xl mx-auto text-center"
-                    >
-                        <motion.div
-                            initial={{ scale: 0 }}
-                            animate={{ scale: 1 }}
-                            transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-                            className="inline-block mb-3"
+                <div className="projects-filters">
+                    {filterItems.map((filter) => (
+                        <button
+                            key={filter.key}
+                            type="button"
+                            onClick={() => setActiveFilter(filter.key)}
+                            className={`filter-item${activeFilter === filter.key ? ' is-active' : ''}`}
                         >
-                            <Sparkles className="w-12 h-12 text-emerald-400" />
-                        </motion.div>
-                        
-                        <motion.h1 
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.3 }}
-                            className="text-7xl md:text-9xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-emerald-400 to-teal-400 mb-6 tracking-tight leading-none"
-                            style={{ fontFamily: 'system-ui, -apple-system, sans-serif', letterSpacing: '-0.05em' }}
-                        >
-                            {t.projects.title.toUpperCase()}
-                        </motion.h1>
-                        
-                        <motion.p 
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ delay: 0.5 }}
-                            className="text-xl md:text-2xl text-zinc-400 max-w-3xl mx-auto leading-relaxed"
-                            style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}
-                        >
-                            {t.projects.description}
-                        </motion.p>
-
-                        {/* Portfolio Note */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.6 }}
-                            className="mt-10 max-w-3xl mx-auto bg-emerald-500/10 border border-emerald-500/30 rounded-2xl p-6 backdrop-blur-sm"
-                        >
-                            <div className="flex items-start gap-3">
-                                <span className="px-3 py-1 bg-emerald-500 text-black text-xs font-bold rounded-lg uppercase tracking-wider">
-                                    Curated
-                                </span>
-                                <p className="text-zinc-300 text-sm leading-relaxed flex-1 text-left">
-                                    {language === 'en' 
-                                        ? 'A curated selection of strategy, paid media, SEO/SEM and reporting projects. Each case study was organized to show process, deliverables and the thinking behind the work.' 
-                                        : 'Una selección curada de proyectos de estrategia, paid media, SEO/SEM y reporting. Cada caso fue ordenado para mostrar con claridad el proceso, los entregables y el criterio detrás del trabajo.'}
-                                </p>
-                            </div>
-                        </motion.div>
-
-                        <motion.div
-                            initial={{ width: 0 }}
-                            animate={{ width: '100px' }}
-                            transition={{ delay: 0.7, duration: 0.8 }}
-                            className="h-1 bg-gradient-to-r from-emerald-500 to-teal-500 mx-auto mt-8 rounded-full"
-                        />
-                    </motion.div>
+                            <span className="filter-left">
+                                <span className="filter-symbol">+</span>
+                                <span className="filter-name">{filter.label}</span>
+                            </span>
+                            <span className="filter-count">
+                                {String(filter.count).padStart(2, '0')}
+                            </span>
+                        </button>
+                    ))}
                 </div>
-            </section>
 
-            {/* Filter Section */}
-            <section className="sticky top-20 z-40 py-6 mb-12">
-                <div className="container mx-auto px-6">
+                <AnimatePresence mode="wait">
                     <motion.div
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="max-w-4xl mx-auto"
+                        key={activeFilter}
+                        variants={containerVariants}
+                        initial="hidden"
+                        animate="visible"
+                        exit="hidden"
+                        className="projects-grid"
                     >
-                        <div className="flex items-center justify-center gap-3 flex-wrap bg-zinc-900/50 backdrop-blur-md md:backdrop-blur-xl border border-zinc-800/50 rounded-2xl p-4">
-                            <Filter className="w-5 h-5 text-emerald-400" />
-                            {filters.map((filter) => (
-                                <motion.button
-                                    key={filter.key}
-                                    whileHover={{ scale: 1.05 }}
-                                    whileTap={{ scale: 0.95 }}
-                                    onClick={() => setActiveFilter(filter.key)}
-                                    className={`
-                                        px-6 py-3 rounded-xl font-semibold text-sm transition-all duration-300
-                                        ${activeFilter === filter.key 
-                                            ? 'bg-gradient-to-r from-emerald-500 to-teal-500 text-white shadow-lg shadow-emerald-500/50' 
-                                            : 'bg-zinc-800/50 text-zinc-400 hover:text-white hover:bg-zinc-800 border border-zinc-700/50'
-                                        }
-                                    `}
-                                    style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}
+                        {filteredProjects.map((project, index) => {
+                            const projectSlug = createProjectSlug(project.title);
+                            const hasDetail = !!project.detailSlug;
+                            const cardSlug = project.detailSlug || projectSlug;
+
+                            const CardWrapper = ({ children }) => hasDetail ? (
+                                <Link to={`/projects/${cardSlug}`} className="project-card-link">{children}</Link>
+                            ) : (
+                                <div className="project-card-link" aria-disabled="true">{children}</div>
+                            );
+
+                            return (
+                                <motion.div
+                                    key={project.title}
+                                    variants={itemVariants}
+                                    className={`project-card${hasDetail ? '' : ' is-disabled'}`}
                                 >
-                                    {filter.label}
-                                </motion.button>
-                            ))}
-                        </div>
-                        <motion.p 
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            className="text-center mt-4 text-zinc-500 text-sm"
-                        >
-                            {filteredProjects.length} {filteredProjects.length === 1 ? 'project' : 'projects'}
-                        </motion.p>
-                    </motion.div>
-                </div>
-            </section>
-
-            {/* Projects Grid */}
-            <section className="relative pb-32">
-                <div className="container mx-auto px-6">
-                    <AnimatePresence mode="wait">
-                        <motion.div
-                            key={activeFilter}
-                            variants={containerVariants}
-                            initial="hidden"
-                            animate="visible"
-                            exit="hidden"
-                            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto"
-                        >
-                            {filteredProjects.map((project, index) => {
-                                const projectSlug = createProjectSlug(project.title);
-                                const hasDetail = !!project.detailSlug;
-                                const cardSlug = project.detailSlug || projectSlug;
-
-                                const CardWrapper = ({ children }) => hasDetail ? (
-                                    <Link to={`/projects/${cardSlug}`} className="block h-full">{children}</Link>
-                                ) : (
-                                    <div className="h-full">{children}</div>
-                                );
-
-                                return (
-                        <motion.div
-                            key={project.title}
-                            variants={itemVariants}
-                            className="group relative"
-                        >
-                            <CardWrapper>
-                            <div className="relative h-full">
-                                <div className={`relative h-full bg-gradient-to-br from-zinc-900/90 to-zinc-950/90 backdrop-blur-md md:backdrop-blur-xl border rounded-3xl overflow-hidden transition-all duration-500 shadow-2xl ${
-                                    hasDetail
-                                        ? 'border-zinc-800/50 hover:border-emerald-500/40 cursor-pointer opacity-100 hover:shadow-emerald-500/10 hover:-translate-y-1'
-                                        : 'border-zinc-800/50 cursor-not-allowed opacity-75'
-                                }`}>
-                                    {/* Project Image */}
-                                    <div className="relative h-64 overflow-hidden">
+                                    <CardWrapper>
                                         <img
                                             src={project.image}
                                             alt={project.title}
-                                            className={`w-full h-full object-cover transition-transform duration-500 ${hasDetail ? 'group-hover:scale-105' : ''}`}
+                                            className="project-thumb"
+                                            loading="lazy"
+                                            decoding="async"
                                         />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-transparent" />
-                                        
-                                        {/* BETA Banner - only for projects without detail */}
-                                        {!hasDetail && (
-                                        <div className="absolute top-0 right-0 w-32 h-32 overflow-hidden">
-                                            <div className="absolute top-2 -right-8 w-32 h-12 bg-emerald-500 backdrop-blur-md flex items-center justify-center transform rotate-45 shadow-lg">
-                                                <span className="text-black font-bold text-sm tracking-widest">BETA</span>
+                                        <div className="project-content">
+                                            <h3 className="project-title">{project.title}</h3>
+                                            <p className="project-text">{project.description}</p>
+                                            <div className="project-tags">
+                                                {project.tags.map((tag) => (
+                                                    <span key={tag} className="project-tag">
+                                                        {tag}
+                                                    </span>
+                                                ))}
                                             </div>
                                         </div>
-                                        )}
+                                    </CardWrapper>
+                                </motion.div>
+                            );
+                        })}
+                    </motion.div>
+                </AnimatePresence>
 
-                                        {/* "View Project" indicator for clickable cards */}
-                                        {hasDetail && (
-                                        <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                            <span className="px-3 py-1.5 bg-emerald-500 text-black text-xs font-bold rounded-lg shadow-lg">
-                                                {language === 'en' ? 'View Project →' : 'Ver Proyecto →'}
-                                            </span>
-                                        </div>
-                                        )}
-                                    </div>
-
-                                    {/* Project Content */}
-                                    <div className="p-6 space-y-4">
-                                        <div>
-                                            <h3 className={`text-2xl font-bold mb-3 transition-colors ${hasDetail ? 'text-white group-hover:text-emerald-400' : 'text-white'}`}
-                                                style={{ fontFamily: 'system-ui, -apple-system, sans-serif', letterSpacing: '-0.02em' }}
-                                            >
-                                                {project.title}
-                                            </h3>
-                                            <p className="text-zinc-400 leading-relaxed text-sm"
-                                                style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}
-                                            >
-                                                {project.description}
-                                            </p>
-                                        </div>
-                                        
-                                        {/* Tags */}
-                                        <div className="flex flex-wrap gap-2 pt-4 border-t border-zinc-800">
-                                            {project.tags.map((tag, tagIndex) => (
-                                                <motion.span
-                                                    key={tag}
-                                                    initial={{ opacity: 0, scale: 0.8 }}
-                                                    animate={{ opacity: 1, scale: 1 }}
-                                                    transition={{ delay: index * 0.05 + tagIndex * 0.03 }}
-                                                    className="px-3 py-1 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold rounded-lg"
-                                                >
-                                                    {tag}
-                                                </motion.span>
-                                            ))}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            </CardWrapper>
-                        </motion.div>
-                                );
-                            })}
-                        </motion.div>
-                    </AnimatePresence>
-
-                    {/* Empty State */}
-                    {filteredProjects.length === 0 && (
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            className="text-center py-20"
-                        >
-                            <p className="text-zinc-500 text-lg">No projects found in this category.</p>
-                        </motion.div>
-                    )}
-                </div>
-            </section>
+                {filteredProjects.length === 0 && (
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        className="projects-empty"
+                    >
+                        {language === 'en'
+                            ? 'No projects found in this category.'
+                            : 'No hay proyectos en esta categoria.'}
+                    </motion.div>
+                )}
+            </div>
         </div>
     );
 }
