@@ -130,6 +130,12 @@ function Projects() {
         { key: 'analytics', label: t.projects.filter.analytics },
         { key: 'design', label: t.projects.filter.design },
     ];
+    const categoryLabels = {
+        strategy: t.projects.filter.strategy,
+        marketing: t.projects.filter.marketing,
+        analytics: t.projects.filter.analytics,
+        design: t.projects.filter.design,
+    };
 
     const categoryCounts = allProjects.reduce((acc, project) => {
         acc[project.category] = (acc[project.category] || 0) + 1;
@@ -215,7 +221,7 @@ function Projects() {
 
                 <div className="projects-viewall">
                     <a href="#projects-grid" className="projects-viewall-link">
-                        {t.projects.viewAll} <span className="projects-viewall-icon">-&gt;</span>
+                        {t.projects.viewAll} <span className="projects-viewall-icon">↗</span>
                     </a>
                 </div>
 
@@ -233,11 +239,20 @@ function Projects() {
                             const projectSlug = createProjectSlug(project.title);
                             const hasDetail = !!project.detailSlug;
                             const cardSlug = project.detailSlug || projectSlug;
+                            const metaLabel = project.metaLabel
+                                || (project.tags?.length
+                                    ? project.tags.slice(0, 2).join(', ')
+                                    : (categoryLabels[project.category] || project.category || ''));
+                            const metaText = metaLabel ? metaLabel.toUpperCase() : '';
+                            const metaYear = project.year || '2024';
+                            const ariaLabel = project.description
+                                ? `${project.title} — ${project.description}`
+                                : project.title;
 
-                            const CardWrapper = ({ children }) => hasDetail ? (
-                                <Link to={`/projects/${cardSlug}`} className="project-card-link">{children}</Link>
+                            const CardWrapper = ({ children, label }) => hasDetail ? (
+                                <Link to={`/projects/${cardSlug}`} className="project-card-link" aria-label={label}>{children}</Link>
                             ) : (
-                                <div className="project-card-link" aria-disabled="true">{children}</div>
+                                <div className="project-card-link" aria-disabled="true" aria-label={label}>{children}</div>
                             );
 
                             return (
@@ -246,23 +261,24 @@ function Projects() {
                                     variants={itemVariants}
                                     className={`project-card${hasDetail ? '' : ' is-disabled'}`}
                                 >
-                                    <CardWrapper>
-                                        <img
-                                            src={project.image}
-                                            alt={project.title}
-                                            className="project-thumb"
-                                            loading="lazy"
-                                            decoding="async"
-                                        />
-                                        <div className="project-content">
-                                            <h3 className="project-title">{project.title}</h3>
-                                            <p className="project-text">{project.description}</p>
-                                            <div className="project-tags">
-                                                {project.tags.map((tag) => (
-                                                    <span key={tag} className="project-tag">
-                                                        {tag}
-                                                    </span>
-                                                ))}
+                                    <CardWrapper label={ariaLabel}>
+                                        <div className="project-media">
+                                            <img
+                                                src={project.image}
+                                                alt={project.title}
+                                                className="project-thumb"
+                                                loading="lazy"
+                                                decoding="async"
+                                            />
+                                            <div className="project-overlay">
+                                                <div className="project-meta">
+                                                    <span className="project-meta-label">{metaText}</span>
+                                                    <span className="project-meta-year">{metaYear}</span>
+                                                </div>
+                                                <div className="project-title-wrapper">
+                                                    <h3 className="project-title">{project.title}</h3>
+                                                </div>
+                                                <span className="project-arrow" aria-hidden="true">↗</span>
                                             </div>
                                         </div>
                                     </CardWrapper>

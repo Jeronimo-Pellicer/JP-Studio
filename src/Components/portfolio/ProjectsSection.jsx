@@ -75,7 +75,7 @@ export default function ProjectsSection() {
 
                 <div className="projects-viewall">
                     <Link to="/projects" className="projects-viewall-link">
-                        {t.projects.viewAll} <span className="projects-viewall-icon">-&gt;</span>
+                        {t.projects.viewAll} <span className="projects-viewall-icon">↗</span>
                     </Link>
                 </div>
 
@@ -93,23 +93,30 @@ export default function ProjectsSection() {
                             }}
                             className="project-card"
                         >
-                            <Link to={`/projects/${project.detailSlug}`} className="project-card-link">
-                                <img
-                                    src={project.image}
-                                    alt={project.title}
-                                    loading="lazy"
-                                    decoding="async"
-                                    className="project-thumb"
-                                />
-                                <div className="project-content">
-                                    <h3 className="project-title">{project.title}</h3>
-                                    <p className="project-text">{project.description}</p>
-                                    <div className="project-tags">
-                                        {project.tags.map((tag) => (
-                                            <span key={tag} className="project-tag">
-                                                {tag}
+                            <Link
+                                to={`/projects/${project.detailSlug}`}
+                                className="project-card-link"
+                                aria-label={`${project.title} — ${project.description}`}
+                            >
+                                <div className="project-media">
+                                    <img
+                                        src={project.image}
+                                        alt={project.title}
+                                        loading="lazy"
+                                        decoding="async"
+                                        className="project-thumb"
+                                    />
+                                    <div className="project-overlay">
+                                        <div className="project-meta">
+                                            <span className="project-meta-label">
+                                                {project.tags.slice(0, 2).join(', ').toUpperCase()}
                                             </span>
-                                        ))}
+                                            <span className="project-meta-year">2024</span>
+                                        </div>
+                                        <div className="project-title-wrapper">
+                                            <h3 className="project-title">{project.title}</h3>
+                                        </div>
+                                        <span className="project-arrow" aria-hidden="true">↗</span>
                                     </div>
                                 </div>
                             </Link>
