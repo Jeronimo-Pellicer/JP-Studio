@@ -11,26 +11,26 @@ const routes = [
   '/projects/lisicki-litvin-metricas',
   '/projects/kiddo-franquicias',
   '/projects/easytrack-reporte-financiero',
-  '/projects/easytruck-app-growth-campaigns',
+  '/projects/pinturerias-coco-transformacion-digital',
   '/herramientas',
   '/herramientas/calculadora-roi',
   '/herramientas/buyer-persona',
   '/herramientas/matriz-priorizacion',
   '/herramientas/quiz-estrategia',
   '/recursos',
-  '/recursos?article=cjm-template',
-  '/recursos?article=foda-kit',
-  '/recursos?article=content-calendar',
-  '/recursos?article=nps-template',
-  '/recursos?article=content-strategy',
-  '/recursos?article=guia-customer-journey-map',
-  '/recursos?article=guia-seo-local',
-  '/recursos?article=guia-estrategia-linkedin',
-  '/recursos?article=cx-metrics-guide',
-  '/recursos?article=infografia-anatomia-post-linkedin',
-  '/recursos?article=infografia-optimizacion-atencion-cliente',
-  '/recursos?article=infografia-palabras-clave',
-  '/recursos?article=infografia-elementos-landing-page',
+  '/recursos/cjm-template',
+  '/recursos/foda-kit',
+  '/recursos/content-calendar',
+  '/recursos/nps-template',
+  '/recursos/content-strategy',
+  '/recursos/guia-customer-journey-map',
+  '/recursos/guia-seo-local',
+  '/recursos/guia-estrategia-linkedin',
+  '/recursos/cx-metrics-guide',
+  '/recursos/infografia-anatomia-post-linkedin',
+  '/recursos/infografia-optimizacion-atencion-cliente',
+  '/recursos/infografia-palabras-clave',
+  '/recursos/infografia-elementos-landing-page',
   '/books',
   '/glosario-marketing',
 ];
@@ -59,11 +59,6 @@ async function prerender() {
       let filePath;
       if (route === '/') {
         filePath = path.join(distDir, 'index.html');
-      } else if (route.includes('?')) {
-        // Para URLs con query params: /recursos?article=X → /recursos/article-X/index.html
-        const [basePath, queryString] = route.split('?');
-        const articleId = queryString.split('=')[1];
-        filePath = path.join(distDir, basePath, `${articleId}`, 'index.html');
       } else {
         filePath = path.join(distDir, route, 'index.html');
       }
