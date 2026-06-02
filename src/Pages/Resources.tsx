@@ -1,22 +1,10 @@
-import React, { useState, useMemo, useEffect, Suspense, lazy } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import SEO from '../Components/shared/SEO';
-import AlphabetBar from '../Components/ui/AlphabetBar';
-import AlphabetSlider from '../Components/ui/AlphabetSlider';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FileSpreadsheet, FileText, Image } from 'lucide-react';
+import { FileSpreadsheet, FileText, Image, ArrowUpRight, Search, LayoutGrid } from 'lucide-react';
 import { useLanguage } from '../Components/portfolio/LanguageContext';
-import { useSearchParams, useParams } from 'react-router-dom';
-
-const Prism = lazy(() => import('../Components/resources/Prism'));
-import ResourceHero from '../Components/resources/ResourceHero';
-import ResourceFilter from '../Components/resources/ResourceFilter';
-import ResourceSection from '../Components/resources/ResourceSection';
-const ResourcePreviewModal = lazy(() => import('../Components/resources/ResourcePreviewModal'));
-const PaymentModal = lazy(() => import('../Components/resources/PaymentModal'));
-import ResourceCTA from '../Components/resources/ResourceCTA';
-import ResourceFAQ from '../Components/resources/ResourceFAQ';
+import { Link, useSearchParams, useParams } from 'react-router-dom';
 import ResourceArticle from '../Components/resources/ResourceArticle';
-import AnimatedDivider from '../Components/resources/AnimatedDivider';
 import { resourcesData } from '../data/resourcesData';
 
 export default function Resources() {
@@ -24,10 +12,7 @@ export default function Resources() {
   const [searchParams, setSearchParams] = useSearchParams();
   const { articleId } = useParams(); // Get article from URL param
   const [activeFilter, setActiveFilter] = useState('all');
-  const [selectedResource, setSelectedResource] = useState(null);
-  const [isPreviewOpen, setIsPreviewOpen] = useState(false);
-  const [isPaymentOpen, setIsPaymentOpen] = useState(false);
-  const [activeLetter, setActiveLetter] = useState(null);
+  const [searchQuery, setSearchQuery] = useState('');
 
   // Derive state from URL: prefer path param (/recursos/:articleId) over query param (?article=)
   const selectedArticleId = articleId || searchParams.get('article');
@@ -41,23 +26,20 @@ export default function Resources() {
   }, [searchParams]);
 
   const filteredResources = useMemo(() => {
-    if (activeFilter === 'all') return resourcesData;
-    return resourcesData.filter(r => r.type === activeFilter);
-  }, [activeFilter, language]);
+    const query = searchQuery.trim().toLowerCase();
 
-  const templates = filteredResources.filter(r => r.type === 'template');
-  const guides = filteredResources.filter(r => r.type === 'guide');
-  const infographics = filteredResources.filter(r => r.type === 'infographic');
+    return resourcesData.filter((resource) => {
+      const matchesFilter = activeFilter === 'all' || resource.type === activeFilter;
+      if (!matchesFilter) return false;
+      if (!query) return true;
 
-  const handlePreview = (resource) => {
-    setSelectedResource(resource);
-    setIsPreviewOpen(true);
-  };
+      const title = language === 'en' && resource.titleEn ? resource.titleEn : resource.title;
+      const description = language === 'en' && resource.descriptionEn ? resource.descriptionEn : resource.description;
+      const haystack = `${title || ''} ${description || ''}`.toLowerCase();
+      return haystack.includes(query);
+    });
+  }, [activeFilter, searchQuery, language]);
 
-  const handlePurchase = (resource) => {
-    setSelectedResource(resource);
-    setIsPaymentOpen(true);
-  };
 
   const handleReadArticle = (resource) => {
     // Only update searchParams, React will re-render and selectedArticleId will be updated
@@ -73,68 +55,178 @@ export default function Resources() {
     setSearchParams(newParams);
   };
 
+  const handleFilterChange = (filterId) => {
+    setActiveFilter(filterId);
+    const newParams = new URLSearchParams(searchParams);
+    if (filterId === 'all') {
+      newParams.delete('filter');
+    } else {
+      newParams.set('filter', filterId);
+    }
+    newParams.delete('article');
+    setSearchParams(newParams);
+  };
+
+  const searchPlaceholder = language === 'es' ? 'Buscar recursos...' : 'Search resources...';
+  const heroLines = language === 'es'
+    ? ['Recursos que', 'Transforman', 'Estrategias.']
+    : ['Resources that', 'Transform', 'Strategies.'];
+  const ctaBase = language === 'es' ? 'Ver' : 'View';
+  const rightLabel = language === 'es'
+    ? '¿Qué tipo de recurso buscas?'
+    : 'What type of resource are you looking for?';
+  const booksCtaText = language === 'es'
+    ? 'Explora recursos externos para formarte y ampliar criterio.'
+    : 'Explore external resources to learn and expand your perspective.';
+  const booksCtaLink = language === 'es'
+    ? 'Ver biblioteca externa'
+    : 'See external library';
+  const emptyState = language === 'es'
+    ? 'No hay recursos que coincidan con tu busqueda.'
+    : 'No resources match your search.';
+
+  const filters = [
+    { id: 'all', label: language === 'es' ? 'Todos' : 'All', icon: LayoutGrid, tone: 'all' },
+    { id: 'template', label: language === 'es' ? 'Templates' : 'Templates', icon: FileSpreadsheet, tone: 'template' },
+    { id: 'guide', label: language === 'es' ? 'Guías' : 'Guides', icon: FileText, tone: 'guide' },
+    { id: 'infographic', label: language === 'es' ? 'Infografías' : 'Infographics', icon: Image, tone: 'infographic' },
+  ];
+
+  const typeConfig = {
+    template: { label: t.resources.filters.template, icon: FileSpreadsheet },
+    guide: { label: t.resources.filters.guide, icon: FileText },
+    infographic: { label: t.resources.filters.infographic, icon: Image },
+  };
+
+
   return (
-    <div className="bg-slate-950 relative overflow-x-hidden">
+    <div className="resources-page">
       <SEO 
         title="Recursos Digitales y Guías | JP Studio"
         description="Recursos, guías y materiales gratuitos y premium sobre UX, marketing digital y crecimiento de negocios. Aprendé y mejorá tus habilidades."
         url="/recursos"
       />
-      {/* Prism Background - Fixed */}
-      <div className="fixed inset-0 z-0 pointer-events-none">
-        <Suspense fallback={<div />}>
-          <Prism height={3.5} baseWidth={5.5} animationType="rotate" glow={0.8} noise={0.3} transparent={true} scale={3.6} hueShift={0.5} colorFrequency={1} bloom={0.8} timeScale={0.3} />
-        </Suspense>
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-950/40 via-slate-950/60 to-slate-950/90" />
-      </div>
-      {/* Content */}
-      <div className="relative z-10">
-        <AnimatePresence mode="wait">
-          {selectedArticleId ? (
-            <motion.div key="article" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} className="py-12">
-              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <ResourceArticle resourceId={selectedArticleId} onBack={handleBackToResources} />
-              </div>
-            </motion.div>
-          ) : (
-            <motion.div key="resources" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-              {/* Hero Section */}
-              <ResourceHero key={`hero-${language}`} />
-              {/* Animated Divider */}
-              <AnimatedDivider />
-              {/* Main Content - Max-width 1200px centrado */}
-              <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-24">
-                {/* Filters */}
-                <ResourceFilter key={`filter-${language}`} activeFilter={activeFilter} onFilterChange={setActiveFilter} />
-                {/* Resources Sections */}
-                <div className="space-y-12 sm:space-y-16 lg:space-y-20">
-                  {templates.length > 0 && (
-                    <ResourceSection key={`templates-${language}`} id="templates" title={t.resources.sections.templates.title} subtitle={t.resources.sections.templates.subtitle} icon={FileSpreadsheet} resources={templates} onPreview={handlePreview} onPurchase={handlePurchase} onReadArticle={handleReadArticle} />
-                  )}
-                  {guides.length > 0 && (
-                    <ResourceSection key={`guides-${language}`} id="guides" title={t.resources.sections.guides.title} subtitle={t.resources.sections.guides.subtitle} icon={FileText} resources={guides} onPreview={handlePreview} onPurchase={handlePurchase} onReadArticle={handleReadArticle} />
-                  )}
-                  {infographics.length > 0 && (
-                    <ResourceSection key={`infographics-${language}`} id="infographics" title={t.resources.sections.infographics.title} subtitle={t.resources.sections.infographics.subtitle} icon={Image} resources={infographics} onPreview={handlePreview} onPurchase={handlePurchase} onReadArticle={handleReadArticle} />
-                  )}
+      <AnimatePresence mode="wait">
+        {selectedArticleId ? (
+          <motion.section
+            key="article"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="resources-section"
+          >
+            <div className="resources-wrapper resources-wrapper--article">
+              <ResourceArticle resourceId={selectedArticleId} onBack={handleBackToResources} />
+            </div>
+          </motion.section>
+        ) : (
+          <motion.section
+            key="resources"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="resources-section"
+          >
+            <div className="resources-wrapper">
+              <div className="resources-layout">
+                <div className="resources-left">
+                  <p className="resources-breadcrumb">/ {t.resources.hero.title}</p>
+                  <h1 className="resources-title">
+                    {heroLines.map((line, index) => (
+                      <span key={line} className={index === heroLines.length - 1 ? 'is-highlight' : ''}>
+                        {line}
+                      </span>
+                    ))}
+                  </h1>
+                  <p className="resources-description">{t.resources.hero.description}</p>
+
+                  <div className="resources-cta-group">
+                    <a className="resources-cta" href="/#contact">
+                      {t.resources.cta.buttonCustom}
+                      <ArrowUpRight className="resources-cta-icon" />
+                    </a>
+                    <p className="resources-cta-note">{booksCtaText}</p>
+                    <Link className="resources-cta-secondary" to="/books">
+                      {booksCtaLink}
+                      <ArrowUpRight className="resources-cta-icon" />
+                    </Link>
+                  </div>
                 </div>
-              </main>
-              {/* FAQ Section */}
-              <ResourceFAQ />
-              {/* CTA Section */}
-              <ResourceCTA />
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
-      {/* Preview Modal */}
-      <Suspense fallback={null}>
-        <ResourcePreviewModal resource={selectedResource} isOpen={isPreviewOpen} onClose={() => { setIsPreviewOpen(false); setSelectedResource(null); }} />
-      </Suspense>
-      {/* Payment Modal */}
-      <Suspense fallback={null}>
-        <PaymentModal resource={selectedResource} isOpen={isPaymentOpen} onClose={() => { setIsPaymentOpen(false); setSelectedResource(null); }} />
-      </Suspense>
+
+                <div className="resources-right">
+                  <p className="resources-right-label">{rightLabel}</p>
+                  <div className="resources-tabs">
+                    {filters.map((filter) => {
+                      const Icon = filter.icon;
+                      return (
+                        <button
+                          key={filter.id}
+                          type="button"
+                          onClick={() => handleFilterChange(filter.id)}
+                          className={`resources-tab-card resources-tab-${filter.tone}${activeFilter === filter.id ? ' is-active' : ''}`}
+                        >
+                          <span className="resources-tab-icon" aria-hidden="true">
+                            <Icon className="resources-tab-icon-svg" />
+                          </span>
+                          <span className="resources-tab-label">{filter.label}</span>
+                        </button>
+                      );
+                    })}
+                  </div>
+
+                  <div className="resources-search">
+                    <Search className="resources-search-icon" />
+                    <input
+                      type="text"
+                      value={searchQuery}
+                      onChange={(event) => setSearchQuery(event.target.value)}
+                      placeholder={searchPlaceholder}
+                      aria-label={searchPlaceholder}
+                    />
+                    <span className="resources-search-shortcut">⌘ K</span>
+                  </div>
+
+                  <div className="resources-list">
+                    {filteredResources.length === 0 ? (
+                      <div className="resources-empty">{emptyState}</div>
+                    ) : (
+                      filteredResources.map((resource) => {
+                        const title = language === 'en' && resource.titleEn ? resource.titleEn : resource.title;
+                        const description = language === 'en' && resource.descriptionEn ? resource.descriptionEn : resource.description;
+                        const config = typeConfig[resource.type] || typeConfig.guide;
+                        const Icon = config.icon;
+                        const ctaLabel = `${ctaBase} ${config.label.toLowerCase()}`;
+
+                        return (
+                          <button
+                            key={resource.id}
+                            type="button"
+                            className={`resource-row resource-row-${resource.type}`}
+                            onClick={() => handleReadArticle(resource)}
+                          >
+                            <span className="resource-row-icon" aria-hidden="true">
+                              <Icon className="resource-row-icon-svg" />
+                            </span>
+                            <span className="resource-row-body">
+                              <span className="resource-row-type">{config.label}</span>
+                              <span className="resource-row-title">{title}</span>
+                              <span className="resource-row-desc">{description}</span>
+                            </span>
+                            <span className="resource-row-cta">
+                              {ctaLabel}
+                              <ArrowUpRight className="resource-row-cta-icon" />
+                            </span>
+                          </button>
+                        );
+                      })
+                    )}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.section>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
