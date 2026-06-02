@@ -3203,98 +3203,6 @@ export const glossaryTerms: GlossaryTerm[] = [
       },
       category: 'metrics',
     },
-    // --- O ---
-    {
-      id: 'online-directories',
-      term: { es: 'Online Directories', en: 'Online Directories' },
-      shortDefinition: {
-        en: 'Websites that compile and categorize business information, allowing users to find and connect with businesses.',
-        es: 'Sitios web que recopilan y categorizan información de negocios, permitiendo a los usuarios encontrar y conectar con empresas.'
-      },
-      fullDefinition: {
-        en: 'Websites that compile and categorize business information, allowing users to find and connect with businesses. They typically include details such as the business\'s name, address, and phone number (NAP), website, hours of operation, and sometimes additional information like customer reviews, services offered, and photos. Examples of online directories include Google Business Profile, Yellow Pages, and TripAdvisor.',
-        es: 'Sitios web que recopilan y categorizan información de negocios, permitiendo a los usuarios encontrar y conectar con empresas. Normalmente incluyen detalles como nombre, dirección y teléfono (NAP), sitio web, horario y, a veces, información adicional como reseñas, servicios y fotos. Ejemplos: Google Business Profile, Páginas Amarillas y TripAdvisor.'
-      },
-      category: 'local-seo',
-    },
-    {
-      id: 'online-review-management',
-      term: { es: 'Online Review Management', en: 'Online Review Management' },
-      shortDefinition: {
-        en: 'The process of monitoring reviews across all platforms and actively responding to feedback.',
-        es: 'El proceso de monitorear reseñas en todas las plataformas y responder activamente a los comentarios.'
-      },
-      fullDefinition: {
-        en: 'The process of monitoring reviews across all platforms, actively responding to feedback, reporting fake reviews, and addressing complaints to maintain a positive online reputation.',
-        es: 'El proceso de monitorear reseñas en todas las plataformas, responder activamente a los comentarios, reportar reseñas falsas y atender quejas para mantener una reputación positiva online.'
-      },
-      category: 'local-seo',
-    },
-    {
-      id: 'online-visibility',
-      term: { es: 'Online Visibility', en: 'Online Visibility' },
-      shortDefinition: {
-        en: 'The overall presence of a business or brand on the Internet.',
-        es: 'La presencia general de un negocio o marca en Internet.'
-      },
-      fullDefinition: {
-        en: 'The overall presence of a business or brand on the Internet. Improving online visibility allows a business to reach more customers and make more money. This can be achieved through digital marketing campaigns, SEO, PPC, Public Relations, social media marketing (SMM), blogging, and outreach among other strategies.',
-        es: 'La presencia general de un negocio o marca en Internet. Mejorar la visibilidad online permite llegar a más clientes y aumentar los ingresos. Se puede lograr mediante campañas de marketing digital, SEO, PPC, relaciones públicas, SMM, blogging y outreach, entre otras estrategias.'
-      },
-      category: 'strategy',
-    },
-    {
-      id: 'open-graph',
-      term: { es: 'Open Graph', en: 'Open Graph' },
-      shortDefinition: {
-        en: 'A form of markup that enables your content to become a rich object when shared via social networks.',
-        es: 'Un tipo de marcado que permite que tu contenido se convierta en un objeto enriquecido al compartirse en redes sociales.'
-      },
-      fullDefinition: {
-        en: 'A form of markup that you can add to the metadata of a webpage that will enable your content to become a rich object when shared via social networks. This protocol allows objects on your website like videos, images, and audio files to appear in the timeline when your link is over Twitter, for example.',
-        es: 'Un tipo de marcado que puedes añadir a los metadatos de una página web para que tu contenido se convierta en un objeto enriquecido al compartirse en redes sociales. Este protocolo permite que objetos como videos, imágenes y audios aparezcan en la línea de tiempo cuando tu enlace se comparte, por ejemplo, en Twitter.'
-      },
-      category: 'technology',
-    },
-    {
-      id: 'organic-search-results',
-      term: { es: 'Organic Search Results', en: 'Organic Search Results' },
-      shortDefinition: {
-        en: 'The search results that are unpaid and generally organized by relevance, popularity, and common usage.',
-        es: 'Resultados de búsqueda no pagados, generalmente organizados por relevancia, popularidad y uso común.'
-      },
-      fullDefinition: {
-        en: 'The search results that are unpaid and generally organized by relevance, popularity, and common usage.',
-        es: 'Resultados de búsqueda no pagados, generalmente organizados por relevancia, popularidad y uso común.'
-      },
-      category: 'seo',
-    },
-    {
-      id: 'orphaned-pages',
-      term: { es: 'Orphaned Pages', en: 'Orphaned Pages' },
-      shortDefinition: {
-        en: 'Pages of a website that have no internal links pointing to them from within the website.',
-        es: 'Páginas de un sitio web que no tienen enlaces internos apuntando a ellas desde el propio sitio.'
-      },
-      fullDefinition: {
-        en: 'Pages of a website that have no internal links pointing to them from within the website. This can be harmful to SEO as orphaned pages are harder for search engines and users to locate than pages with internal links.',
-        es: 'Páginas de un sitio web que no tienen enlaces internos apuntando a ellas desde el propio sitio. Esto puede ser perjudicial para el SEO, ya que las páginas huérfanas son más difíciles de localizar tanto para los motores de búsqueda como para los usuarios.'
-      },
-      category: 'seo',
-    },
-    {
-      id: 'outreach',
-      term: { es: 'Outreach', en: 'Outreach' },
-      shortDefinition: {
-        en: 'A method of proactively acquiring backlinks to your website by contacting other website owners.',
-        es: 'Método de adquisición proactiva de backlinks contactando a otros propietarios de sitios web.'
-      },
-      fullDefinition: {
-        en: 'A method of proactively acquiring backlinks to your website by contacting other website owners.',
-        es: 'Método de adquisición proactiva de backlinks contactando a otros propietarios de sitios web.'
-      },
-      category: 'seo',
-    },
     // --- N ---
     {
       id: 'native-advertising',
@@ -4220,6 +4128,22 @@ export function setCurrentLanguage(lang: 'es' | 'en') {
 }
 
 export function searchTerms(query: string, language: 'es' | 'en'): GlossaryTerm[] {
-  // Returns empty array since glossary is empty
-  return [];
+  const cleanedQuery = query.trim();
+  if (!cleanedQuery) return glossaryTerms;
+
+  const normalize = (value: string) =>
+    value
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '');
+
+  const tokens = normalize(cleanedQuery).split(/\s+/).filter(Boolean);
+
+  return glossaryTerms.filter((term) => {
+    const termText = term.term?.[language] || '';
+    const shortText = term.shortDefinition?.[language] || '';
+    const fullText = term.fullDefinition?.[language] || '';
+    const haystack = normalize(`${termText} ${shortText} ${fullText}`);
+    return tokens.every((token) => haystack.includes(token));
+  });
 }

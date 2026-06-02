@@ -127,9 +127,9 @@ export default function ContactSection() {
                         ) : (
                             <>
                                 <div className="mb-10">
-                                    <h3 className="text-2xl md:text-3xl font-bold text-zinc-900 mb-2">Contact</h3>
+                                    <h3 className="text-2xl md:text-3xl font-bold text-zinc-900 mb-2">{t.contact.formTitle}</h3>
                                     <p className="text-zinc-500 text-sm md:text-base">
-                                        Identify your key objectives and explore the opportunities where our expertise can enhance your results.
+                                        {t.contact.formDescription}
                                     </p>
                                 </div>
 
